@@ -10,13 +10,13 @@
             VerticalOptions="Center">
 
             <Image
-                Source="dotnet_bot.png"
+                Source="jesperecestdrolequandtouvreslapp.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Coucou mon pote j'ai passé 2h à fix un problème qui n'était pas de ma faute j'ai un peu envie d'éclater visual studio. Mais du coup t'inquiète t'auras pas le problème !"
+                Text="👋Coucou mon pote j'ai passé 2h à fix un problème qui n'était pas de ma faute j'ai un peu envie d'éclater visual studio. Mais du coup t'inquiète t'auras pas le problème !👋"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
@@ -29,7 +29,7 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="J'risque d'exploser la SAE en une soirée à un moment soit pas étonné."
+                Text="J'risque d'exploser la SAE en une soirée à un moment soit pas étonné.Et ouais du coup là j'ai rien branlé pour avancer mais tkt"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
