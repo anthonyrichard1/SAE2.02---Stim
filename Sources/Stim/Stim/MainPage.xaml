@@ -1,48 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Stim.MainPage">
-
+             x:Class="Stim.MainPage"
+             Title="STIM"
+             Background="black">
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
 
-            <Image
-                Source="jesperecestdrolequandtouvreslapp.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="👋Coucou mon pote j'ai passé 2h à fix un problème qui n'était pas de ma faute j'ai un peu envie d'éclater visual studio. Mais du coup t'inquiète t'auras pas le problème !👋"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="J'espère que t'aimeras le nom de mes commits, j'suis rarement inspiré donc c'souvent débile."
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="J'risque d'exploser la SAE en une soirée à un moment soit pas étonné.Et ouais du coup là j'ai rien branlé pour avancer mais tkt"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <HorizontalStackLayout ali>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+                <Button Text="BT1"></Button>
+            </HorizontalStackLayout>
+            <VerticalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 1</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 2</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 3</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 4</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 5</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 6</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 7</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 8</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 9</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 10</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 11</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 12</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 13</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 14</Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
+                    <Label TextColor="White" FontSize="50">JEU 15</Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+    </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
