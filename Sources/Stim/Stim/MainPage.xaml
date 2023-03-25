@@ -3,124 +3,162 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stim.MainPage"
              Title="STIM"
+
              Background="black">
     <ScrollView>
-
-        <VerticalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="10">
+        
+        <VerticalStackLayout Margin="200,0,200,0" BackgroundColor="#495057">
+            
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,10">
                 <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 1"></Button>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 1" WidthRequest="325"></Button>
                 </Border>
                 <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 2"></Button>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 2" WidthRequest="325"></Button>
                 </Border>
                 <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 3"></Button>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 3" WidthRequest="325"></Button>
                 </Border>
                 <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 4"></Button>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 4" WidthRequest="325"></Button>
                 </Border>
             </HorizontalStackLayout>
             
-            <VerticalStackLayout>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+            <HorizontalStackLayout>
+            
+                    <Border Margin="10,0,0,10">
+                     
+                        <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"/>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="RPG"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Souls"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Game of the Year (2022)"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+
+                    </HorizontalStackLayout>
+                    </Border>
+
+                    <Border Margin="10,0,0,10">
+                        <HorizontalStackLayout WidthRequest="335">
+                            <VerticalStackLayout>
+                                <Image Source="eldenring.jpg" WidthRequest="335"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                                <HorizontalStackLayout>
+                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+                    </Border>
+
+                <Border Margin="10,0,0,10">
+                    <HorizontalStackLayout WidthRequest="335">
+                        <VerticalStackLayout>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
 
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+
+                <Border Margin="10,0,0,10">
+                    <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+                
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Border Margin="10,0,0,10">
+
+                    <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="RPG"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Souls"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Game of the Year (2022)"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+
+                <Border Margin="10,0,0,10">
+                    <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+
+                <Border Margin="10,0,0,10">
+                    <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
+
+                <Border Margin="10,0,0,10">
+                    <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Image Source="eldenring.jpg" WidthRequest="335"/>
                             <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                            <HorizontalStackLayout>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
+                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
+                            </HorizontalStackLayout>
                         </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
+
                     </HorizontalStackLayout>
                 </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
-                        <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border Margin="10">
-                    <HorizontalStackLayout>
-                        <VerticalStackLayout>
-                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                        </VerticalStackLayout>
-                        <VerticalStackLayout VerticalOptions="Center">
-                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
-                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
-                        </VerticalStackLayout>
-                    </HorizontalStackLayout>
-                </Border>
-            </VerticalStackLayout>
+
+            </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
