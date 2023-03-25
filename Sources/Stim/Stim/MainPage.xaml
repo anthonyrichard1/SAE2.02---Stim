@@ -7,81 +7,120 @@
     <ScrollView>
 
         <VerticalStackLayout>
-            <HorizontalStackLayout ali>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
-                <Button Text="BT1"></Button>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="10">
+                <Border>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 1"></Button>
+                </Border>
+                <Border>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 2"></Button>
+                </Border>
+                <Border>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 3"></Button>
+                </Border>
+                <Border>
+                    <Button Background="transparent" FontSize="40" Text="Bouton 4"></Button>
+                </Border>
             </HorizontalStackLayout>
+            
             <VerticalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 1</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 2</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 3</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 4</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 5</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 6</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 7</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 8</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 9</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 10</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 11</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 12</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 13</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 14</Label>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Image Margin="10" Source="nyancat.png" WidthRequest="100"></Image>
-                    <Label TextColor="White" FontSize="50">JEU 15</Label>
-                </HorizontalStackLayout>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"/>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border Margin="10">
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <Image Margin="5" Source="nyancat.png" WidthRequest="100"></Image>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label TextColor="White" FontSize="40" Margin="10" FontFamily="arial" Text="Jeu 1"/>
+                            <Label TextColor="White" FontSize="15" Margin="10" FontFamily="arial" Text="Aventure / Reflexion / First Person Shooter"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
             </VerticalStackLayout>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
