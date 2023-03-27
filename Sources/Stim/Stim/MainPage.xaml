@@ -6,27 +6,43 @@
 
              Background="black">
     <ScrollView>
-        
+
         <VerticalStackLayout Margin="200,0,200,0" BackgroundColor="#495057">
-            
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,10">
-                <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 1" WidthRequest="325"></Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Grid.Row="0" >
+                    <Button Background="transparent" Grid.Column="0" Grid.Row="0" FontSize="40" Text="Bouton 1" WidthRequest="325"></Button>
                 </Border>
-                <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 2" WidthRequest="325"></Button>
+                <Border Grid.Column="1" Grid.Row="0" >
+                    <Button Background="transparent" Grid.Column="1" Grid.Row="0" FontSize="40" Text="Bouton 2" WidthRequest="325"></Button>
                 </Border>
-                <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 3" WidthRequest="325"></Button>
+                <Border Grid.Column="2" Grid.Row="0" >
+                    <Button Background="transparent" Grid.Column="2" Grid.Row="0" FontSize="40" Text="Bouton 3" WidthRequest="325"></Button>
                 </Border>
-                <Border>
-                    <Button Background="transparent" FontSize="40" Text="Bouton 4" WidthRequest="325"></Button>
+                <Border Grid.Column="3" Grid.Row="0" >
+                    <Button Background="transparent" Grid.Column="3" Grid.Row="0" FontSize="40" Text="Bouton 4" WidthRequest="325"></Button>
                 </Border>
-            </HorizontalStackLayout>
-            
-            <HorizontalStackLayout>
-            
-                    <Border Margin="10,0,0,10">
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Margin="10,10,10,10">
                      
                         <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
@@ -43,7 +59,7 @@
                     </HorizontalStackLayout>
                     </Border>
 
-                    <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10"  Grid.Column="1">
                         <HorizontalStackLayout WidthRequest="335">
                             <VerticalStackLayout>
                                 <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -59,7 +75,7 @@
                         </HorizontalStackLayout>
                     </Border>
 
-                <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10" Grid.Column="2">
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
                             <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -75,7 +91,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10"  Grid.Column="3">
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
                             <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -90,10 +106,8 @@
 
                     </HorizontalStackLayout>
                 </Border>
-                
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Border Margin="10,0,0,10">
+
+                <Border Margin="10,10,10,10" Grid.Column="0" Grid.Row="1">
 
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
@@ -110,7 +124,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10" Grid.Column="1" Grid.Row="1">
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
                             <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -126,7 +140,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10" Grid.Column="2" Grid.Row="1">
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
                             <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -142,7 +156,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-                <Border Margin="10,0,0,10">
+                <Border Margin="10,10,10,10"  Grid.Column="3" Grid.Row="1">
                     <HorizontalStackLayout WidthRequest="335">
                         <VerticalStackLayout>
                             <Image Source="eldenring.jpg" WidthRequest="335"/>
@@ -158,7 +172,7 @@
                     </HorizontalStackLayout>
                 </Border>
 
-            </HorizontalStackLayout>
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
