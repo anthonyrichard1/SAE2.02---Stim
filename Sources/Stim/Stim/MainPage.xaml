@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stim.MainPage"
              Title="STIM"
-
              Background="black">
     <ScrollView>
 
@@ -11,7 +10,6 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -25,14 +23,14 @@
                 <Border Grid.Column="2" Grid.Row="0" >
                     <Button Background="transparent" Grid.Column="2" Grid.Row="0" FontSize="40" Text="Bouton 3" WidthRequest="325"></Button>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="0" >
-                    <Button Background="transparent" Grid.Column="3" Grid.Row="0" FontSize="40" Text="Bouton 4" WidthRequest="325"></Button>
-                </Border>
             </Grid>
 
+            
+            
+            
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -42,135 +40,191 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Border Margin="10,10,10,10">
-                     
-                        <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="RPG"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Souls"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Game of the Year (2022)"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                
+                
+                
+                
+                
+                <Border Margin="10,10,10,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    </HorizontalStackLayout>
-                    </Border>
-
-                <Border Margin="10,10,10,10"  Grid.Column="1">
-                        <HorizontalStackLayout WidthRequest="335">
-                            <VerticalStackLayout>
-                                <Image Source="eldenring.jpg" WidthRequest="335"/>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                                <HorizontalStackLayout>
-                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                    <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-
-                        </HorizontalStackLayout>
-                    </Border>
-
-                <Border Margin="10,10,10,10" Grid.Column="2">
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-
-                    </HorizontalStackLayout>
+                        <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                        <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                        
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                            </Grid>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="25/02/2022" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice." Grid.Row="3"/>
+                    </Grid>
                 </Border>
 
-                <Border Margin="10,10,10,10"  Grid.Column="3">
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                <Border Margin="10,10,10,0" Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    </HorizontalStackLayout>
+                        <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                        <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                            </Grid>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="25/02/2022" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice." Grid.Row="3"/>
+                    </Grid>
                 </Border>
 
-                <Border Margin="10,10,10,10" Grid.Column="0" Grid.Row="1">
+                <Border Margin="10,10,10,0" Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="RPG"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Souls"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Game of the Year (2022)"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                        <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                        <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
-                    </HorizontalStackLayout>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                            </Grid>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="25/02/2022" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice." Grid.Row="3"/>
+                    </Grid>
                 </Border>
 
-                <Border Margin="10,10,10,10" Grid.Column="1" Grid.Row="1">
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                <Border Margin="10,10,10,0" Grid.Column="3">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    </HorizontalStackLayout>
+                        <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                        <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                            </Grid>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="25/02/2022" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice." Grid.Row="3"/>
+                    </Grid>
                 </Border>
 
-                <Border Margin="10,10,10,10" Grid.Column="2" Grid.Row="1">
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
+                <Border Margin="10,10,10,0" Grid.Row="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    </HorizontalStackLayout>
+                        <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                        <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                            </Grid>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="25/02/2022" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice." Grid.Row="3"/>
+                    </Grid>
                 </Border>
 
-                <Border Margin="10,10,10,10"  Grid.Column="3" Grid.Row="1">
-                    <HorizontalStackLayout WidthRequest="335">
-                        <VerticalStackLayout>
-                            <Image Source="eldenring.jpg" WidthRequest="335"/>
-                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" HorizontalTextAlignment="Center" Text="29/01/2004"/>
-                            <HorizontalStackLayout>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial"  Text="Tag :"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Aventure"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="Reflexion"/>
-                                <Label TextColor="White" FontSize="10" Margin="5" FontFamily="arial" Text="First Person Shooter"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-
-                    </HorizontalStackLayout>
-                </Border>
 
             </Grid>
         </VerticalStackLayout>
