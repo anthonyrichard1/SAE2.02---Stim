@@ -1,8 +1,8 @@
 namespace Stim;
 
-public partial class DetailledPage : ContentPage
+public partial class HeaderView : ContentView
 {
-	public DetailledPage()
+	public HeaderView()
 	{
 		InitializeComponent();
 	}

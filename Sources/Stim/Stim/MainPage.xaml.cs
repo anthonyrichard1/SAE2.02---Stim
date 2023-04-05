@@ -11,4 +11,9 @@ public partial class MainPage : ContentPage
     {
 		await Navigation.PushModalAsync(new DetailledPage());
     }
+
+    private async void goToMainPage(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new MainPage());
+    }
 }
