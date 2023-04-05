@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Stim.MainPage"
+             x:Class="Stim.DetailledPage"
              Title="STIM"
              Background="black">
     <ScrollView>
@@ -18,16 +18,16 @@
                     <Button Background="transparent" Grid.Column="0" Grid.Row="0" FontSize="40" Text="Bouton 1" WidthRequest="325"></Button>
                 </Border>
                 <Border Grid.Column="1" Grid.Row="0" >
-                    <Button Background="transparent" Grid.Column="1" Grid.Row="0" FontSize="40" Text="Bouton 2" WidthRequest="325" Clicked="Button_Clicked"></Button>
+                    <Button Background="transparent" Grid.Column="1" Grid.Row="0" FontSize="40" Text="Bouton 2" WidthRequest="325"></Button>
                 </Border>
                 <Border Grid.Column="2" Grid.Row="0" >
                     <Button Background="transparent" Grid.Column="2" Grid.Row="0" FontSize="40" Text="Bouton 3" WidthRequest="325"></Button>
                 </Border>
             </Grid>
 
-            
-            
-            
+
+
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -40,11 +40,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                
-                
-                
-                
-                
+
+
+
+
+
                 <Border Margin="10,10,10,0">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -56,7 +56,7 @@
 
                         <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
                         <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="Elden Ring" Grid.Row="1" HorizontalTextAlignment="Center"/>
-                        
+
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -69,7 +69,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
                                 <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
                                 <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
