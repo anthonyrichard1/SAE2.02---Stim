@@ -14,4 +14,8 @@ public partial class HeaderView : ContentView
     {
         await Navigation.PushModalAsync(new FollowPage());
     }
+    private async void goToProfilPage(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new ProfilPage());
+    }
 }
