@@ -7,10 +7,26 @@
              Background="black">
     
     <ScrollView>
-        <VerticalStackLayout Margin="200,0,200,0" BackgroundColor="#495057">
-            <HeaderView:HeaderView/>
+        <Grid BackgroundColor="#495057">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid HeightRequest="1000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <HeaderView:HeaderView Grid.Column="1" Margin="0"/>
+
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
+
+            <Grid HeightRequest="1000" Grid.Column="1" Grid.Row="1" Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -100,6 +116,6 @@ Suspendisse vulputate augue id quam accumsan imperdiet. Morbi tincidunt vulputat
                 </VerticalStackLayout>
             </Grid>
             
-        </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
