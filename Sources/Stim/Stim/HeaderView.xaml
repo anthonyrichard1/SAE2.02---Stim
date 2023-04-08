@@ -14,7 +14,7 @@
             <Button Background="transparent" Grid.Column="0" Grid.Row="0" FontSize="40" Text="Home" WidthRequest="325" Clicked="goToMainPage"></Button>
         </Border>
         <Border Grid.Column="1" Grid.Row="0" >
-            <Button Background="transparent" Grid.Column="1" Grid.Row="0" FontSize="40" Text="Mes suivis" WidthRequest="325"></Button>
+            <Button Background="transparent" Grid.Column="1" Grid.Row="0" FontSize="40" Text="Mes suivis" WidthRequest="325" Clicked="goToFollowPage"></Button>
         </Border>
         <Border Grid.Column="2" Grid.Row="0" >
             <Button Background="transparent" Grid.Column="2" Grid.Row="0" FontSize="40" Text="Profil" WidthRequest="325"></Button>

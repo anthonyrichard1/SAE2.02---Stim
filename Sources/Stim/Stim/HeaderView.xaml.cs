@@ -10,4 +10,8 @@ public partial class HeaderView : ContentView
     {
         await Navigation.PushModalAsync(new MainPage());
     }
+    private async void goToFollowPage(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new FollowPage());
+    }
 }
