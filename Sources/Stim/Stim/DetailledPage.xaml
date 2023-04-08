@@ -10,23 +10,23 @@
         <VerticalStackLayout Margin="200,0,200,0" BackgroundColor="#495057">
             <HeaderView:HeaderView/>
 
-            <Grid BackgroundColor="Red" HeightRequest="1000">
+            <Grid HeightRequest="1000">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Frame BackgroundColor="Orange"></Frame>
+                
+                <Image Margin="0, 10, 0, 0" Source="eldenring.jpg"/>
 
-                <Grid Grid.Column="2" Background="green">
+                <Grid Grid.Column="2" Padding="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -35,23 +35,69 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Nom du jeu" TextColor="White"/>
-                    <Label Grid.Column="1" Text="année" TextColor="White"/>
-                    <Button Grid.Column="3" Text="suivre" TextColor="White"/>
-                    <Label Grid.Row="1" Grid.ColumnSpan="4" TextColor="White" Text="Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice.&#10;&#10;Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice.&#10;&#10;Elden Ring is an action role-playing game played in a third person perspective, with gameplay focusing on combat and exploration. It features elements similar to those found in other games developed by FromSoftware, such as the Dark Souls series, Bloodborne, and Sekiro: Shadows Die Twice."/>
-                    <VerticalStackLayout Grid.Row="2">
+                    <Label Text="Nom du jeu" TextColor="White" VerticalTextAlignment="Center"/>
+                    <Label Grid.Column="1" TextColor="White" VerticalTextAlignment="Center" Text="année"/>
+                    <Button Grid.Column="3" TextColor="White" Text="suivre" HorizontalOptions="End"
+                            VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="Black"/>
+                    <Label Grid.Row="1" Grid.ColumnSpan="4" TextColor="White" Text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur.
+
+Morbi mattis sit amet ligula sit amet molestie. Proin lobortis mi a eros eleifend bibendum. Donec arcu nibh, accumsan sit amet blandit vel, tincidunt dignissim eros. Vestibulum faucibus diam vel est porta rhoncus. Nunc scelerisque odio id diam viverra, id auctor magna placerat. Nam mollis urna a elit facilisis, a lobortis sapien porta. Maecenas sit amet diam tincidunt, fringilla ligula sit amet, vestibulum dolor. Proin pulvinar velit non turpis dictum bibendum. Phasellus a porta ligula.
+
+Suspendisse vulputate augue id quam accumsan imperdiet. Morbi tincidunt vulputate tellus, quis maximus felis tincidunt ut. Vestibulum accumsan quam sed posuere maximus. Suspendisse quis lacus ut quam facilisis mollis sed at purus. Maecenas sollicitudin augue leo, in mattis elit dignissim sed. Etiam lobortis quam et lectus posuere, sed mollis mi sodales. Nunc id ante quis mauris euismod mattis. Maecenas orci nibh, hendrerit in felis sit amet, facilisis tristique nisi. Aliquam quis dui ut urna rutrum aliquam. Vivamus iaculis interdum ipsum, id scelerisque magna. Nunc purus est, hendrerit quis neque eget, varius semper nunc. Nulla facilisi. Cras dignissim auctor libero, eu blandit orci pharetra vel."/>
+                    <VerticalStackLayout Grid.Row="2" VerticalOptions="End">
                         <Label Text="Tags :" TextColor="White"/>
                         <Label Text="   - Tag 1" TextColor="White"/>
                         <Label Text="   - Tag 2" TextColor="White"/>
                         <Label Text="   - Tag 3" TextColor="White"/>
                     </VerticalStackLayout>
 
-                    <Label Grid.Row="3" Grid.ColumnSpan="4" TextDecorations="Underline" TextColor="White" Text="https://idhaklzhdkhazkdhaz.fr&#10;https://ioghzilghieriugo.fr"/>
-                    <Label Grid.Row="3" Grid.Column="4" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="20" TextColor="White" Text="4.5/5"/>
+                    <Label Grid.Row="3" Grid.ColumnSpan="4" VerticalOptions="End" TextDecorations="Underline" TextColor="White" Text="https://idhaklzhdkhazkdhaz.fr&#10;https://ioghzilghieriugo.fr"/>
+                    <HorizontalStackLayout Grid.Row="3" Grid.Column="2" VerticalOptions="End" HorizontalOptions="End">
+                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                        <Image Source="etoile_mi_pleine.png" WidthRequest="25"/>
+                        <Image Source="etoile_vide.png" WidthRequest="25"/>
+                        <Label Padding="5" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="20" TextColor="White" Text="3.5/5"/>
+                    </HorizontalStackLayout>
                 </Grid>
 
-                <Frame Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="Blue"></Frame>
-                <Label Grid.Row="1" Text="Avis de la communauté :" TextColor="White"/>
+                <VerticalStackLayout Padding="10" Grid.Row="1" Grid.ColumnSpan="2">
+                    <Label Grid.Row="1" Grid.RowSpan="2" Text="Avis de la communauté :" TextColor="White" FontSize="25"/>
+                    <VerticalStackLayout Margin="20,20,0,0">
+                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
+                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 1"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                        </HorizontalStackLayout>
+                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="20,20,0,0">
+                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
+                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 2"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                        </HorizontalStackLayout>
+                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="20,20,0,0">
+                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
+                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 3"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_mi_pleine.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                            <Image Source="etoile_vide.png" WidthRequest="25"/>
+                        </HorizontalStackLayout>
+                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
             </Grid>
             
         </VerticalStackLayout>
