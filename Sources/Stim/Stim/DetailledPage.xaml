@@ -19,8 +19,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <HeaderView:HeaderView Grid.Column="1" Margin="0"/>
-
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
