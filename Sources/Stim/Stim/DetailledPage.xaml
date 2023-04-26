@@ -18,7 +18,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
@@ -38,7 +38,7 @@
 
                 <Grid Grid.Column="2" Padding="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
@@ -49,7 +49,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Nom du jeu" TextColor="White" VerticalTextAlignment="Center"/>
+                    <Label Text="Nom du jeu" TextColor="White" VerticalTextAlignment="Center" FontSize="30"/>
                     <Label Grid.Column="1" TextColor="White" VerticalTextAlignment="Center" Text="année"/>
                     <Button Grid.Column="3" TextColor="White" Text="suivre" HorizontalOptions="End"
                             VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="Black"/>
