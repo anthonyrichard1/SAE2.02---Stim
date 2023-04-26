@@ -49,16 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="HeaderView.xaml.cs">
-	    <DependentUpon>HeaderView.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="DetailledPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="HeaderView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

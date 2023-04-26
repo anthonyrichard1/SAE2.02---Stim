@@ -9,11 +9,11 @@ public partial class MainPage : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-		await Navigation.PushModalAsync(new DetailledPage());
+		await Navigation.PushAsync(new DetailledPage());
     }
 
     private async void goToMainPage(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new MainPage());
+        await Navigation.PushAsync(new MainPage());
     }
 }
