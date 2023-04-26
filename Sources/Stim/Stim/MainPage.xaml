@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:HeaderView="clr-namespace:Stim"
              x:Class="Stim.MainPage"
-             Title="STIM"
+             Title="Accueil"
              Background="black">
-    
-    <ScrollView>
 
+    <ScrollView>
         <Grid BackgroundColor="#495057">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -20,8 +18,6 @@
                 <RowDefinition Height="*"/> 
             </Grid.RowDefinitions>
             
-            <HeaderView:HeaderView Grid.Column="1" Margin="0"/>
-
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>

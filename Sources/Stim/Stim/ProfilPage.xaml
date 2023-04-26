@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Stim.ProfilPage"
-             xmlns:HeaderView="clr-namespace:Stim"
-             Title="ProfilPage">
+             Title="Profil">
     <ScrollView>
 
         <Grid BackgroundColor="#495057">
@@ -18,7 +17,6 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <HeaderView:HeaderView Grid.Column="1" Margin="0"/>
 
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>

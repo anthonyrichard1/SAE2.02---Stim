@@ -4,11 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Stim"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:Stim"
+    FlyoutBehavior="Disabled"
+    BackgroundColor="{StaticResource Gray600}"
+    >
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"/>
-
+    <FlyoutItem>
+        <ShellContent Title="Accueil"
+                      ContentTemplate="{DataTemplate views:MainPage}"
+                      Route="MainPage"/>
+        <ShellContent Title="Suivis"
+                      ContentTemplate="{DataTemplate views:FollowPage}"
+                      Route="FollowPage"/>
+        <ShellContent Title="Profil"
+                      ContentTemplate="{DataTemplate views:ProfilPage}"
+                      Route="ProfilPage"/>
+    </FlyoutItem>
 </Shell>
