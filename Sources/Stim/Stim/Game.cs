@@ -8,30 +8,70 @@ namespace Stim
 {
     internal class Game
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Annee;
-        public string[] Tags = new string[3];
-        public List<Review> reviews;
+        public string Name
+        {
+            get { return name; }
+            private set
+            {
+                if (value == "") return;
+                name = value;
+            }
+        }
+        private string name;
 
-        public Game(string name, string description, int annee, string[] tags)
+        public string Description
+        {
+            get { return description; }
+            private set
+            {
+                if (value == "") return;
+                description = value;
+            }
+        }
+        private string description;
+
+        public int Year
+        {
+            get { return year; }
+            private set
+            {
+                if (value < 1950 || value > 2023) return ;
+                year = value;
+            }
+        }
+        private int year;
+
+        public string[] Tags;
+
+        private List<Review> Reviews;
+
+        public Game(string name, string description, int year, string[] tags)
         {
             Name = name;
             Description = description;
-            Annee = annee;
+            Year = year;
             Tags = tags;
-            reviews = new List<Review>();
+            Reviews = new List<Review>();
         }
 
         public float GetAvgRate()
         {
             float sum = 0;
 
-            foreach (Review review in reviews)
+            foreach (Review review in Reviews)
             {
                 sum += review.Rate;
             }
-            return sum/reviews.Count;
+            return sum/Reviews.Count;
+        }
+
+        public void AddReview(Review review)
+        {
+            Reviews.Add(review);
+        }
+        public void RemoveReview(Review review)
+        {
+            Reviews.Add(review);
         }
     }
 }
