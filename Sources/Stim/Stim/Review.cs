@@ -8,20 +8,43 @@ namespace Stim
 {
     internal class Review
     {
-        public float Rate { get; set; }
-        public string Text { get; set; }
+        public float Rate
+        {
+            get
+            {
+                return rate;
+            }
+            private set
+            {
+                if (value < 0 || value > 5) return;
+                rate = value;
+            }
+        }
+        private float rate;
+
+        public string Text
+        {
+            get
+            {
+                return text;
+            }
+            private set
+            {
+                if (text == "") return;
+                text = value;
+            }
+        }
+        private string text;
 
         public Review(float rate, string text)
         {
-            CheckRate(rate);
+            Rate = rate;
             Text = text;
         }
 
-        public bool CheckRate(float rate)
+        public void EditReview(string text)
         {
-            if (rate < 0 || rate > 5) return false;
-            Rate=rate;
-            return true;
+            Text = text;
         }
     }
 }
