@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stim", "Stim\Stim.csproj", "{88365436-AFDF-4183-B010-C13784779E6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stim_Model", "Stim_Model\Stim_Model.csproj", "{F9E5DE48-8AF0-4F85-8A78-7639066FD061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stim_Model", "Stim_Model\Stim_Model.csproj", "{F9E5DE48-8AF0-4F85-8A78-7639066FD061}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Console\Console.csproj", "{D1C5D8F9-A7E8-4D52-9A7E-15373CAD5C08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{D1C5D8F9-A7E8-4D52-9A7E-15373CAD5C08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
