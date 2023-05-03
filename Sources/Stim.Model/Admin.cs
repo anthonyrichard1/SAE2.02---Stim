@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stim.Model
+namespace Model
 {
-    internal class Administrateur : User
+    public class Admin : User
     {
         public int Permission
         {
@@ -18,7 +18,7 @@ namespace Stim.Model
         }
         private int permission;
 
-        public Administrateur(string username, string biographie, string email, string password, int perm)
+        public Admin(string username, string biographie, string email, string password, int perm)
             : base(username, biographie, email, password)
         {
             Permission = perm;

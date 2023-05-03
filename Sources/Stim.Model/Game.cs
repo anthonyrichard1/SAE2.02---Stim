@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stim.Model
+namespace Model
 {
-    internal class Game
+    public class Game
     {
         public string Name
         {
