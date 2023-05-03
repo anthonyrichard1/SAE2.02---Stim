@@ -9,7 +9,7 @@ namespace Test
         {
             string[] tags = { "1", "2", "3" };
             Game game = new("Elden Ring", "C'est un jeu vraiment cool !", 2022, tags);
-
+            Console.WriteLine("coucou");
         }
     }
 }
