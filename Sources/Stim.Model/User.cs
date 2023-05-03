@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Stim_Model
+namespace Stim.Model
 {
     internal class User
     {
