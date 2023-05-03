@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stim
+namespace Stim_Model
 {
     internal class Game
     {
@@ -35,7 +35,7 @@ namespace Stim
             get { return year; }
             private set
             {
-                if (value < 1950 || value > 2023) return ;
+                if (value < 1957 || value >= 2023) return;
                 year = value;
             }
         }
@@ -62,7 +62,7 @@ namespace Stim
             {
                 sum += review.Rate;
             }
-            return sum/Reviews.Count;
+            return sum / Reviews.Count;
         }
 
         public void AddReview(Review review)

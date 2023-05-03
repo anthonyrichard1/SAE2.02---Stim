@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stim
+namespace Stim_Model
 {
     internal class Review
     {
