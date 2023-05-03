@@ -1,6 +1,6 @@
 kind: pipeline
-type: docker
-name: default
+type: docker 
+name: CI
  
 trigger:
   event:
@@ -8,22 +8,19 @@ trigger:
 
 steps:
   - name: build
-    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dotnet7-maui
-    volumes:
-      - name: docs
-        path: /docs
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dotnet7-maui:latest
     commands:
       - cd Sources/
       - dotnet restore Stim.sln
-      - dotnet build Stim.sln -c Release --no-restore
-      - dotnet publish Stim.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
+      - dotnet build Stim.sln -c Release --no-restore /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT -property:Aapt2ToolPath=$ANDROID_SDK_ROOT/build-tools/33.0.0
+      - dotnet publish Stim/Stim.csproj -c Release --no-restore -o $CI_PROJECT_DIR/build/release -f:net7.0-android /p:AndroidSdkDirectory=/usr/lib/android-sdk
 
   - name: tests
-    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dotnet7-maui
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dotnet7-maui:latest
     commands:
       - cd Sources/
       - dotnet restore Stim.sln
-      - dotnet test Stim.sln --no-restore
+      - dotnet test Stim.sln --no-restore /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT -property:Aapt2ToolPath=$ANDROID_SDK_ROOT/build-tools/33.0.0
     depends_on: [build]
 
   - name: code-analysis
