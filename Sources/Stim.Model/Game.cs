@@ -43,7 +43,7 @@ namespace Model
 
         public string[] Tags;
 
-        private List<Review> Reviews;
+        public List<Review> Reviews { get; }
 
         public Game(string name, string description, int year, string[] tags)
         {
@@ -71,7 +71,7 @@ namespace Model
         }
         public void RemoveReview(Review review)
         {
-            Reviews.Add(review);
+            Reviews.Remove(review);
         }
     }
 }
