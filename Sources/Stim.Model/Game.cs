@@ -41,7 +41,16 @@ namespace Model
         }
         private int year;
 
-        public string[] Tags;
+        public string[] Tags
+        {
+            get { return tags; }
+            set
+            {
+                if (tags.Length != 3) return;
+                tags = value;
+            }
+        }
+        private string[] tags;
 
         public List<Review> Reviews { get; }
 
