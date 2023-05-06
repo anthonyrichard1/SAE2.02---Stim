@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stim", "Stim\Stim.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Stim.Model\Model.csproj", "{BA382A71-FDE3-4B0A-BC0D-7BA62BFC4866}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "TestProject1\Test.csproj", "{6E6EDD37-C911-486A-9157-53C9F2D144D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "TestProject1\Test.csproj", "{6E6EDD37-C911-486A-9157-53C9F2D144D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{314F9B99-52F2-4063-AFFA-F634DD520552}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{6E6EDD37-C911-486A-9157-53C9F2D144D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E6EDD37-C911-486A-9157-53C9F2D144D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E6EDD37-C911-486A-9157-53C9F2D144D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314F9B99-52F2-4063-AFFA-F634DD520552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314F9B99-52F2-4063-AFFA-F634DD520552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314F9B99-52F2-4063-AFFA-F634DD520552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314F9B99-52F2-4063-AFFA-F634DD520552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
