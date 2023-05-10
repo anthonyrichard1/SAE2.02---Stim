@@ -10,7 +10,7 @@ namespace Model
     {
         public List<Game> gamesList
         {
-            get { return gamesList}
+            get { return gamesList; }
         }
         public GameHandler()
         {

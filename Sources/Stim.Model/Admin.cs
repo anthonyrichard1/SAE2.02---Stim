@@ -24,6 +24,14 @@ namespace Model
             Permission = perm;
         }
 
+        public void AddGametoGamesList(List<Game> gamesList, Game game)
+        {
+            gamesList.Add(game);
+        }
+        public void RemoveGameFromGamesList(List<Game> gamesList, Game game)
+        { 
+             gamesList.Remove(game);
+        }
         public void DelCom (Game game, Review review)
         {
             if (permission >= 1)
