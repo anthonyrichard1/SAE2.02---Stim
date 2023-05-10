@@ -42,7 +42,7 @@ namespace Test
         {
             string[] tags = { "tag 1", "tag 2", "tag 3" };
             Game game = new("Nom Jeu", "Description du jeu", 2022, tags);
-            Review rev1 = new Review(3.5f, "Review n°1"), rev2 = new Review(3.5f, "Review n°2"), rev3 = new Review(3.5f, "Review n°3"), rev4 = new Review(3.5f, "Review n°4");
+            Review rev1 = new(3.5f, "Review n°1"), rev2 = new(3.5f, "Review n°2"), rev3 = new(3.5f, "Review n°3"), rev4 = new(3.5f, "Review n°4");
 
             game.AddReview(rev1);
             game.AddReview(rev2);
