@@ -82,5 +82,21 @@ namespace Model
         {
             Reviews.Remove(review);
         }
+        public void DescChange(string newdesc)
+        {
+            description = newdesc;
+        }
+        public void TagChange(string[] newtag)
+        {
+            tags=newtag;
+        }
+        public void NameChange(string newname)
+        {
+            name = newname;
+        }
+        public void yearChange(int newyear)
+        {
+            year = newyear;
+        }
     }
 }

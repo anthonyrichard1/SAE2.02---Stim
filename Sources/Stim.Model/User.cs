@@ -61,5 +61,24 @@ namespace Model
             Password = password;
             Followed_Games = new List<Game>();
         }
+        public void AddReview(Game game, Review review)
+        {
+            game.AddReview(review);
+        }
+        public void RemoveSelfReview(Game game, Review review)
+        {
+            if (review.AuthorName == username)
+            {
+                game.RemoveReview(review);
+            }
+        }
+        public void FollowAGame(Game game)
+        {
+            Followed_Games.Add(game);
+        }
+        public void RemoveAGame(Game game)
+        {
+            Followed_Games.Remove(game);
+        }
     }
 }

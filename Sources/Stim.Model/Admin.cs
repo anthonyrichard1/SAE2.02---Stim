@@ -23,5 +23,14 @@ namespace Model
         {
             Permission = perm;
         }
+
+        public void DelCom (Game game, Review review)
+        {
+            if (permission >= 1)
+            {
+                game.RemoveReview(review);
+            }
+            return;
+        }
     }
 }

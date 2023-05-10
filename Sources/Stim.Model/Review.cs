@@ -36,15 +36,27 @@ namespace Model
         }
         private string text;
 
+        public string AuthorName
+        {
+            get { return authorName; }
+            private set { authorName = value; }
+        }
+        private string authorName;
+
         public Review(float rate, string text)
         {
+            AuthorName = authorName;
             Rate = rate;
             Text = text;
         }
 
         public void EditReview(string text)
         {
-            Text = text;
+            Text = text+" (Modifié)";
+        }
+        public void EditRate(int newval)
+        {
+            rate= newval;
         }
     }
 }
