@@ -26,7 +26,7 @@ steps:
   - name: code-analysis
     image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet7
     commands:
-      - cd Sources/
+      - cd Sources/TestPipeline/
       - dotnet restore TestPipeline.sln
       - dotnet sonarscanner begin /k:Projet_IHM /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="Tests/**" /d:sonar.login=$${PLUGIN_SONAR_TOKEN} 
       - dotnet build TestPipeline.sln -c Release --no-restore
