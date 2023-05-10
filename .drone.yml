@@ -10,15 +10,15 @@ steps:
   - name: build
     image: mcr.microsoft.com/dotnet/sdk:7.0
     commands:
-      - cd Sources/
+      - cd Sources/TestPipeline/
       - dotnet restore TestPipeline.sln
       - dotnet build TestPipeline.sln -c Release --no-restore /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT -property:Aapt2ToolPath=$ANDROID_SDK_ROOT/build-tools/33.0.0
-      - dotnet publish Stim/TestPipeline.csproj -c Release --no-restore -o $CI_PROJECT_DIR/build/release -f:net7.0-android /p:AndroidSdkDirectory=/usr/lib/android-sdk
+      - dotnet publish TestPipeline/TestPipeline.csproj -c Release --no-restore -o $CI_PROJECT_DIR/build/release -f:net7.0-android /p:AndroidSdkDirectory=/usr/lib/android-sdk
 
   - name: tests
     image: mcr.microsoft.com/dotnet/sdk:7.0
     commands:
-      - cd Sources/
+      - cd Sources/TestPipeline/
       - dotnet restore TestPipeline.sln
       - dotnet test TestPipeline.sln --no-restore /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT -property:Aapt2ToolPath=$ANDROID_SDK_ROOT/build-tools/33.0.0
     depends_on: [build]
