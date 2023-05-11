@@ -39,12 +39,12 @@ steps:
     commands:
       - cd Sources/
       - dotnet restore TestPipeline.sln
-      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token}
+      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sqp_e5967eca5b07ecbeb60c03f8f005ef361ba79f90}
       - dotnet build TestPipeline.sln -c Release --no-restore
       - dotnet test TestPipeline.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
       - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
       - dotnet publish TestPipeline.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
-      - dotnet sonarscanner end /d:sonar.login=$${sonar_token}
+      - dotnet sonarscanner end /d:sonar.login=$${sqp_e5967eca5b07ecbeb60c03f8f005ef361ba79f90}
     
     depends_on: [ tests ]
 
