@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker 
+type: docker
 name: CI
  
 trigger:
@@ -9,6 +9,9 @@ trigger:
 steps:
   - name: build
     image: mcr.microsoft.com/dotnet/sdk:7.0
+    volumes:
+      - name: docs
+        path: /docs
     commands:
       - cd Sources/TestPipeline/
       - dotnet restore TestPipeline.sln
@@ -25,20 +28,25 @@ steps:
 
   - name: code-inspection
     image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet7
-    secrets: [ sqp_510ed0c5c5a51a133ba1e9869badfb95eb59f103 ]
-    settings:
-        sonar_host: https://codefirst.iut.uca.fr/sonar/
-        sonar_token: sqp_510ed0c5c5a51a133ba1e9869badfb95eb59f103
-        from_secret: sqp_510ed0c5c5a51a133ba1e9869badfb95eb59f103
+    secrets: [ squ_d866793a3b95dfcbbf704a82e7c5df747352bbbb ]
+    environment:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: squ_d866793a3b95dfcbbf704a82e7c5df747352bbbb
+      project_key: Stim
+      coverage_exclusions: "Tests/**"
+    
     commands:
-        - cd Sources/TestPipeline/
-        - dotnet restore TestPipeline.sln
-        - dotnet sonarscanner begin /k:MyProjectKey /d:sonar.host.url=$${PLUGIN_SONAR_HOST} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions="Tests/**" /d:sonar.login=$${sqp_510ed0c5c5a51a133ba1e9869badfb95eb59f103} 
-        - dotnet build TestPipeline.sln -c Release --no-restore
-        - dotnet test TestPipeline.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
-        - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
-        - dotnet publish TestPipeline.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
-        - dotnet sonarscanner end /d:sonar.login=$${sqp_510ed0c5c5a51a133ba1e9869badfb95eb59f103}
+      - cd Sources/TestPipeline/
+      - dotnet restore TestPipeline.sln
+      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token}
+      - dotnet build TestPipeline.sln -c Release --no-restore
+      - dotnet test TestPipeline.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+      - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
+      - dotnet publish TestPipeline.sln -c Release --no-restore -o CI_PROJECT_DIR/build/release
+      - dotnet sonarscanner end /d:sonar.login=$${sonar_token}
+    
+    depends_on: [ tests ]
 
   - name: generate-and-deploy-docs
     image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-docdeployer
