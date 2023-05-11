@@ -28,11 +28,11 @@ steps:
 
   - name: code-inspection
     image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet7
-    secrets: [ squ_d866793a3b95dfcbbf704a82e7c5df747352bbbb ]
+    secrets: [ SAES201login ]
     environment:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
-        from_secret: squ_d866793a3b95dfcbbf704a82e7c5df747352bbbb
+        from_secret: SAES201login
       project_key: Stim
       coverage_exclusions: "Tests/**"
     
