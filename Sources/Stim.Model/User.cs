@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Model
             get { return username; }
             private set
             {
+                if (value == null || value == "") return;
                 username = value;
             }
         }
@@ -29,8 +31,8 @@ namespace Model
             get { return email; }
             private set
             {
-                Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (rg_email.IsMatch(email))
+                //Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                if (/*rg_email.IsMatch(email)*/value != null)
                     email = value;
                 return;
             }
@@ -42,12 +44,15 @@ namespace Model
             get { return password; }
             private set
             {
-                Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (!rg.IsMatch(password)) return;
+                //Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
+                if (/*!rg.IsMatch(password)*/value == null) return;
                 password = value;
             }
         }
         private string password;
+
+        public int Role { get; }
+        private int role;
         public List<Game> Followed_Games { get; set; }
 
         public User(string username, string biographie, string email, string password)
