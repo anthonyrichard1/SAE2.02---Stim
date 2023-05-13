@@ -52,7 +52,7 @@ namespace Model
         }
         private string[]? tags;
 
-        public List<Review> Reviews { get; }
+        public List<Review> Reviews { get; private init; }
 
         public Game(string name, string description, int year, string[] tags)
         {

@@ -79,23 +79,25 @@ namespace Model
             Password = password;
             Followed_Games = new List<Game>();
         }
-        public void AddReview(Game game, Review review)
+        public void AddReview(Game game, float rate, string text)
         {
-            game.AddReview(review);
+            game.AddReview(new Review(/*username,*/ rate, text));
         }
-        public void RemoveSelfReview(Game game, Review review)
+        public void RemoveSelfReview(Game game, float rate, string text)
         {
-            if (review.AuthorName == username)
+            foreach (Review review in game.Reviews)
             {
-                game.RemoveReview(review);
+                if (review.Rate == rate && review.Text == text && review.AuthorName == username) game.RemoveReview(review);
             }
         }
         public void FollowAGame(Game game)
         {
+            if (Followed_Games.Contains(game)) return;
             Followed_Games.Add(game);
         }
         public void RemoveAGame(Game game)
         {
+            if (!Followed_Games.Contains(game)) return;
             Followed_Games.Remove(game);
         }
     }
