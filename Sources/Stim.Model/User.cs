@@ -31,8 +31,8 @@ namespace Model
             get { return email; }
             private set
             {
-                //Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (/*rg_email.IsMatch(email)*/value != null)
+                Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                if (rg_email.IsMatch(value))
                     email = value;
                 return;
             }
@@ -45,7 +45,7 @@ namespace Model
             private set
             {
                 Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (!rg.IsMatch(password)/*value == null*/) return;
+                if (!rg.IsMatch(value)) return;
                 password = value;
             }
         }
