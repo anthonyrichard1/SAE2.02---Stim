@@ -13,29 +13,29 @@ namespace Model
             get { return name; }
             private set
             {
-                if (value == "") return;
+                if (value == null || value == "") return;
                 name = value;
             }
         }
-        private string name;
+        private string? name;
 
         public string Description
         {
             get { return description; }
             private set
             {
-                if (value == "") return;
+                if (value == null || value == "") return;
                 description = value;
             }
         }
-        private string description;
+        private string? description;
 
         public int Year
         {
             get { return year; }
             private set
             {
-                if (value < 1957 || value >= 2023) return;
+                if (value <= 1957 || value >= 2023) return;
                 year = value;
             }
         }
@@ -46,11 +46,11 @@ namespace Model
             get { return tags; }
             set
             {
-                if (tags.Length != 3) return;
+                if (tags == null || tags.Length != 3) return;
                 tags = value;
             }
         }
-        private string[] tags;
+        private string[]? tags;
 
         public List<Review> Reviews { get; }
 
@@ -59,6 +59,7 @@ namespace Model
             Name = name;
             Description = description;
             Year = year;
+            tags = new string[3];
             Tags = tags;
             Reviews = new List<Review>();
         }
@@ -94,7 +95,7 @@ namespace Model
         {
             name = newname;
         }
-        public void yearChange(int newyear)
+        public void YearChange(int newyear)
         {
             year = newyear;
         }
