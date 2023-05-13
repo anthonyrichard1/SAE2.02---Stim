@@ -35,7 +35,7 @@ namespace Model
             get { return year; }
             private set
             {
-                if (value <= 1957 || value >= 2023) return;
+                if (value < 1957 || value > 2023) return;
                 year = value;
             }
         }
@@ -46,7 +46,7 @@ namespace Model
             get { return tags; }
             set
             {
-                if (tags == null || tags.Length != 3) return;
+                if (value == null || value.Length != 3) return;
                 tags = value;
             }
         }

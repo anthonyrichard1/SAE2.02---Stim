@@ -39,7 +39,7 @@ namespace Test
             Game game3 = new("name", "good", 2012, tags);
             Assert.Equal("good", game3.Description);
         }
-        /*
+        
         [Fact]
         public void Year()
         {
@@ -48,10 +48,10 @@ namespace Test
             Assert.Equal(0, game.Year);
 
             Game game2 = new("name", "description", 9999, tags);
-            Assert.Equal(0, game.Year);
+            Assert.Equal(0, game2.Year);
 
             Game game3 = new("name", "description", 2012, tags);
-            Assert.Equal(2021, game.Year);
+            Assert.Equal(2012, game3.Year);
         }
 
         [Fact]
@@ -59,15 +59,15 @@ namespace Test
         {
             string[] tags = { "1", "2" }, tags2 = { "1", "2", "3" };
             Game game = new("name", "description", 2012, tags);
-            Assert.Null(game.Tags);
+            Assert.All(game.Tags, Assert.Null);
 
             Game game2 = new("name", "description", 2012, null);
-            Assert.Null(game2.Tags);
+            Assert.All(game.Tags, Assert.Null);
 
             Game game3 = new("name", "description", 2012, tags2);
             Assert.NotNull(game3.Tags); 
         }
-        */
+        
         [Fact]
         public void AddReview()
         {

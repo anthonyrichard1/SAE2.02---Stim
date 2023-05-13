@@ -44,8 +44,8 @@ namespace Model
             get { return password; }
             private set
             {
-                //Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (/*!rg.IsMatch(password)*/value == null) return;
+                Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
+                if (!rg.IsMatch(password)/*value == null*/) return;
                 password = value;
             }
         }
