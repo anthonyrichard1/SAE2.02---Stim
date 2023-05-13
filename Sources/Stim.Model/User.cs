@@ -24,7 +24,16 @@ namespace Model
         }
         private string username;
 
-        public string Biographie { get; set; }
+        public string Biographie 
+        {
+            get { return Biographie;} 
+            private set
+            {
+                if (value == null || value == "") return;
+                biographie = value;
+            }
+        }
+        private string? biographie;
 
         public string Email
         {
@@ -53,7 +62,11 @@ namespace Model
 
         public int Role { get; }
         private int role;
-        public List<Game> Followed_Games { get; set; }
+        public List<Game> Followed_Games 
+        {
+            get;
+            private init;
+        }
 
         public User(string username, string biographie, string email, string password)
         {
