@@ -5,53 +5,150 @@ namespace Test
     public class TestGame
     {
         [Fact]
-        public void TestConstructGood()
+        public void Constructeur()
         {
-            /*string[] tags = { "tag 1", "tag 2", "tag 3" };
-            Game game = new("Nom Jeu", "Description du jeu", 2022, tags);*/
-            Assert.Equal(1, 1);
-            //Assert.NotNull(game);
-        }/*
-
-      [Fact]
-        public void TestAttributs()
-        {
-            string[] tags = Array.Empty<string>();
-            Game game1 = new("name", "Test", 1444, tags);
-            game1.NameChange("");
-            Assert.Equal("name", game1.Name);
+            string[] tags = { "1", "2", "3"};
+            Game game = new("game", "description", 2012, tags);
+            Assert.NotNull(game);
         }
 
         [Fact]
-        public void TestAddReview()
+        public void Name()
         {
-            string[] tags = { "tag 1", "tag 2", "tag 3" };
-            Game game = new("Nom Jeu", "Description du jeu", 2022, tags);
-            Review rev1 = new(3.5f, "Review n°1"), rev2 = new(3.5f, "Review n°2"), rev3 = new(3.5f, "Review n°3"), rev4 = new(3.5f, "Review n°4");
+            string[] tags = { "1", "2", "3" };
+            Game game = new("", "description", 2012, tags);
+            Assert.Null(game.Name);
 
-            game.AddReview(rev1);
-            game.AddReview(rev2);
-            game.AddReview(rev3);
-            game.AddReview(rev4);
+            Game game2 = new(null, "description", 2012, tags);
+            Assert.Null(game2.Name);
 
-            Assert.Equal(4, game.Reviews.Count);
+            Game game3 = new("good", "description", 2012, tags);
+            Assert.Equal("good", game3.Name);
         }
 
         [Fact]
-        public void TestRemoveReview()
+        public void Description()
         {
-            string[] tags = { "tag 1", "tag 2", "tag 3" };
-            Game game = new("Nom Jeu", "Description du jeu", 2022, tags);
-            Review rev1 = new(3.5f, "Review n°1"), rev2 = new(3.5f, "Review n°2"), rev3 = new(3.5f, "Review n°3"), rev4 = new(3.5f, "Review n°4");
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "", 2012, tags);
+            Assert.Null(game.Description);
 
-            game.AddReview(rev1);
-            game.AddReview(rev2);
-            game.AddReview(rev3);
-            game.AddReview(rev4);
+            Game game2 = new("name", null, 2012, tags);
+            Assert.Null(game2.Description);
 
-            game.RemoveReview(rev3);
+            Game game3 = new("name", "good", 2012, tags);
+            Assert.Equal("good", game3.Description);
+        }
+        /*
+        [Fact]
+        public void Year()
+        {
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 1111, tags);
+            Assert.Equal(0, game.Year);
 
-            Assert.DoesNotContain(rev3, game.Reviews);
-        }*/
+            Game game2 = new("name", "description", 9999, tags);
+            Assert.Equal(0, game.Year);
+
+            Game game3 = new("name", "description", 2012, tags);
+            Assert.Equal(2021, game.Year);
+        }
+
+        [Fact]
+        public void Tags()
+        {
+            string[] tags = { "1", "2" }, tags2 = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+            Assert.Null(game.Tags);
+
+            Game game2 = new("name", "description", 2012, null);
+            Assert.Null(game2.Tags);
+
+            Game game3 = new("name", "description", 2012, tags2);
+            Assert.NotNull(game3.Tags); 
+        }
+        */
+        [Fact]
+        public void AddReview()
+        {
+            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+
+            game.AddReview(r1);
+            game.AddReview(r2);
+            game.AddReview(r3);
+
+            Assert.NotEmpty(game.Reviews);
+        }
+
+        [Fact]
+        public void RemoveReview()
+        {
+            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+
+            game.AddReview(r1);
+            game.AddReview(r2);
+            game.AddReview(r3);
+            game.RemoveReview(r2);
+
+            Assert.DoesNotContain(r2, game.Reviews);
+        }
+
+        [Fact]
+        public void ChangeName()
+        {
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+            game.NameChange("newName");
+
+            Assert.Equal("newName", game.Name);
+        }
+
+        [Fact]
+        public void ChangeDescription()
+        {
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+            game.DescChange("newDesc");
+
+            Assert.Equal("newDesc", game.Description);
+        }
+
+        [Fact]
+        public void ChangeYear()
+        {
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+            game.YearChange(2020);
+
+            Assert.Equal(2020, game.Year);
+        }
+
+        [Fact]
+        public void ChangeTags()
+        {
+            string[] tags = { "1", "2", "3" }, tags2 = { "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+            game.NameChange("newName");
+            game.TagChange(tags2);
+            Assert.DoesNotContain("1", game.Tags);
+        }
+
+        [Fact]
+        public void Average()
+        {
+            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            string[] tags = { "1", "2", "3" };
+            Game game = new("name", "description", 2012, tags);
+
+            game.AddReview(r1);
+            game.AddReview(r2);
+            game.AddReview(r3);
+
+            Assert.Equal(2.5f, game.GetAvgRate());
+        }
     }
 }
