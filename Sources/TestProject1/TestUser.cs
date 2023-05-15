@@ -23,8 +23,42 @@ namespace Test
             Assert.Null(user.Username);
 
             User user2 = new(null, "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Null(user.Username);
+            Assert.Null(user2.Username);
         }
+
+        /*[Fact]
+        public void Biographie()
+        {
+            User user = new("username", "", "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Null(user.Biographie);
+
+            User user2 = new("username", null, "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Null(user2.Biographie);
+        }*/
+
+        [Fact]
+        public void Email()
+        {
+            User user = new("username", "biographie", "", "Azerty123*");
+            Assert.Null(user.Email);
+
+            User user2 = new("username", "biographie", null, "Azerty123*");
+            Assert.Null(user2.Email);
+        }
+
+        [Fact]
+        public void Password()
+        {
+            User user = new("username", "biographie", "adresse.mail@gmail.com", "");
+            Assert.Null(user.Password);
+
+            User user2 = new("username", "biographie", "adresse.mail@gmail.com", null);
+            Assert.Null(user2.Password);
+
+            User user3 = new("username", "biographie", "adresse.mail@gmail.com", "54az6e");
+            Assert.Null(user3.Password);
+        }
+
         [Fact]
         public void AddingAndAddingGameToFollowed()
         {
@@ -39,6 +73,7 @@ namespace Test
             user.RemoveAGame(game);
             Assert.Empty(user.Followed_Games);
         }
+
         /*
         [Fact]
         public void ReviewAddingAndRemovingFromAGameViaUser()
