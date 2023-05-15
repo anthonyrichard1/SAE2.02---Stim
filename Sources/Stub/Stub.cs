@@ -6,12 +6,12 @@ namespace Stub
     {
         public List<Game> LoadGame()
         {
-            //FAUT FAIRE
+            return null;
         }
 
         public List<User> LoadUser()
         {
-
+            return null;
         }
 
         public void SaveGame(List<Game> games)

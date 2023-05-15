@@ -14,7 +14,7 @@ namespace Model
         public Manager(IPersistance persistance)
         { 
             _persistance = persistance;
-            Games = _persistance.LoadGames();
+            Games = _persistance.LoadGame();
         }
     }
 }

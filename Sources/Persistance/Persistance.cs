@@ -6,12 +6,12 @@ namespace StimPersistance
     {
         public List<Game> LoadGame()
         {
-
+            return null;
         }
 
         public List<User> LoadUser()
         {
-
+            return null;
         }
 
         public void SaveGame(List<Game> games)
