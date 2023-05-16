@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
         public string Name
         {
@@ -43,7 +44,7 @@ namespace Model
 
         public string[] Tags
         {
-            get { return tags; }
+            get => tags;
             set
             {
                 if (value == null || value.Length != 3) return;
@@ -51,6 +52,8 @@ namespace Model
             }
         }
         private string[]? tags;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Review> Reviews { get; private init; }
 
