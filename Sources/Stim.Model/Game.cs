@@ -14,7 +14,7 @@ namespace Model
             get { return name; }
             private set
             {
-                if (value == null || value == "") return;
+                if (value == null || string.IsNullOrWhiteSpace(value)) return;
                 name = value;
             }
         }
@@ -25,7 +25,7 @@ namespace Model
             get { return description; }
             private set
             {
-                if (value == null || value == "") return;
+                if (value == null || string.IsNullOrWhiteSpace(value)) return;
                 description = value;
             }
         }
@@ -42,6 +42,17 @@ namespace Model
         }
         private int year;
 
+        public string Cover
+        {
+            get => cover;
+            set
+            {
+                if (value == null || string.IsNullOrWhiteSpace(value)) return;
+                cover = value;
+            }
+        }
+        private string cover;
+
         public string[] Tags
         {
             get => tags;
@@ -57,13 +68,14 @@ namespace Model
 
         public List<Review> Reviews { get; private init; }
 
-        public Game(string name, string description, int year, string[] tags)
+        public Game(string name, string description, int year, string[] tags, string cover)
         {
             Name = name;
             Description = description;
             Year = year;
             tags = new string[3];
             Tags = tags;
+            Cover= cover;
             Reviews = new List<Review>();
         }
 
