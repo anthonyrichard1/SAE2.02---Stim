@@ -9,10 +9,11 @@ namespace Model
 {
     internal class GameHandler
     {
-        public List<Game> gamesList
+        public List<Game> GamesList
         {
             get { return gamesList; }
         }
+        List<Game> gamesList;
         public GameHandler()
         {
             List<Game> gamesList = new List<Game>();
