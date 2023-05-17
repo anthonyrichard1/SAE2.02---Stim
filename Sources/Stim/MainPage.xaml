@@ -35,7 +35,7 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" />
+                                <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="600" HeightRequest="750"/>
                                 <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
                                 <Grid Grid.Row="2">
@@ -52,9 +52,13 @@
                                         </Grid.RowDefinitions>
 
                                         <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
-                                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Game of the year" Grid.Row="1"/>
-                                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - RPG" Grid.Row="2"/>
-                                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text=" - Souls" Grid.Row="3"/>
+                                        <CollectionView ItemsSource="{Binding Tags}" SelectionMode="Single" ItemsLayout="HorizontalGrid, 3"  Grid.Row="1" Grid.Column="0">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding}"/>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
                                     </Grid>
                                     <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Year}" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
                                 </Grid>

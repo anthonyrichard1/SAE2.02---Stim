@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -53,28 +54,28 @@ namespace Model
         }
         private string cover;
 
-        public string[] Tags
+        public ObservableCollection<string> Tags
         {
             get => tags;
             set
             {
-                if (value == null || value.Length != 3) return;
+                if (value == null || value.Count != 3) return;
                 tags = value;
             }
         }
-        private string[]? tags;
+        private ObservableCollection<string> tags;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Review> Reviews { get; private init; }
 
-        public Game(string name, string description, int year, string[] tags, string cover)
+        public Game(string name, string description, int year, List<string> c_tags, string cover)
         {
             Name = name;
             Description = description;
             Year = year;
-            tags = new string[3];
-            Tags = tags;
+            if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
+            else tags = new ObservableCollection<string>();
             Cover= cover;
             Reviews = new List<Review>();
         }
@@ -102,9 +103,9 @@ namespace Model
         {
             description = newdesc;
         }
-        public void TagChange(string[] newtag)
+        public void TagChange(List<string> newtag)
         {
-            tags=newtag;
+            if (newtag != null && newtag.Count==3) tags = new ObservableCollection<string>(newtag);
         }
         public void NameChange(string newname)
         {

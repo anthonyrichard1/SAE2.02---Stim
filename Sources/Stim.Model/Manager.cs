@@ -15,10 +15,10 @@ namespace Model
         public Manager(IPersistance persistance)
         { 
             _persistance = persistance;
-            Games.Add(new("Elden Ring", "description", 2010, new string[3] { "1", "2", "3" }, "elden_ring.jpg"));
-            Games.Add(new("Minecraft", "description", 2010, new string[3] { "1", "2", "3" }, "minecraft.jpeg"));
-            Games.Add(new("Celeste", "description", 2010, new string[3] { "1", "2", "3" }, "celeste.png"));
-            Games.Add(new("GTA V", "description", 2010, new string[3] { "1", "2", "3" }, "gta_v.png"));
+            Games.Add(new("Elden Ring", "description", 2010, new List<string> { "1","2","3"}, "elden_ring.jpg"));
+            Games.Add(new("Minecraft", "description", 2010, new List<string> { "1", "2", "3" }, "minecraft.jpeg"));
+            Games.Add(new("Celeste", "description", 2010, new List<string> { "1", "2", "3" }, "celeste.png"));
+            Games.Add(new("GTA V", "description", 2010, new List<string> { "1", "2", "3" }, "gta_v.png"));
         }
     }
 }

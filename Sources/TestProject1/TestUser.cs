@@ -66,7 +66,7 @@ namespace Test
             Assert.NotNull(user);
             Assert.Empty(user.Followed_Games);
 
-            Game game = new("name", "description", 2012, new string[] { "1", "2", "3" }, "cover");
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
             Assert.NotNull(game);
             user.FollowAGame(game);
             Assert.Single(user.Followed_Games);
