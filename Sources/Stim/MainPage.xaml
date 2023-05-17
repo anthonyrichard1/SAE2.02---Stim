@@ -22,10 +22,11 @@
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
 
-            <ListView ItemsSource="{Binding Games}" Grid.Column="1">
-                <ListView.ItemTemplate>
+
+            <CollectionView ItemsSource="{Binding Games}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
@@ -34,7 +35,7 @@
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
 
-                                <Image Source="eldenring.jpg" Aspect="AspectFit" Margin="0,0,0,0"/>
+                                <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" />
                                 <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
                                 <Grid Grid.Row="2">
@@ -59,15 +60,10 @@
                                 </Grid>
                                 <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Description}" Grid.Row="3"/>
                             </Grid>
-                        </ViewCell>
+                        </Border>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-
-
-
-
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
     </ScrollView>
 </ContentPage>

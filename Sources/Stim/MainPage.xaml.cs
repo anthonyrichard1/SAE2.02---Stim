@@ -7,16 +7,16 @@ public partial class MainPage : ContentPage
     public IPersistance persistance = new Persistance();
     public Manager Manager;
 
-	public MainPage()
-	{
-		InitializeComponent();
+    public MainPage()
+    {
+        InitializeComponent();
         Manager = new(persistance);
         BindingContext = Manager;
-	}
+    }
 
-    private async void Button_Clicked(object sender, EventArgs e)
+    private async void OnClickGameList(object sender, EventArgs e)
     {
-		await Navigation.PushAsync(new DetailledPage());
+       //await Navigation.PushAsync((sender as CollectionView).SelectedItem);
     }
 
     private async void goToMainPage(object sender, EventArgs e)
