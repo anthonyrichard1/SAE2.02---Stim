@@ -26,7 +26,7 @@ namespace Model
 
         public string Biographie 
         {
-            get { return Biographie;} 
+            get { return biographie;} 
             private set
             {
                 if (value == null || value == "") return;
