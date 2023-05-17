@@ -66,7 +66,7 @@ namespace Test
 
             Game game3 = new("name", "description", 2012, new List<String> {"1","2"}, "cover");
             Assert.NotNull(game3.Tags);
-            Assert.Empty(game3.Tags);
+            Assert.Equal(2,game3.Tags.Count);
         }
         
         [Fact]
@@ -134,7 +134,7 @@ namespace Test
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
             game.NameChange("newName");
             game.TagChange(new List<String> { "1", "2" });
-            Assert.Empty(game.Tags);
+            Assert.Equal(3, game.Tags.Count);
         }
 
         [Fact]

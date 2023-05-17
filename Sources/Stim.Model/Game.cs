@@ -59,7 +59,7 @@ namespace Model
             get => tags;
             set
             {
-                if (value == null || value.Count != 3) return;
+                if (value == null || value.Count > 3) return;
                 tags = value;
             }
         }
