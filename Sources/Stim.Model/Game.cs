@@ -19,7 +19,7 @@ namespace Model
                 name = value;
             }
         }
-        private string? name;
+        private string name;
 
         public string Description
         {
@@ -30,7 +30,7 @@ namespace Model
                 description = value;
             }
         }
-        private string? description;
+        private string description;
 
         public int Year
         {
