@@ -68,6 +68,7 @@ namespace Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public List<Review> Reviews { get; private init; }
+        public float Average { get; private set; }
 
         public Game(string name, string description, int year, List<string> c_tags, string cover)
         {
@@ -78,12 +79,12 @@ namespace Model
             else tags = new ObservableCollection<string>();
             Cover= cover;
             Reviews = new List<Review>();
+            Average = 0;
         }
 
         public float GetAvgRate()
         {
             float sum = 0;
-
             foreach (Review review in Reviews)
             {
                 sum += review.Rate;
@@ -94,10 +95,12 @@ namespace Model
         public void AddReview(Review review)
         {
             Reviews.Add(review);
+            Average = GetAvgRate();
         }
         public void RemoveReview(Review review)
         {
             Reviews.Remove(review);
+            Average = GetAvgRate();
         }
         public void DescChange(string newdesc)
         {
