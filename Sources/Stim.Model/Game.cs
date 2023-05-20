@@ -88,7 +88,7 @@ namespace Model
             {
                 sum += review.Rate;
             }
-            return sum / Reviews.Count;
+            return (float)(Math.Round((sum / Reviews.Count) * 2, MidpointRounding.AwayFromZero) / 2);
         }
 
         public void AddReview(Review review)
