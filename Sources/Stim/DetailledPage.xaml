@@ -62,13 +62,8 @@
                     </VerticalStackLayout>
 
                     <Label Grid.Row="3" Grid.ColumnSpan="4" VerticalOptions="End" TextDecorations="Underline" TextColor="White" Text="https://idhaklzhdkhazkdhaz.fr&#10;https://ioghzilghieriugo.fr"/>
-                    <HorizontalStackLayout Grid.Row="3" Grid.Column="2" VerticalOptions="End" HorizontalOptions="End">
-                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                        <Image Source="etoile_mi_pleine.png" WidthRequest="25"/>
-                        <Image Source="etoile_vide.png" WidthRequest="25"/>
-                        <Label Padding="5" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="20" TextColor="White" Text="3.5/5"/>
+                    <HorizontalStackLayout Grid.Row="3" Grid.Column="2" VerticalOptions="End" HorizontalOptions="End" x:Name="starsContainer">
+                        <Label Padding="5" HorizontalTextAlignment="End" FontAttributes="Bold" FontSize="20" TextColor="White" x:Name="avgLabel"/>
                     </HorizontalStackLayout>
                 </Grid>
 
@@ -78,13 +73,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <VerticalStackLayout Margin="20,20,0,0">
-                                    <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
-                                        <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="{Binding AuthorName}"/>
-                                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
-                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
-                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
+                                    <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start" BindingContextChanged="AddStars">
+                                        <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 1"/>
                                     </HorizontalStackLayout>
                                     <Label TextColor="White" Text="{Binding Text}"/>
                                 </VerticalStackLayout>

@@ -9,7 +9,25 @@ public partial class DetailledPage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = game;
-	}
+
+        avgLabel.Text = game.Average.ToString();
+        AddStars(starsContainer, game.Average);
+    }
+
+    private void AddStars(object sender, EventArgs e)
+    {
+        HorizontalStackLayout layout = sender as HorizontalStackLayout;
+        Review rev = layout.BindingContext as Review;
+        AddStars(layout, rev.Rate);
+    }
+
+    private void AddStars(HorizontalStackLayout container, float rate)
+    {
+        for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 25 });
+        if ((int)rate!=rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 25 });
+        while (container.Children.Count != 6) container.Children.Add(new Image { Source = "etoile_vide.png", WidthRequest = 25 });
+    }
+
     private async void goToMainPage(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new MainPage());
