@@ -49,15 +49,11 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Nom du jeu" TextColor="White" VerticalTextAlignment="Center" FontSize="30"/>
-                    <Label Grid.Column="1" TextColor="White" VerticalTextAlignment="Center" Text="année"/>
+                    <Label Text="{Binding Name}" TextColor="White" VerticalTextAlignment="Center" FontSize="30"/>
+                    <Label Grid.Column="1" TextColor="White" VerticalTextAlignment="Center" Text="{Binding Year}"/>
                     <Button Grid.Column="3" TextColor="White" Text="suivre" HorizontalOptions="End"
                             VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="Black"/>
-                    <Label Grid.Row="1" Grid.ColumnSpan="4" TextColor="White" Text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur.
-
-Morbi mattis sit amet ligula sit amet molestie. Proin lobortis mi a eros eleifend bibendum. Donec arcu nibh, accumsan sit amet blandit vel, tincidunt dignissim eros. Vestibulum faucibus diam vel est porta rhoncus. Nunc scelerisque odio id diam viverra, id auctor magna placerat. Nam mollis urna a elit facilisis, a lobortis sapien porta. Maecenas sit amet diam tincidunt, fringilla ligula sit amet, vestibulum dolor. Proin pulvinar velit non turpis dictum bibendum. Phasellus a porta ligula.
-
-Suspendisse vulputate augue id quam accumsan imperdiet. Morbi tincidunt vulputate tellus, quis maximus felis tincidunt ut. Vestibulum accumsan quam sed posuere maximus. Suspendisse quis lacus ut quam facilisis mollis sed at purus. Maecenas sollicitudin augue leo, in mattis elit dignissim sed. Etiam lobortis quam et lectus posuere, sed mollis mi sodales. Nunc id ante quis mauris euismod mattis. Maecenas orci nibh, hendrerit in felis sit amet, facilisis tristique nisi. Aliquam quis dui ut urna rutrum aliquam. Vivamus iaculis interdum ipsum, id scelerisque magna. Nunc purus est, hendrerit quis neque eget, varius semper nunc. Nulla facilisi. Cras dignissim auctor libero, eu blandit orci pharetra vel."/>
+                    <Label Grid.Row="1" Grid.ColumnSpan="4" TextColor="White" Text="{Binding Description}"/>
                     <VerticalStackLayout Grid.Row="2" VerticalOptions="End">
                         <Label Text="Tags :" TextColor="White"/>
                         <Label Text="   - Tag 1" TextColor="White"/>
@@ -78,39 +74,23 @@ Suspendisse vulputate augue id quam accumsan imperdiet. Morbi tincidunt vulputat
 
                 <VerticalStackLayout Padding="10" Grid.Row="1" Grid.ColumnSpan="2">
                     <Label Grid.Row="1" Grid.RowSpan="2" Text="Avis de la communauté :" TextColor="White" FontSize="25"/>
-                    <VerticalStackLayout Margin="20,20,0,0">
-                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
-                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 1"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                        </HorizontalStackLayout>
-                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Margin="20,20,0,0">
-                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
-                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 2"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                        </HorizontalStackLayout>
-                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
-                    </VerticalStackLayout>
-                    <VerticalStackLayout Margin="20,20,0,0">
-                        <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
-                            <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="Avis 3"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_mi_pleine.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                            <Image Source="etoile_vide.png" WidthRequest="25"/>
-                        </HorizontalStackLayout>
-                        <Label TextColor="White" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur. "/>
-                    </VerticalStackLayout>
+                    <CollectionView ItemsSource="{Binding Reviews}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <VerticalStackLayout Margin="20,20,0,0">
+                                    <HorizontalStackLayout Grid.Column="1" Padding="0,0,0,5" VerticalOptions="Start" HorizontalOptions="Start">
+                                        <Label Margin="0, 0, 5, 0" FontSize="20" TextColor="White" Text="{Binding AuthorName}"/>
+                                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                                        <Image Source="etoile_pleine.png" WidthRequest="25"/>
+                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
+                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
+                                        <Image Source="etoile_vide.png" WidthRequest="25"/>
+                                    </HorizontalStackLayout>
+                                    <Label TextColor="White" Text="{Binding Text}"/>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </VerticalStackLayout>
             </Grid>
             

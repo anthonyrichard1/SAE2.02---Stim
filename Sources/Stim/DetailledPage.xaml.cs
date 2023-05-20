@@ -1,4 +1,5 @@
 using Model;
+using StimPersistance;
 
 namespace Stim;
 

@@ -5,7 +5,7 @@ using StimPersistance;
 public partial class MainPage : ContentPage
 {
     public IPersistance persistance = new Persistance();
-    public Manager Manager;
+    public Manager Manager { get; set; }
 
     public MainPage()
     {
@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
 
     private async void OnClickGameList(object sender, EventArgs e)
     {
-       //await Navigation.PushAsync((sender as CollectionView).SelectedItem);
+       await Navigation.PushAsync(new DetailledPage((sender as CollectionView).SelectedItem as Game));
     }
 
     private async void goToMainPage(object sender, EventArgs e)
