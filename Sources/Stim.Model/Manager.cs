@@ -15,13 +15,7 @@ namespace Model
         public Manager(IPersistance persistance)
         { 
             _persistance = persistance;
-            Games.Add(new("Elden Ring", "description", 2010, new List<string> { "1","2","3"}, "elden_ring.jpg"));
-            Games[0].AddReview(new(5, "C'est trop bien"));
-            Games[0].AddReview(new(3.5f, "C'est bien"));
-            Games[0].AddReview(new(1.5f, "C'est pas bien"));
-            Games.Add(new("Minecraft", "description", 2010, new List<string> { "1", "2", "3" }, "minecraft.jpeg"));
-            Games.Add(new("Celeste", "description", 2010, new List<string> { "1", "2" }, "celeste.png"));
-            Games.Add(new("GTA V", "description", 2010, new List<string> { "1", "2", "3" }, "gta_v.png"));
+            Games = _persistance.LoadGame();
         }
     }
 }

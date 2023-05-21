@@ -67,6 +67,7 @@ namespace Model
         }
         private ObservableCollection<string> tags;
 
+        [DataMember]
         public List<Review> Reviews { get; private init; }
 
         [DataMember]
@@ -104,7 +105,14 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{Name} : {Description} : {Year} : {Cover}";
+            string s = $"{Name} : {Description} : {Year} : {Cover}\n";
+
+            foreach(Review review in Reviews)
+            {
+                s += review;
+            }
+
+            return s+"\n";
         }
 
         public float GetAvgRate()

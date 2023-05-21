@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGame xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Model">
+  <Game>
+    <Average>3.5</Average>
+    <Cover>elden_ring.jpg</Cover>
+    <Description>description</Description>
+    <Name>Elden Ring</Name>
+    <Reviews>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>5</Rate>
+        <Text>C'est trop bien</Text>
+      </Review>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>3.5</Rate>
+        <Text>C'est bien</Text>
+      </Review>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>1.5</Rate>
+        <Text>C'est pas bien</Text>
+      </Review>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>4</Rate>
+        <Text>C'est trop bien</Text>
+      </Review>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>3</Rate>
+        <Text>C'est bien</Text>
+      </Review>
+      <Review>
+        <AuthorName i:nil="true" />
+        <Rate>2.5</Rate>
+        <Text>C'est pas bien</Text>
+      </Review>
+    </Reviews>
+    <Tags xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:string>1</d3p1:string>
+      <d3p1:string>2</d3p1:string>
+      <d3p1:string>3</d3p1:string>
+    </Tags>
+    <Year>2010</Year>
+  </Game>
+  <Game>
+    <Average>0</Average>
+    <Cover>minecraft.jpeg</Cover>
+    <Description>description</Description>
+    <Name>Minecraft</Name>
+    <Reviews />
+    <Tags xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:string>1</d3p1:string>
+      <d3p1:string>2</d3p1:string>
+      <d3p1:string>3</d3p1:string>
+    </Tags>
+    <Year>2010</Year>
+  </Game>
+  <Game>
+    <Average>0</Average>
+    <Cover>celeste.png</Cover>
+    <Description>description</Description>
+    <Name>Celeste</Name>
+    <Reviews />
+    <Tags xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:string>1</d3p1:string>
+      <d3p1:string>2</d3p1:string>
+    </Tags>
+    <Year>2010</Year>
+  </Game>
+  <Game>
+    <Average>0</Average>
+    <Cover>gta_v.png</Cover>
+    <Description>description</Description>
+    <Name>GTA V</Name>
+    <Reviews />
+    <Tags xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:string>1</d3p1:string>
+      <d3p1:string>2</d3p1:string>
+      <d3p1:string>3</d3p1:string>
+    </Tags>
+    <Year>2010</Year>
+  </Game>
+</ArrayOfGame>

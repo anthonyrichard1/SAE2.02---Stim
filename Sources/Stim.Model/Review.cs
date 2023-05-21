@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
+    [DataContract]
     public class Review
     {
+        [DataMember]
         public float Rate
         {
             get
@@ -22,6 +25,7 @@ namespace Model
         }
         private float rate;
 
+        [DataMember]
         public string Text
         {
             get
@@ -36,6 +40,7 @@ namespace Model
         }
         private string text;
 
+        [DataMember]
         public string AuthorName
         {
             get { return authorName; }
@@ -49,6 +54,13 @@ namespace Model
             AuthorName = authorName;
             Rate = rate;
             Text = text;
+        }
+
+        public Review() { }
+
+        public override string ToString()
+        {
+            return $"{AuthorName} : {Rate} : {Text}\n";
         }
 
         public void EditReview(string text)

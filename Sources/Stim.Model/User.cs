@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace Model
 {
     public class User
     {
-        static int nbUser = 0;
-        private int id;
-
         public string Username
         {
             get { return username; }
@@ -70,9 +61,6 @@ namespace Model
 
         public User(string username, string biographie, string email, string password)
         {
-            nbUser++;
-            id = nbUser;
-
             Username = username;
             Biographie = biographie;
             Email = email;

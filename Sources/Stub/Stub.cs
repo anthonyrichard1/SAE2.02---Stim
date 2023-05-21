@@ -1,27 +1,40 @@
 ﻿using Model;
+using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
+using System.Xml;
 
-namespace Stub
+namespace StimStub
 {
     public class Stub : IPersistance
     {
-        public List<Game> LoadGame()
+        public Stub()
         {
-            return null;
+            Directory.SetCurrentDirectory(Path.Combine(Directory.GetCurrentDirectory(), "..//..//..//..//XML//"));
         }
 
-        public List<User> LoadUser()
+        public void SaveGame(ObservableCollection<Game> games)
         {
-            return null;
-        }
+            XmlWriterSettings settings = new() { Indent = true };
+            DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
 
-        public void SaveGame(List<Game> games)
-        {
-
+            using (TextWriter tw = File.CreateText("games.xml"))
+            using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
         }
 
         public void SaveUser(List<User> users)
         {
 
+        }
+
+        public ObservableCollection<Game> LoadGame()
+        {
+            DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
+            using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game>;
+        }
+
+        public List<User> LoadUser()
+        {
+            return null;
         }
     }
 }

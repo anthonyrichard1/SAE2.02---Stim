@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace Model
 {
     public interface IPersistance
     {
-        public List<Game> LoadGame();
-        public List<User> LoadUser();
+        public void SaveGame(ObservableCollection<Game> games);
         public void SaveUser(List<User> users);
-        public void SaveGame(List<Game> games);
+        public ObservableCollection<Game> LoadGame();
+        public List<User> LoadUser();
     }
 }
