@@ -5,69 +5,67 @@
              Title="Accueil"
              Background="black">
 
-    <ScrollView>
-        <Grid BackgroundColor="#495057">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid BackgroundColor="#495057">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
 
 
-            <CollectionView ItemsSource="{Binding Games}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
-                            <Grid HeightRequest="1000">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+        <CollectionView ItemsSource="{Binding Games}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
+                        <Grid HeightRequest="1000">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
 
-                                <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="600" HeightRequest="750"/>
-                                <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                            <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="600" HeightRequest="750"/>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="30" Margin="5" FontFamily="arial" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
-                                <Grid Grid.Row="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
 
-                                        <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
-                                        <CollectionView ItemsSource="{Binding Tags}" SelectionMode="Single" ItemsLayout="{Binding Tags.Count}"  Grid.Row="1" Grid.Column="0">
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding}"/>
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-                                        </CollectionView>
-                                    </Grid>
-                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Year}" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                                    <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="Tag :" Grid.Row="0"/>
+                                    <CollectionView ItemsSource="{Binding Tags}" SelectionMode="Single" ItemsLayout="{Binding Tags.Count}"  Grid.Row="1" Grid.Column="0">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding}"/>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
                                 </Grid>
-                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Description}" Grid.Row="3"/>
+                                <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Year}" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
                             </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ScrollView>
+                            <Label TextColor="White" FontSize="15" Margin="5" FontFamily="arial" Text="{Binding Description}" Grid.Row="3"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
