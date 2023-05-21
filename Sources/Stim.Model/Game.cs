@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
+    [DataContract]
     public class Game : INotifyPropertyChanged
     {
+        [DataMember]
         public string Name
         {
             get { return name; }
-            private set
+            set
             {
                 if (value == null || string.IsNullOrWhiteSpace(value)) return;
                 name = value;
@@ -21,10 +19,11 @@ namespace Model
         }
         private string name;
 
+        [DataMember]
         public string Description
         {
             get { return description; }
-            private set
+            set
             {
                 if (value == null || string.IsNullOrWhiteSpace(value)) return;
                 description = value;
@@ -32,10 +31,11 @@ namespace Model
         }
         private string description;
 
+        [DataMember]
         public int Year
         {
             get { return year; }
-            private set
+            set
             {
                 if (value < 1957 || value > 2023) return;
                 year = value;
@@ -43,6 +43,7 @@ namespace Model
         }
         private int year;
 
+        [DataMember]
         public string Cover
         {
             get => cover;
@@ -54,6 +55,7 @@ namespace Model
         }
         private string cover;
 
+        [DataMember]
         public ObservableCollection<string> Tags
         {
             get => tags;
@@ -65,10 +67,16 @@ namespace Model
         }
         private ObservableCollection<string> tags;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public List<Review> Reviews { get; private init; }
+
+        [DataMember]
         public float Average { get; private set; }
+
+        public Game()
+        {
+            Reviews = new List<Review>();
+            Average = 0;
+        }
 
         public Game(string name, string description, int year, List<string> c_tags, string cover)
         {
@@ -77,9 +85,26 @@ namespace Model
             Year = year;
             if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            Cover= cover;
+            Cover = cover;
             Reviews = new List<Review>();
             Average = 0;
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();  
+        }
+
+        public bool Equals(Game other)
+        {
+            return this.Name.Equals(other.Name) && this.Year.Equals(other.Year);
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} : {Description} : {Year} : {Cover}";
         }
 
         public float GetAvgRate()
