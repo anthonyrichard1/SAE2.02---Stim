@@ -32,7 +32,7 @@ namespace Model
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (string.IsNullOrWhiteSpace(value) && rg_email.IsMatch(value))
+                if (!string.IsNullOrWhiteSpace(value) && rg_email.IsMatch(value))
                     email = value;
                 return;
             }
