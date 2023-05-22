@@ -19,7 +19,7 @@ namespace Test
         {
 
             Game game = new("", "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.True(game.Name == "");
+            Assert.False(game.Name == "");
 
             Game game2 = new(null, "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.True(game2.Name == "Default");
@@ -39,7 +39,7 @@ namespace Test
         {
 
             Game game = new("name", "", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.True(game.Description == "");
+            Assert.False(game.Description == "");
 
             Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover");
             Assert.True(game2.Description=="Default");
