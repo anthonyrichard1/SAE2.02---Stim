@@ -66,6 +66,7 @@ namespace Model
             Email = email;
             Password = password;
             Followed_Games = new List<Game>();
+            Role = 0;
         }
         public void AddReview(Game game, float rate, string text)
         {
@@ -73,9 +74,13 @@ namespace Model
         }
         public void RemoveSelfReview(Game game, float rate, string text)
         {
-            foreach (Review review in game.Reviews)
+            for (int i = game.Reviews.Count - 1; i >= 0; i--)
             {
-                if (review.Rate == rate && review.Text == text && review.AuthorName == Username) game.RemoveReview(review);
+                Review review = game.Reviews[i];
+                if (review.Rate == rate && review.Text == text && review.AuthorName == username)
+                {
+                    game.RemoveReview(review);
+                }
             }
         }
         public void FollowAGame(Game game)

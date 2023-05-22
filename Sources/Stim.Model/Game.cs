@@ -9,7 +9,7 @@ namespace Model
     public class Game : INotifyPropertyChanged
     {
         [DataMember]
-        public string? Name
+        public string Name
         {
             get => name;
             private set
@@ -18,10 +18,10 @@ namespace Model
                 name = value;
             }
         }
-        private string? name;
+        private string name;
 
         [DataMember]
-        public string? Description
+        public string Description
         {
             get => description;
             private set
@@ -30,7 +30,7 @@ namespace Model
                 description = value;
             }
         }
-        private string? description;
+        private string description;
 
         [DataMember]
         public int Year
@@ -45,7 +45,7 @@ namespace Model
         private int year;
 
         [DataMember]
-        public string? Cover
+        public string Cover
         {
             get => cover;
             set
@@ -54,7 +54,7 @@ namespace Model
                 cover = value;
             }
         }
-        private string? cover;
+        private string cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -76,6 +76,10 @@ namespace Model
 
         public Game()
         {
+            Name = "Default";
+            Description = "Default";
+            Cover = "Default";
+            Year = 2023;
             tags = new ObservableCollection<string>();
             Reviews = new List<Review>();
             Average = 0;
@@ -83,12 +87,17 @@ namespace Model
 
         public Game(string name, string description, int year, List<string> c_tags, string cover)
         {
-            Name = name;
-            Description = description;
+            if (name is null) Name = "Default";
+            else Name= name;
+            if (description is null) Description = "Default";
+            else Description = description;
             Year = year;
             if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            Cover = cover;
+            if (cover is null)
+                Cover = "Default";
+            else
+                Cover = cover;
             Reviews = new List<Review>();
             Average = 0;
         }

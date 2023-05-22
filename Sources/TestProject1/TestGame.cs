@@ -19,24 +19,30 @@ namespace Test
         {
 
             Game game = new("", "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game.Name);
+            Assert.True(game.Name == "");
 
             Game game2 = new(null, "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game2.Name);
+            Assert.True(game2.Name == "Default");
 
             Game game3 = new("good", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.Equal("good", game3.Name);
         }
-
+        [Fact]
+        public void Cover()
+        {
+            Game game = new("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            string coverofgame= game.Cover;
+            Assert.True(coverofgame == game.Cover);
+        }
         [Fact]
         public void Description()
         {
 
             Game game = new("name", "", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game.Description);
+            Assert.True(game.Description == "");
 
             Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game2.Description);
+            Assert.True(game2.Description=="Default");
 
             Game game3 = new("name", "good", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.Equal("good", game3.Description);
@@ -75,13 +81,13 @@ namespace Test
         [Fact]
         public void AddReview()
         {
-            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
+            User user = new("username", "biographie", "email@email.com", "password");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 4f, "bof++");
+            user.AddReview(game, 3f, "bof+");
 
             Assert.NotEmpty(game.Reviews);
         }
@@ -89,16 +95,17 @@ namespace Test
         [Fact]
         public void RemoveReview()
         {
-            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
-
+            User user = new("username", "biographie", "email@email.com", "password");
+            User user2 = new("username2", "biographie", "email2@email.com", "password");
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
-            game.RemoveReview(r2);
-
-            Assert.DoesNotContain(r2, game.Reviews);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 4f, "bof++");
+            user.AddReview(game, 3f, "bof+");
+            user2.RemoveSelfReview(game, 2.5f, "bof");
+            Assert.Equal(3, game.Reviews.Count);
+            user.RemoveSelfReview(game, 2.5f, "bof");
+            Assert.Equal(2, game.Reviews.Count);
         }
 
         [Fact]
@@ -138,18 +145,20 @@ namespace Test
             game.NameChange("newName");
             game.TagChange(new List<String> { "1", "2" });
             Assert.Equal(3, game.Tags.Count);
+            game.TagChange(null);
+            Assert.Equal(3, game.Tags.Count);
         }
 
         [Fact]
         public void Average()
         {
-            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
+            User user = new("username", "biographie", "email@email.com", "password");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 0f, "bof--");
+            user.AddReview(game, 5f, "bof++");
 
             Assert.Equal(2.5f, game.GetAvgRate());
         }

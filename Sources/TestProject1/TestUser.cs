@@ -29,6 +29,11 @@ namespace Test
 
             User user2 = new("username", null, "adresse.mail@gmail.com", "Azerty123*");
             Assert.Null(user2.Biographie);
+
+            User user3 = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+
+            string biographieOfAnUser = user3.Biographie;
+            Assert.NotNull(biographieOfAnUser);
         }
 
         [Fact]
@@ -68,21 +73,31 @@ namespace Test
             user.RemoveAGame(game);
             Assert.Empty(user.Followed_Games);
         }
+        [Fact]
+        public void Role()
+        {
+            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Equal(0,user.Role);
+
+            int Perm = user.Role;
+            Assert.True(user.Role == Perm);
+        }
         
-        //[Fact]
-        //public void ReviewAddingAndRemovingFromAGameViaUser()
-        //{
-        //    User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-        //    Game game = new("name", "description", 2012, new string[] { "1", "2", "3" });
-        //    Assert.NotNull(user);
-        //    Assert.NotNull(game);
+        [Fact]
+        public void ReviewAddingAndRemovingFromAGameViaUser()
+        {
+            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" },"cover");
+            Assert.NotNull(user);
+            Assert.NotNull(game);
 
 
         //    user.AddReview(game, 2.5f,"UwU");
         //    Assert.Single(game.Reviews);
 
-        //    user.RemoveSelfReview(game, 2.5f, "UwU");
-        //    Assert.Empty(game.Reviews);
-        //}
+            user.RemoveSelfReview(game, 2.5f, "UwU");
+            Assert.Empty(game.Reviews);
+        }
+        
     }
 }
