@@ -9,7 +9,6 @@ namespace StimPersistance
     {
         public Persistance()
         {
-            //Faut refactor ce truc parce que c'est pas portable
             Directory.SetCurrentDirectory("..//..//..//..//..//Sources//XML//");
         }
 
