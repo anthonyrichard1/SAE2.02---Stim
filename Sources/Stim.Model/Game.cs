@@ -98,9 +98,10 @@ namespace Model
             return Name.GetHashCode();  
         }
 
-        public bool Equals(Game other)
+        public override bool Equals(object? obj)
         {
-            return this.Name.Equals(other.Name) && this.Year.Equals(other.Year);
+            if ((obj == null) || !this.GetType().Equals(obj.GetType())) return false;
+            return this.Name.Equals((obj as Game).Name) && this.Year.Equals((obj as Game).Year);
         }
 
         public override string ToString()
