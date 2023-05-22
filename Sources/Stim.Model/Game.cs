@@ -13,7 +13,7 @@ namespace Model
             get { return name; }
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) name="Default";
                 name = value;
             }
         }
@@ -25,7 +25,7 @@ namespace Model
             get { return description; }
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) description="Default";
                 description = value;
             }
         }
@@ -49,7 +49,7 @@ namespace Model
             get => cover;
             set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) cover = "Default";
                 cover = value;
             }
         }
@@ -75,18 +75,28 @@ namespace Model
 
         public Game()
         {
+            Name = "Default";
+            Description = "Default";
+            Cover = "Default";
+            Year = 2023;
+            tags = new ObservableCollection<string>();
             Reviews = new List<Review>();
             Average = 0;
         }
 
         public Game(string name, string description, int year, List<string> c_tags, string cover)
         {
-            Name = name;
-            Description = description;
+            if (name is null) Name = "Default";
+            else Name= name;
+            if (description is null) Description = "Default";
+            else Description = description;
             Year = year;
             if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            Cover = cover;
+            if (cover is null)
+                Cover = "Default";
+            else
+                Cover = cover;
             Reviews = new List<Review>();
             Average = 0;
         }

@@ -10,6 +10,8 @@ namespace Test
 
             Game game = new("game", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.NotNull(game);
+            Game game2 = new();
+            Assert.NotNull(game2);
         }
 
         [Fact]
@@ -17,24 +19,30 @@ namespace Test
         {
 
             Game game = new("", "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game.Name);
+            Assert.True(game.Name == "");
 
             Game game2 = new(null, "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game2.Name);
+            Assert.True(game2.Name == "Default");
 
             Game game3 = new("good", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.Equal("good", game3.Name);
         }
-
+        [Fact]
+        public void Cover()
+        {
+            Game game = new("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            string coverofgame= game.Cover;
+            Assert.True(coverofgame == game.Cover);
+        }
         [Fact]
         public void Description()
         {
 
             Game game = new("name", "", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game.Description);
+            Assert.True(game.Description == "");
 
             Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.Null(game2.Description);
+            Assert.True(game2.Description=="Default");
 
             Game game3 = new("name", "good", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.Equal("good", game3.Description);
@@ -135,6 +143,8 @@ namespace Test
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
             game.NameChange("newName");
             game.TagChange(new List<String> { "1", "2" });
+            Assert.Equal(3, game.Tags.Count);
+            game.TagChange(null);
             Assert.Equal(3, game.Tags.Count);
         }
 
