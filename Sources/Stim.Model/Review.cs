@@ -48,10 +48,9 @@ namespace Model
         }
         private string authorName;
 
-        public Review(/*string username,*/ float rate, string text)
+        public Review(string username, float rate, string text)
         {
-            //AuthorName = username;
-            AuthorName = authorName;
+            AuthorName = username;
             Rate = rate;
             Text = text;
         }

@@ -72,13 +72,13 @@ namespace Test
         [Fact]
         public void AddReview()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            User user = new("username", "biographie", "email@email.com", "password");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 4f, "bof++");
+            user.AddReview(game, 3f, "bof+");
 
             Assert.NotEmpty(game.Reviews);
         }
@@ -86,16 +86,17 @@ namespace Test
         [Fact]
         public void RemoveReview()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
-
+            User user = new("username", "biographie", "email@email.com", "password");
+            User user2 = new("username2", "biographie", "email2@email.com", "password");
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
-            game.RemoveReview(r2);
-
-            Assert.DoesNotContain(r2, game.Reviews);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 4f, "bof++");
+            user.AddReview(game, 3f, "bof+");
+            user2.RemoveSelfReview(game, 2.5f, "bof");
+            Assert.Equal(3, game.Reviews.Count);
+            user.RemoveSelfReview(game, 2.5f, "bof");
+            Assert.Equal(2, game.Reviews.Count);
         }
 
         [Fact]
@@ -140,13 +141,13 @@ namespace Test
         [Fact]
         public void Average()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            User user = new("username", "biographie", "email@email.com", "password");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
-            game.AddReview(r1);
-            game.AddReview(r2);
-            game.AddReview(r3);
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 0f, "bof--");
+            user.AddReview(game, 5f, "bof++");
 
             Assert.Equal(2.5f, game.GetAvgRate());
         }
