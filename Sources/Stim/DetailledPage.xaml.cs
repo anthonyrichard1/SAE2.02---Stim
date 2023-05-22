@@ -23,9 +23,9 @@ public partial class DetailledPage : ContentPage
 
     private void AddStars(HorizontalStackLayout container, float rate)
     {
-        for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 25 });
-        if ((int)rate!=rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 25 });
-        while (container.Children.Count != 6) container.Children.Add(new Image { Source = "etoile_vide.png", WidthRequest = 25 });
+        for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
+        if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });
+        while (container.Children.Count != 6) container.Children.Add(new Image { Source = "etoile_vide.png", WidthRequest = 30 });
     }
 
     private async void goToMainPage(object sender, EventArgs e)
