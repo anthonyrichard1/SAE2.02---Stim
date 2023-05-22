@@ -23,7 +23,7 @@
             <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2" Grid.Row="1"/>
 
 
-            <CollectionView ItemsSource="{Binding Games}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1">
+            <CollectionView ItemsSource="{Binding GameList}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
