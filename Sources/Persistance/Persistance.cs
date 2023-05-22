@@ -10,7 +10,7 @@ namespace StimPersistance
         public Persistance()
         {
             //Faut refactor ce truc parce que c'est pas portable
-            Directory.SetCurrentDirectory("C:\\Users\\Admin\\source\\repos\\Projet_IHM\\Sources\\XML");
+            Directory.SetCurrentDirectory("..//..//..//..//..//Sources//XML//");
         }
 
         public void SaveGame(ObservableCollection<Game> games)
