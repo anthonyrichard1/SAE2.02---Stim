@@ -143,9 +143,11 @@ namespace Test
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
             game.NameChange("newName");
             game.TagChange(new List<String> { "1", "2" });
-            Assert.Equal(3, game.Tags.Count);
+            Assert.Equal(2, game.Tags.Count);
             game.TagChange(null);
-            Assert.Equal(3, game.Tags.Count);
+            Assert.Equal(2, game.Tags.Count);
+            game.TagChange(new List<String> { "1", "2","3","4" });
+            Assert.Equal(2, game.Tags.Count);
         }
 
         [Fact]
@@ -160,6 +162,20 @@ namespace Test
             user.AddReview(game, 5f, "bof++");
 
             Assert.Equal(2.5f, game.GetAvgRate());
+        }
+
+        [Fact]
+        public void toString()
+        {
+            User user = new("username", "biographie", "email@email.com", "password");
+
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+
+            user.AddReview(game, 2.5f, "bof");
+            user.AddReview(game, 0f, "bof--");
+            user.AddReview(game, 5f, "bof++");
+
+            Assert.Equal("bof\nbof--\nbof++",user.ToString());
         }
     }
 }

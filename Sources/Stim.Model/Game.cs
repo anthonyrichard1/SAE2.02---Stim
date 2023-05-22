@@ -152,7 +152,7 @@ namespace Model
         }
         public void TagChange(List<string> newtag)
         {
-            if (newtag != null && newtag.Count==3) tags = new ObservableCollection<string>(newtag);
+            if (newtag != null && newtag.Count<=3) tags = new ObservableCollection<string>(newtag);
         }
         public void NameChange(string newname)
         {
