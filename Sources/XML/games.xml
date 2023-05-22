@@ -13,17 +13,17 @@ Elden Ring a été acclamé par la critique; les critiques ont loué son monde o
     <Name>Elden Ring</Name>
     <Reviews>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 1</AuthorName>
         <Rate>5</Rate>
         <Text>C'est trop bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 2</AuthorName>
         <Rate>3.5</Rate>
         <Text>C'est bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 3</AuthorName>
         <Rate>1.5</Rate>
         <Text>C'est pas bien</Text>
       </Review>
@@ -48,17 +48,17 @@ En mai 2020, Minecraft a passé la barre des 200 millions d'exemplaires vendus s
     <Name>Minecraft</Name>
     <Reviews>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 1</AuthorName>
         <Rate>5</Rate>
         <Text>C'est trop bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 2</AuthorName>
         <Rate>3.5</Rate>
         <Text>C'est bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 3</AuthorName>
         <Rate>1.5</Rate>
         <Text>C'est pas bien</Text>
       </Review>
@@ -83,17 +83,17 @@ Celeste est très bien reçu par la critique et est loué pour ses mécaniques d
     <Name>Celeste</Name>
     <Reviews>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 1</AuthorName>
         <Rate>5</Rate>
         <Text>C'est trop bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 2</AuthorName>
         <Rate>3.5</Rate>
         <Text>C'est bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 3</AuthorName>
         <Rate>1.5</Rate>
         <Text>C'est pas bien</Text>
       </Review>
@@ -118,17 +118,17 @@ Au mois de mai 2023, le jeu s'est écoulé à plus de 180 millions d'exemplaires
     <Name>GTA V</Name>
     <Reviews>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 1</AuthorName>
         <Rate>5</Rate>
         <Text>C'est trop bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 2</AuthorName>
         <Rate>3.5</Rate>
         <Text>C'est bien</Text>
       </Review>
       <Review>
-        <AuthorName i:nil="true" />
+        <AuthorName>User 3</AuthorName>
         <Rate>1.5</Rate>
         <Text>C'est pas bien</Text>
       </Review>

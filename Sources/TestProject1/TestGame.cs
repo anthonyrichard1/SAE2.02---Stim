@@ -5,11 +5,13 @@ namespace Test
     public class TestGame
     {
         [Fact]
-        public void Constructeur()
+        public void Constructor()
         {
 
             Game game = new("game", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.NotNull(game);
+            Game game2 = new();
+            Assert.NotNull(game2);
         }
 
         [Fact]
@@ -59,6 +61,7 @@ namespace Test
         {
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.NotNull(game.Tags);
+            Assert.Equal(new List<String> { "1", "2", "3" }, game.Tags);
 
             Game game2 = new("name", "description", 2012, null, "cover");
             Assert.NotNull(game2.Tags);
@@ -72,7 +75,7 @@ namespace Test
         [Fact]
         public void AddReview()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
@@ -86,7 +89,7 @@ namespace Test
         [Fact]
         public void RemoveReview()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
@@ -140,7 +143,7 @@ namespace Test
         [Fact]
         public void Average()
         {
-            Review r1 = new(2.5f, "cool"), r2 = new(4, "tres cool"), r3 = new(1, "pas cool");
+            Review r1 = new("User 1", 2.5f, "cool"), r2 = new("User 2", 4, "tres cool"), r3 = new("User 3", 1, "pas cool");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
 
@@ -149,6 +152,38 @@ namespace Test
             game.AddReview(r3);
 
             Assert.Equal(2.5f, game.GetAvgRate());
+        }
+
+        [Fact]
+        public void Hash()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Assert.Equal(game.Name.GetHashCode(), game.GetHashCode());
+        }
+
+        [Fact]
+        public void Equal()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Game game2 = new("name", "description2", 2020, new List<String> { "1" }, "cover2");
+            Game game3 = new("name2", "description", 2010, new List<String> { "1", "2", "3" }, "cover");
+            Review rev = new("User 1", 3, "text");
+
+            Assert.True(game.Equals(game2));
+            Assert.False(game.Equals(game3));
+            Assert.False(game.Equals((Review)rev));
+            Assert.False(game.Equals(null));
+        }
+
+        [Fact]
+        public void Str()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Review rev = new("User 1", 3, "rev");
+            Review rev2 = new("User 2", 4, "rev2");
+            game.AddReview(rev);
+            game.AddReview(rev2);
+            Assert.Equal("name : description : 2012 : cover\nUser 1 : 3 : rev\nUser 2 : 4 : rev2\n", game.ToString());
         }
     }
 }
