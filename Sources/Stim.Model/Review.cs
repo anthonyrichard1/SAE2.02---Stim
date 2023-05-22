@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace Model
 {
@@ -13,10 +8,7 @@ namespace Model
         [DataMember]
         public float Rate
         {
-            get
-            {
-                return rate;
-            }
+            get => rate;
             private set
             {
                 if (value < 0 || value > 5) return;
@@ -26,27 +18,19 @@ namespace Model
         private float rate;
 
         [DataMember]
-        public string Text
+        public string? Text
         {
-            get
-            {
-                return text;
-            }
+            get => text;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
                 text = value;
             }
         }
-        private string text;
+        private string? text;
 
         [DataMember]
-        public string AuthorName
-        {
-            get { return authorName; }
-            private set { authorName = value; }
-        }
-        private string authorName;
+        public string? AuthorName { get; set; }
 
         public Review(string username, float rate, string text)
         {
@@ -59,16 +43,16 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{AuthorName} : {Rate} : {Text}\n";
+            return $"{AuthorName} : {Rate} : {Text}";
         }
 
         public void EditReview(string text)
         {
-            Text = text+" (Modifié)";
+            if (!string.IsNullOrWhiteSpace(text)) Text = text+" (Modifié)";
         }
-        public void EditRate(int newval)
+        public void EditRate(float newval)
         {
-            rate= newval;
+            Rate= newval;
         }
     }
 }

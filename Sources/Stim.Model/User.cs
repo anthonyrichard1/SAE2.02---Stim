@@ -6,7 +6,7 @@ namespace Model
     {
         public string Username
         {
-            get { return username; }
+            get => username;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
@@ -17,7 +17,7 @@ namespace Model
 
         public string Biographie 
         {
-            get { return biographie;} 
+            get => biographie; 
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
@@ -28,7 +28,7 @@ namespace Model
 
         public string Email
         {
-            get { return email; }
+            get => email;
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
@@ -41,7 +41,7 @@ namespace Model
 
         public string Password
         {
-            get { return password; }
+            get => password;
             private set
             {
                 Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
@@ -70,7 +70,7 @@ namespace Model
         }
         public void AddReview(Game game, float rate, string text)
         {
-            game.AddReview(new Review(username, rate, text));
+            game.AddReview(new Review(Username, rate, text));
         }
         public void RemoveSelfReview(Game game, float rate, string text)
         {

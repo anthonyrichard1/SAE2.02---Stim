@@ -9,6 +9,7 @@ namespace StimPersistance
     {
         public Persistance()
         {
+            //Faut refactor ce truc parce que c'est pas portable
             Directory.SetCurrentDirectory("C:\\Users\\Admin\\source\\repos\\Projet_IHM\\Sources\\XML");
         }
 
@@ -23,18 +24,22 @@ namespace StimPersistance
 
         public void SaveUser(List<User> users)
         {
-            
+            throw new NotImplementedException();
         }
 
         public ObservableCollection<Game> LoadGame()
         {
-            DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
-            using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game>;
+            if (File.Exists("games.xml"))
+            {
+                DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
+                using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game>;
+            }
+            return new();
         }
 
         public List<User> LoadUser()
         {
-            return null;
+            throw new NotImplementedException();
         }        
     }
 }

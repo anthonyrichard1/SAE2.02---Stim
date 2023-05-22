@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Model
 {
@@ -10,10 +11,10 @@ namespace Model
         [DataMember]
         public string Name
         {
-            get { return name; }
+            get => name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) name="Default";
+                if (string.IsNullOrWhiteSpace(value)) return;
                 name = value;
             }
         }
@@ -22,10 +23,10 @@ namespace Model
         [DataMember]
         public string Description
         {
-            get { return description; }
+            get => description;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) description="Default";
+                if (string.IsNullOrWhiteSpace(value)) return;
                 description = value;
             }
         }
@@ -34,7 +35,7 @@ namespace Model
         [DataMember]
         public int Year
         {
-            get { return year; }
+            get => year;
             private set
             {
                 if (value < 1957 || value > 2023) return;
@@ -49,7 +50,7 @@ namespace Model
             get => cover;
             set
             {
-                if (string.IsNullOrWhiteSpace(value)) cover = "Default";
+                if (string.IsNullOrWhiteSpace(value)) return;
                 cover = value;
             }
         }
@@ -111,19 +112,20 @@ namespace Model
         public override bool Equals(object? obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType())) return false;
-            return this.Name.Equals((obj as Game).Name) && this.Year.Equals((obj as Game).Year);
+            return Name.Equals(((Game)obj).Name);
         }
 
         public override string ToString()
         {
-            string s = $"{Name} : {Description} : {Year} : {Cover}\n";
+            StringBuilder builder = new();
+            builder.Append($"{Name} : {Description} : {Year} : {Cover}\n");
 
-            foreach(Review review in Reviews)
+            foreach (Review review in Reviews)
             {
-                s += review;
+                builder.Append($"{review}\n");
             }
 
-            return s+"\n";
+            return builder.ToString();
         }
 
         public float GetAvgRate()

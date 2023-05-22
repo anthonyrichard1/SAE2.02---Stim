@@ -5,7 +5,7 @@ namespace Test
     public class TestGame
     {
         [Fact]
-        public void Constructeur()
+        public void Constructor()
         {
 
             Game game = new("game", "description", 2012, new List<String> {"1","2","3"}, "cover");
@@ -19,7 +19,7 @@ namespace Test
         {
 
             Game game = new("", "description", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.True(game.Name == "");
+            Assert.False(game.Name == "");
 
             Game game2 = new(null, "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.True(game2.Name == "Default");
@@ -39,7 +39,7 @@ namespace Test
         {
 
             Game game = new("name", "", 2012, new List<String> {"1","2","3"}, "cover");
-            Assert.True(game.Description == "");
+            Assert.False(game.Description == "");
 
             Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover");
             Assert.True(game2.Description=="Default");
@@ -67,6 +67,7 @@ namespace Test
         {
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover");
             Assert.NotNull(game.Tags);
+            Assert.Equal(new List<String> { "1", "2", "3" }, game.Tags);
 
             Game game2 = new("name", "description", 2012, null, "cover");
             Assert.NotNull(game2.Tags);
@@ -163,19 +164,5 @@ namespace Test
 
             Assert.Equal(2.5f, game.GetAvgRate());
         }
-
-        [Fact]
-        /*public void toString()
-        {
-            User user = new("username", "biographie", "email@email.com", "password");
-
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
-
-            user.AddReview(game, 2.5f, "bof");
-            user.AddReview(game, 0f, "bof--");
-            user.AddReview(game, 5f, "bof++");
-
-            Assert.Equal("bof\nbof--\nbof++",user.ToString());
-        }*/
     }
 }
