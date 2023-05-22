@@ -164,5 +164,36 @@ namespace Test
 
             Assert.Equal(2.5f, game.GetAvgRate());
         }
+        [Fact]
+        public void Hash()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Assert.Equal(game.Name.GetHashCode(), game.GetHashCode());
+        }
+
+        [Fact]
+        public void Equal()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Game game2 = new("name", "description2", 2020, new List<String> { "1" }, "cover2");
+            Game game3 = new("name2", "description", 2010, new List<String> { "1", "2", "3" }, "cover");
+            Review rev = new("User 1", 3, "text");
+
+            Assert.True(game.Equals(game2));
+            Assert.False(game.Equals(game3));
+            Assert.False(game.Equals((Review)rev));
+            Assert.False(game.Equals(null));
+        }
+
+        [Fact]
+        public void Str()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Review rev = new("User 1", 3, "rev");
+            Review rev2 = new("User 2", 4, "rev2");
+            game.AddReview(rev);
+            game.AddReview(rev2);
+            Assert.Equal("name : description : 2012 : cover\nUser 1 : 3 : rev\nUser 2 : 4 : rev2\n", game.ToString());
+        }
     }
 }
