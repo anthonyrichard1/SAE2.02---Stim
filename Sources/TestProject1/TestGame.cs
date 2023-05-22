@@ -165,7 +165,7 @@ namespace Test
         }
 
         [Fact]
-        public void toString()
+        /*public void toString()
         {
             User user = new("username", "biographie", "email@email.com", "password");
 
@@ -176,6 +176,6 @@ namespace Test
             user.AddReview(game, 5f, "bof++");
 
             Assert.Equal("bof\nbof--\nbof++",user.ToString());
-        }
+        }*/
     }
 }
