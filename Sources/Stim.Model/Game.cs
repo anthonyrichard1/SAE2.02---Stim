@@ -11,9 +11,9 @@ namespace Model
         public string Name
         {
             get { return name; }
-            set
+            private set
             {
-                if (value == null || string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 name = value;
             }
         }
@@ -23,9 +23,9 @@ namespace Model
         public string Description
         {
             get { return description; }
-            set
+            private set
             {
-                if (value == null || string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 description = value;
             }
         }
@@ -35,7 +35,7 @@ namespace Model
         public int Year
         {
             get { return year; }
-            set
+            private set
             {
                 if (value < 1957 || value > 2023) return;
                 year = value;
@@ -49,7 +49,7 @@ namespace Model
             get => cover;
             set
             {
-                if (value == null || string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 cover = value;
             }
         }

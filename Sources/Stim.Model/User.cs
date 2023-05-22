@@ -9,7 +9,7 @@ namespace Model
             get { return username; }
             private set
             {
-                if (value == null || value == "") return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 username = value;
             }
         }
@@ -20,11 +20,11 @@ namespace Model
             get { return biographie;} 
             private set
             {
-                if (value == null || value == "") return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 biographie = value;
             }
         }
-        private string? biographie;
+        private string biographie;
 
         public string Email
         {
@@ -32,7 +32,7 @@ namespace Model
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (value != null && rg_email.IsMatch(value))
+                if (string.IsNullOrWhiteSpace(value) && rg_email.IsMatch(value))
                     email = value;
                 return;
             }
@@ -45,7 +45,7 @@ namespace Model
             private set
             {
                 Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (value==null || !rg.IsMatch(value)) return;
+                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) return;
                 password = value;
             }
         }

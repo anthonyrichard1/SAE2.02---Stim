@@ -34,7 +34,7 @@ namespace Model
             }
             private set
             {
-                if (text == "") return;
+                if (string.IsNullOrWhiteSpace(value)) return;
                 text = value;
             }
         }
