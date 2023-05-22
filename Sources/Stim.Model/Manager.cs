@@ -5,12 +5,10 @@ namespace Model
     public class Manager
     {
         public ObservableCollection<Game> GameList { get;}
-        private readonly IPersistance _persistance;
 
         public Manager(IPersistance persistance)
         { 
-            _persistance = persistance;
-            GameList = _persistance.LoadGame();
+            GameList = persistance.LoadGame();
         }
 
         public void AddGametoGamesList(Game game)
@@ -22,12 +20,5 @@ namespace Model
         {
             GameList.Remove(game);
         }
-
-        //J'ai commenté parce que je crois que la fonction est useless
-
-        //public void DelCom(Game game, Review review, int role)
-        //{
-        //    if (role >= 1) game.RemoveReview(review);
-        //}
     }
 }

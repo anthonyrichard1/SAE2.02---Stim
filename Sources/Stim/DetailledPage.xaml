@@ -73,7 +73,7 @@
                             <DataTemplate>
                                 <VerticalStackLayout>
                                     <HorizontalStackLayout BindingContextChanged="AddStars">
-                                        <Label Text="Avis" FontSize="20"/>
+                                        <Label Text="{Binding AuthorName}" FontSize="20"/>
                                     </HorizontalStackLayout>
                                     <Label Text="{Binding Text}"/>
                                 </VerticalStackLayout>

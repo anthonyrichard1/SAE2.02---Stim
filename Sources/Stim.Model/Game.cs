@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace Model
 {
@@ -8,33 +9,33 @@ namespace Model
     public class Game : INotifyPropertyChanged
     {
         [DataMember]
-        public string Name
+        public string? Name
         {
-            get { return name; }
+            get => name;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
                 name = value;
             }
         }
-        private string name;
+        private string? name;
 
         [DataMember]
-        public string Description
+        public string? Description
         {
-            get { return description; }
+            get => description;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
                 description = value;
             }
         }
-        private string description;
+        private string? description;
 
         [DataMember]
         public int Year
         {
-            get { return year; }
+            get => year;
             private set
             {
                 if (value < 1957 || value > 2023) return;
@@ -44,7 +45,7 @@ namespace Model
         private int year;
 
         [DataMember]
-        public string Cover
+        public string? Cover
         {
             get => cover;
             set
@@ -53,7 +54,7 @@ namespace Model
                 cover = value;
             }
         }
-        private string cover;
+        private string? cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -75,6 +76,7 @@ namespace Model
 
         public Game()
         {
+            tags = new ObservableCollection<string>();
             Reviews = new List<Review>();
             Average = 0;
         }
@@ -101,19 +103,20 @@ namespace Model
         public override bool Equals(object? obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType())) return false;
-            return this.Name.Equals((obj as Game).Name) && this.Year.Equals((obj as Game).Year);
+            return Name.Equals(((Game)obj).Name);
         }
 
         public override string ToString()
         {
-            string s = $"{Name} : {Description} : {Year} : {Cover}\n";
+            StringBuilder builder = new();
+            builder.Append($"{Name} : {Description} : {Year} : {Cover}\n");
 
-            foreach(Review review in Reviews)
+            foreach (Review review in Reviews)
             {
-                s += review;
+                builder.Append($"{review}\n");
             }
 
-            return s+"\n";
+            return builder.ToString();
         }
 
         public float GetAvgRate()
