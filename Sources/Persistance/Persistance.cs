@@ -9,7 +9,7 @@ namespace StimPersistance
     {
         public Persistance()
         {
-            Directory.SetCurrentDirectory("..//..//..//..//..//Sources//XML//");
+            //Directory.SetCurrentDirectory("../../../../XML/");
         }
 
         public void SaveGame(ObservableCollection<Game> games)
