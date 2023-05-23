@@ -19,4 +19,9 @@ public partial class MainPage : ContentPage
     {
        await Navigation.PushAsync(new DetailledPage((sender as CollectionView).SelectedItem as Game));
     }
+
+    private async void GoToAddGamePage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddGamePage(Manager));
+    }
 }

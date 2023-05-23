@@ -1,13 +1,12 @@
 ﻿using Model;
 using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
-using System.Xml;
 
 namespace StimStub
 {
     public class Stub : IPersistance
     {
         public readonly ObservableCollection<Game> games = new();
+
         public Stub()
         {
             SaveGame(games);
