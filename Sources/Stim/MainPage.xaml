@@ -82,6 +82,6 @@
                 </CollectionView>
             </Grid>
         </ScrollView>
-        <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="AddGame"/>
+        <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="GoToAddGamePage"/>
     </Grid>
 </ContentPage>

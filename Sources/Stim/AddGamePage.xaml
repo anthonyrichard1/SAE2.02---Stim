@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stim.AddGamePage"
+             Title="Ajouter un jeu"
+             Background="{StaticResource Secondary}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
+        <VerticalStackLayout Background="{StaticResource Tertiary}" Grid.Column="1" Grid.RowSpan="6"/>
+        <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="4"/>
+
+        <VerticalStackLayout Grid.Column="1">
+            <Label Text="Nom" FontSize="30" HorizontalOptions="Center"/>
+            <Entry x:Name="NameEntry"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="1">
+            <Label Text="Description" FontSize="30" HorizontalOptions="Center"/>
+            <Entry x:Name="DescriptionEntry"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="2">
+            <Label Text="Année de sortie" FontSize="30" HorizontalOptions="Center"/>
+            <Entry x:Name="YearEntry"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="3">
+            <Label Text="Jaquette" FontSize="30" HorizontalOptions="Center"/>
+            <Button Margin="5"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Grid.Row="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="3" Text="Tags" FontSize="30" HorizontalOptions="Center"/>
+                <Entry Grid.Row="1" x:Name="TagEntry1"/>
+                <Entry Grid.Row="1" Grid.Column="1" x:Name="TagEntry2"/>
+                <Entry Grid.Row="1" Grid.Column="2" x:Name="TagEntry3"/>
+            </Grid>
+        </VerticalStackLayout>
+        <Button HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" Margin="5" FontSize="30" Text="Ajouter" Background="transparent" BorderWidth="3" BorderColor="{StaticResource Secondary}" Clicked="AddGame"/>
+    </Grid>
+</ContentPage>

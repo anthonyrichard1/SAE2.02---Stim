@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:HeaderView="clr-namespace:Stim"
              x:Class="Stim.DetailledPage"
-             Title="Accueil"
+             Title="{Binding Name}"
              Background="{StaticResource Secondary}">
 
     <ScrollView>
