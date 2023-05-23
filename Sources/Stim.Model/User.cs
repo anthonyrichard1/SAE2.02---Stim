@@ -4,7 +4,7 @@ namespace Model
 {
     public class User
     {
-        public string Username
+        public string? Username
         {
             get => username;
             private set
@@ -13,9 +13,9 @@ namespace Model
                 username = value;
             }
         }
-        private string username;
+        private string? username;
 
-        public string Biographie 
+        public string? Biographie 
         {
             get => biographie; 
             private set
@@ -24,9 +24,9 @@ namespace Model
                 biographie = value;
             }
         }
-        private string biographie;
+        private string? biographie;
 
-        public string Email
+        public string? Email
         {
             get => email;
             private set
@@ -37,9 +37,9 @@ namespace Model
                 return;
             }
         }
-        private string email;
+        private string? email;
 
-        public string Password
+        public string? Password
         {
             get => password;
             private set
@@ -49,7 +49,7 @@ namespace Model
                 password = value;
             }
         }
-        private string password;
+        private string? password;
 
         public int Role { get; }
         private int role;
