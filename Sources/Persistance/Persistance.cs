@@ -1,13 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Xml;
+using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.FileIO;
 using Model;
 
 namespace StimPersistance
 {
     public class Persistance : IPersistance
     {
-        public Persistance(){}
+        public Persistance()
+        {
+            Directory.SetCurrentDirectory("C:\\Users\\Jade\\source\\repos\\Projet_IHM\\Sources\\XML");
+        }
 
         public void SaveGame(ObservableCollection<Game> games)
         {
