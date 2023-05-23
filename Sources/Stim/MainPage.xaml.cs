@@ -1,6 +1,7 @@
 ﻿namespace Stim;
 using Model;
 using StimPersistance;
+using StimStub;
 
 public partial class MainPage : ContentPage
 {
@@ -17,10 +18,5 @@ public partial class MainPage : ContentPage
     private async void OnClickGameList(object sender, EventArgs e)
     {
        await Navigation.PushAsync(new DetailledPage((sender as CollectionView).SelectedItem as Game));
-    }
-
-    private async void goToMainPage(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new MainPage());
     }
 }

@@ -21,14 +21,14 @@ public partial class DetailledPage : ContentPage
         AddStars(layout, rev.Rate);
     }
 
-    private void AddStars(HorizontalStackLayout container, float rate)
+    private static void AddStars(HorizontalStackLayout container, float rate)
     {
         for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
         if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });
         while (container.Children.Count != 6) container.Children.Add(new Image { Source = "etoile_vide.png", WidthRequest = 30 });
     }
 
-    private async void goToMainPage(object sender, EventArgs e)
+    private async void GoToMainPage(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new MainPage());
     }
