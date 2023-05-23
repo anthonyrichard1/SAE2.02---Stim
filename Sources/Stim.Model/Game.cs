@@ -6,7 +6,7 @@ using System.Text;
 namespace Model
 {
     [DataContract]
-    public class Game : INotifyPropertyChanged
+    public class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
         public string Name
@@ -111,8 +111,15 @@ namespace Model
 
         public override bool Equals(object? obj)
         {
-            if ((obj == null) || !this.GetType().Equals(obj.GetType())) return false;
-            return Name.Equals(((Game)obj).Name);
+            if (object.ReferenceEquals(obj, null)) return false;
+            if (object.ReferenceEquals(this, obj)) return true;
+            if (this.GetType() != obj.GetType()) return false;
+            return this.Equals(obj as Game);
+        }
+
+        public bool Equals(Game? other)
+        {
+            return other != null && Name.Equals(other.Name);
         }
 
         public override string ToString()
