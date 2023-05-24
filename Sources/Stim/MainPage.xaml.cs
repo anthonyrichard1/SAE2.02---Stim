@@ -3,7 +3,6 @@ using Model;
 using StimPersistance;
 using StimStub;
 using Microsoft.Maui.Storage;
-using Windows.System;
 
 public partial class MainPage : ContentPage
 {

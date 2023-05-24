@@ -41,7 +41,7 @@
         <VerticalStackLayout Grid.Column="1" Grid.Row="3" Padding="0,150,0,0">
             <Label Text="Jaquette" FontSize="30" HorizontalOptions="Center"/>
             <!-- Please faut commenter quand y'a des trucs à implémenter ou alors faire un ticket-->
-            <Button Margin="5"/>
+            <Button Margin="5" Clicked="Button_Clicked"/>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Column="1" Grid.Row="4" Padding="0,150,0,0">
             <Grid>
@@ -62,6 +62,6 @@
             </Grid>
             <Entry Grid.Row="5" Grid.Column="1" x:Name="LinkEntry"/>
         </VerticalStackLayout>
-        <Button HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" Margin="5" FontSize="30" Text="Ajouter" Background="transparent" BorderWidth="3" BorderColor="{StaticResource Secondary}" Clicked="AddGame"/>
+        <Button HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" Margin="5" FontSize="30" Text="Ajouter" Background="{StaticResource Grat200}" BorderWidth="3" BorderColor="{StaticResource Secondary}" Clicked="AddGame"/>
     </Grid>
 </ContentPage>
