@@ -3,18 +3,14 @@ using Model;
 using StimPersistance;
 using StimStub;
 using Microsoft.Maui.Storage;
+using Windows.System;
 
 public partial class MainPage : ContentPage
 {
-
-    public IPersistance persistance = new Persistance(FileSystem.Current.AppDataDirectory);
-    public Manager Manager { get; set; }
-
     public MainPage()
     {
         InitializeComponent();
-        Manager = new(persistance);
-        BindingContext = Manager;
+        BindingContext = ((App)App.Current).Manager;
     }
 
     private async void OnClickGameList(object sender, EventArgs e)
@@ -24,6 +20,6 @@ public partial class MainPage : ContentPage
 
     private async void GoToAddGamePage(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddGamePage(Manager));
+        await Navigation.PushAsync(new AddGamePage());
     }
 }
