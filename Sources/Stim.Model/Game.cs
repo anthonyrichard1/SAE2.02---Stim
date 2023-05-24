@@ -89,7 +89,7 @@ namespace Model
         {
             Name = "Default";
             Description = "Default";
-            Cover = "Default";
+            Cover = "Default.png";
             Lien = "Default";
             Year = 2023;
             tags = new ObservableCollection<string>();

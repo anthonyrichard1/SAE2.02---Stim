@@ -2,10 +2,12 @@
 using Model;
 using StimPersistance;
 using StimStub;
+using Microsoft.Maui.Storage;
 
 public partial class MainPage : ContentPage
 {
-    public IPersistance persistance = new Persistance();
+
+    public IPersistance persistance = new Persistance(FileSystem.Current.AppDataDirectory);
     public Manager Manager { get; set; }
 
     public MainPage()

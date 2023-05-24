@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Persistance\Persistance.csproj" />
     <ProjectReference Include="..\Stim.Model\Model.csproj" />
+    <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 
 </Project>

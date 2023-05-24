@@ -4,23 +4,25 @@ using System.Xml;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 using Model;
+using System.Runtime.InteropServices;
 
 namespace StimPersistance
 {
     public class Persistance : IPersistance
     {
-        public Persistance()
+        public Persistance(string chemin)
         {
-            Directory.SetCurrentDirectory("C:\\Users\\axvanbraba\\source\\repos\\Projet_IHM\\Sources\\XML");
+            Directory.SetCurrentDirectory(chemin);
         }
 
         public void SaveGame(ObservableCollection<Game> games)
         {
             XmlWriterSettings settings = new() { Indent = true };
             DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
+            if (!File.Exists("games.xml")) File.Create("games.xml");
 
             using (TextWriter tw = File.CreateText("games.xml"))
-                using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
+            using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
         }
 
         public void SaveUser(List<User> users)
