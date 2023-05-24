@@ -6,82 +6,88 @@
              Title="{Binding Name}"
              Background="{StaticResource Secondary}">
 
-    <ScrollView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
-
-            <Grid Background="{StaticResource Tertiary}" Grid.Column="1" Margin="5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollView>
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
+                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
+                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
+                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
 
-                <Image Grid.RowSpan="4" Margin="5, 0, 0, 0" Source="{Binding Cover}" Aspect="AspectFit"/>
-                <Label Grid.Column="1" Text="{Binding Name}" FontSize="30"/>
-                <Label Grid.Column="2" Text="{Binding Year}" HorizontalOptions="Center"/>
-                <Button Grid.Column="3" Margin="10" Text="Suivre" HorizontalOptions="Center"
-                            VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="{StaticResource Secondary}"/>
+                <Grid Background="{StaticResource Tertiary}" Grid.Column="1" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <ScrollView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1">
-                    <Label Text="{Binding Description}"/>
-                </ScrollView>
-
-                <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Tags :"/>
-                    <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Label Padding="10,0,0,0" Text="{Binding}"/>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <Image Grid.RowSpan="4" Margin="5, 0, 0, 0" Source="{Binding Cover}" Aspect="AspectFit"/>
+                    <Label Grid.Column="1" Text="{Binding Name}" FontSize="30"/>
+                    <Label Grid.Column="2" Text="{Binding Year}" HorizontalOptions="Center"/>
+                    <Button Grid.Column="3" Margin="10" Text="Suivre" HorizontalOptions="Center"
+                            VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="{StaticResource Secondary}"/>
+
+                    <ScrollView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1">
+                        <Label Text="{Binding Description}"/>
+                    </ScrollView>
+
+                    <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Tags :"/>
+                        <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Padding="10,0,0,0" Text="{Binding}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/>
+                    <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
+                        <Label Padding="0,5,0,0" FontSize="25" x:Name="avgLabel"/>
+                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
+                        <Label Text="Avis de la communauté :" FontSize="30"/>
+                        <CollectionView ItemsSource="{Binding Reviews}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <HorizontalStackLayout BindingContextChanged="AddStars">
+                                            <Label Text="{Binding AuthorName}" FontSize="20"/>
+                                        </HorizontalStackLayout>
+                                        <Label Text="{Binding Text}"/>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
                 </Grid>
-
-                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/> 
-                <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
-                    <Label Padding="0,5,0,0" FontSize="25" x:Name="avgLabel"/>
-                </HorizontalStackLayout>
-
-                <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
-                    <Label Text="Avis de la communauté :" FontSize="30"/>
-                    <CollectionView ItemsSource="{Binding Reviews}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <VerticalStackLayout>
-                                    <HorizontalStackLayout BindingContextChanged="AddStars">
-                                        <Label Text="{Binding AuthorName}" FontSize="20"/>
-                                    </HorizontalStackLayout>
-                                    <Label Text="{Binding Text}"/>
-                                </VerticalStackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
             </Grid>
-        </Grid>
-    </ScrollView>
+        </ScrollView>
+        <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="AddReview"/>
+    </Grid>
 </ContentPage>

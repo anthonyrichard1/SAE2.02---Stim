@@ -33,4 +33,9 @@ public partial class DetailledPage : ContentPage
     {
         await Navigation.PushModalAsync(new MainPage());
     }
+
+    private void AddReview(object sender, EventArgs e)
+    {
+        //popup add review
+    }
 }
