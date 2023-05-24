@@ -66,7 +66,7 @@ namespace Test
             Assert.NotNull(user);
             Assert.Empty(user.Followed_Games);
 
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Assert.NotNull(game);
             user.FollowAGame(game);
             Assert.Single(user.Followed_Games);
@@ -87,7 +87,7 @@ namespace Test
         public void ReviewAddingAndRemovingFromAGameViaUser()
         {
             User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" },"cover");
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" },"cover", "www.link.com");
             Assert.NotNull(user);
             Assert.NotNull(game);
 

@@ -24,5 +24,14 @@ namespace Model
             GameList.Remove(game);
             _persistance.SaveGame(GameList);
         }
+
+        /*public void LoadGames()
+        {
+            _persistance.LoadGame();
+        }*/
+        public void SaveGames()
+        {
+            _persistance.SaveGame(GameList);
+        }
     }
 }

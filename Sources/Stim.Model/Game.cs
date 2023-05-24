@@ -74,18 +74,30 @@ namespace Model
         [DataMember]
         public float Average { get; private set; }
 
+        [DataMember]
+        public string Lien { 
+            get { return lien; }
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value)) lien = value;
+                else lien = "Default";
+            }
+        }
+        private string lien;
+
         public Game()
         {
             Name = "Default";
             Description = "Default";
             Cover = "Default";
+            Lien = "Default";
             Year = 2023;
             tags = new ObservableCollection<string>();
             Reviews = new List<Review>();
             Average = 0;
         }
 
-        public Game(string name, string description, int year, List<string> c_tags, string cover)
+        public Game(string name, string description, int year, List<string> c_tags, string cover, string lien)
         {
             if (name is null) Name = "Default";
             else Name= name;
@@ -94,10 +106,10 @@ namespace Model
             Year = year;
             if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            if (cover is null)
-                Cover = "Default";
-            else
-                Cover = cover;
+            if (cover is null) Cover = "Default";
+            else Cover = cover;
+            if (lien is null) Lien = "Default";
+            else Lien = lien;
             Reviews = new List<Review>();
             Average = 0;
         }

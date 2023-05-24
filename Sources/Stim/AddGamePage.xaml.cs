@@ -17,6 +17,6 @@ public partial class AddGamePage : ContentPage
 		string tag1 = TagEntry1.Text;
         string tag2 = TagEntry2.Text;
         string tag3 = TagEntry3.Text;
-		Manager.AddGametoGamesList(new Game(NameEntry.Text, DescriptionEntry.Text, int.Parse(YearEntry.Text), new List<string> { tag1, tag2, tag3 }, "null"));
+		Manager.AddGametoGamesList(new Game(NameEntry.Text, DescriptionEntry.Text, int.Parse(YearEntry.Text), new List<string> { tag1, tag2, tag3 }, "null", "www.link.com"));
 	}
 }

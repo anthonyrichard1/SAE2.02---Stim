@@ -18,7 +18,7 @@ namespace Test
         {
             IPersistance persistance = new Persistance();
             Manager manager = new(persistance);
-            Game game = new("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover");
+            Game game = new("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             manager.AddGametoGamesList(game);
 
             Assert.Contains(game, manager.GameList);

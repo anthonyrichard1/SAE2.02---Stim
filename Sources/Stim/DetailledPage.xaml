@@ -61,7 +61,7 @@
                     </CollectionView>
                 </Grid>
 
-                <Label Grid.Column="1" Grid.Row="3" Text="Link:kijazhdkailzhdkhdkazd.fr"/>
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/> 
                 <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
                     <Label Padding="0,5,0,0" FontSize="25" x:Name="avgLabel"/>
                 </HorizontalStackLayout>
