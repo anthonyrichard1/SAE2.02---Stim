@@ -32,17 +32,18 @@
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Column="1" Grid.Row="1">
             <Label Text="Description" FontSize="30" HorizontalOptions="Center"/>
-            <Entry x:Name="DescriptionEntry"/>
+            <Editor x:Name="DescriptionEntry" HeightRequest="200" Margin="10,0,10,0"/>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Column="1" Grid.Row="2">
+        <VerticalStackLayout Grid.Column="1" Grid.Row="2" Padding="0,150,0,0">
             <Label Text="Année de sortie" FontSize="30" HorizontalOptions="Center"/>
             <Entry x:Name="YearEntry"/>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Column="1" Grid.Row="3">
+        <VerticalStackLayout Grid.Column="1" Grid.Row="3" Padding="0,150,0,0">
             <Label Text="Jaquette" FontSize="30" HorizontalOptions="Center"/>
+            <!-- Please faut commenter quand y'a des trucs à implémenter ou alors faire un ticket-->
             <Button Margin="5"/>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Column="1" Grid.Row="4">
+        <VerticalStackLayout Grid.Column="1" Grid.Row="4" Padding="0,150,0,0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
