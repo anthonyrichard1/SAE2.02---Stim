@@ -5,7 +5,7 @@ namespace StimStub
 {
     public class Stub : IPersistance
     {
-        public readonly ObservableCollection<Game> Games = new();
+        public ObservableCollection<Game> Games = new();
 
         public Stub()
         {
