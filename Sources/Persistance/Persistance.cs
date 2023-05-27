@@ -19,7 +19,6 @@ namespace StimPersistance
         {
             XmlWriterSettings settings = new() { Indent = true };
             DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
-            if (!File.Exists("games.xml")) File.Create("games.xml");
 
             using (TextWriter tw = File.CreateText("games.xml"))
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);

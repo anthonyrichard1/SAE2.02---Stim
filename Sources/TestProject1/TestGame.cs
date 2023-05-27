@@ -10,8 +10,6 @@ namespace Test
 
             Game game = new("game", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             Assert.NotNull(game);
-            Game game2 = new();
-            Assert.NotNull(game2);
         }
 
         [Fact]
@@ -77,7 +75,18 @@ namespace Test
             Assert.NotNull(game3.Tags);
             Assert.Equal(2,game3.Tags.Count);
         }
-        
+
+        [Fact]
+        public void Lien()
+        {
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
+            Assert.NotNull(game.Lien);
+            Game game2 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", null);
+            Assert.Equal("Default", game2.Lien);
+            Game game3 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "");
+            Assert.Equal("Default", game3.Lien);
+        }
+
         [Fact]
         public void AddReview()
         {
@@ -194,16 +203,6 @@ namespace Test
             game.AddReview(rev);
             game.AddReview(rev2);
             Assert.Equal("name : description : 2012 : cover\nUser 1 : 3 : rev\nUser 2 : 4 : rev2\n", game.ToString());
-        }
-        [Fact]
-        public void Lien()
-        {
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
-            Assert.NotNull(game.Lien);
-            Game game2 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", null);
-            Assert.Equal("Default",game2.Lien);
-            Game game3 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "");
-            Assert.Equal("Default", game3.Lien);
         }
     }
 }

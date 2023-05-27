@@ -17,8 +17,8 @@ public partial class AddGamePage : ContentPage
     private void AddGame(object sender, EventArgs e)
 	{
 		int year;
-		if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(YearEntry.Text) || !int.TryParse(YearEntry.Text, out year) || string.IsNullOrWhiteSpace(LinkEntry.Text) || _ImgPath is null) return;
-        string imgName = NameEntry.Text + ".png";
+		if (string.IsNullOrEmpty(NameEntry.Text) || string.IsNullOrEmpty(DescriptionEntry.Text) || string.IsNullOrEmpty(YearEntry.Text) || !int.TryParse(YearEntry.Text, out year) || string.IsNullOrWhiteSpace(LinkEntry.Text) /*|| _ImgPath is null*/) return;
+        string imgName = "no_cover.png";//NameEntry.Text + ".png";
         //System.IO.File.Copy(_ImgPath, /**/, true);
         ((App)App.Current).Manager.AddGametoGamesList(new Game(NameEntry.Text, DescriptionEntry.Text, year, new List<string> { TagEntry1.Text, TagEntry2.Text, TagEntry3.Text }, imgName, LinkEntry.Text));
 		Navigation.RemovePage(this);

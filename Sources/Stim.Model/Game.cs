@@ -9,7 +9,7 @@ namespace Model
     public class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
-        public string Name
+        public string? Name
         {
             get => name;
             private set
@@ -18,10 +18,10 @@ namespace Model
                 name = value;
             }
         }
-        private string name;
+        private string? name;
 
         [DataMember]
-        public string Description
+        public string? Description
         {
             get => description;
             private set
@@ -30,7 +30,7 @@ namespace Model
                 description = value;
             }
         }
-        private string description;
+        private string? description;
 
         [DataMember]
         public int Year
@@ -45,22 +45,22 @@ namespace Model
         private int year;
 
         [DataMember]
-        public string Cover
+        public string? Cover
         {
             get => cover;
-            set
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
                 cover = value;
             }
         }
-        private string cover;
+        private string? cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
         {
             get => tags;
-            set
+            private set
             {
                 if (value == null || value.Count > 3) return;
                 tags = value;
@@ -75,41 +75,29 @@ namespace Model
         public float Average { get; private set; }
 
         [DataMember]
-        public string Lien { 
-            get { return lien; }
+        public string? Lien { 
+            get => lien;
             private set
             {
-                if (!string.IsNullOrWhiteSpace(value)) lien = value;
-                else lien = "Default";
+                if (string.IsNullOrWhiteSpace(value)) return;
+                lien = value;
             }
         }
-        private string lien;
+        private string? lien;
 
-        public Game()
+        public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {
-            Name = "Default";
-            Description = "Default";
-            Cover = "Default.png";
-            Lien = "Default";
-            Year = 2023;
-            tags = new ObservableCollection<string>();
-            Reviews = new List<Review>();
-            Average = 0;
-        }
-
-        public Game(string name, string description, int year, List<string> c_tags, string cover, string lien)
-        {
-            if (name is null) Name = "Default";
-            else Name= name;
-            if (description is null) Description = "Default";
+            if (string.IsNullOrWhiteSpace(name)) Name = "Default";
+            else Name = name;
+            if (string.IsNullOrWhiteSpace(description)) Description = "Default";
             else Description = description;
             Year = year;
-            if (c_tags != null) tags = new ObservableCollection<string>(c_tags);
+            if (c_tags is not null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            if (cover is null) Cover = "Default";
+            if (string.IsNullOrWhiteSpace(cover)) Cover = "Default";
             else Cover = cover;
-            if (lien is null) Lien = "Default";
-            else Lien = lien;
+            if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Default";
+            else Lien = c_lien;
             Reviews = new List<Review>();
             Average = 0;
         }

@@ -39,8 +39,6 @@ namespace Model
             Text = text;
         }
 
-        public Review() { }
-
         public override string ToString()
         {
             return $"{AuthorName} : {Rate} : {Text}";
