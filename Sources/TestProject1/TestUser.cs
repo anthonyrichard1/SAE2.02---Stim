@@ -15,48 +15,48 @@ namespace Test
         public void Username()
         {
             User user = new("", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Null(user.Username);
+            Assert.Equal("Default", user.Username);
 
             User user2 = new(null, "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Null(user2.Username);
+            Assert.Equal("Default",user2.Username);
         }
 
         [Fact]
         public void Biographie()
         {
             User user = new("username", "", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Null(user.Biographie);
+            Assert.Equal("Default", user.Biographie);
 
             User user2 = new("username", null, "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Null(user2.Biographie);
+            Assert.Equal("Default", user2.Biographie);
 
             User user3 = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
 
             string biographieOfAnUser = user3.Biographie;
-            Assert.NotNull(biographieOfAnUser);
+            Assert.Equal("biographie", biographieOfAnUser);
         }
 
         [Fact]
         public void Email()
         {
             User user = new("username", "biographie", "", "Azerty123*");
-            Assert.Null(user.Email);
+            Assert.Equal("Default", user.Email);
 
             User user2 = new("username", "biographie", null, "Azerty123*");
-            Assert.Null(user2.Email);
+            Assert.Equal("Default", user2.Email);
         }
 
         [Fact]
         public void Password()
         {
             User user = new("username", "biographie", "adresse.mail@gmail.com", "");
-            Assert.Null(user.Password);
+            Assert.Equal("Default",user.Password);
 
             User user2 = new("username", "biographie", "adresse.mail@gmail.com", null);
-            Assert.Null(user2.Password);
+            Assert.Equal("Default", user2.Password);
 
             User user3 = new("username", "biographie", "adresse.mail@gmail.com", "54az6e");
-            Assert.Null(user3.Password);
+            Assert.Equal("Default", user3.Password);
         }
 
         [Fact]

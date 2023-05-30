@@ -4,52 +4,52 @@ namespace Model
 {
     public class User
     {
-        public string? Username
+        public string Username
         {
             get => username;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) value = "Default";
                 username = value;
             }
         }
-        private string? username;
+        private string username;
 
-        public string? Biographie 
+        public string Biographie 
         {
             get => biographie; 
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) value = "Default";
                 biographie = value;
             }
         }
-        private string? biographie;
+        private string biographie;
 
-        public string? Email
+        public string Email
         {
             get => email;
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (!string.IsNullOrWhiteSpace(value) && rg_email.IsMatch(value))
+                if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
                     email = value;
-                return;
+                else email = "Default";
             }
         }
-        private string? email;
+        private string email;
 
-        public string? Password
+        public string Password
         {
             get => password;
             private set
             {
                 Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) return;
+                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) value="Default";
                 password = value;
             }
         }
-        private string? password;
+        private string password;
 
         //public int Role { get; }
         //private int role;
@@ -63,11 +63,11 @@ namespace Model
         {
             if (username == null) Username = "Default";
             else Username = username;
-            if (biographie == null) biographie = "Default";
+            if (biographie == null) Biographie = "Default";
             else Biographie = biographie;
-            if (email == null) email = "Default";
+            if (email == null) Email = "Default";
             else Email = email;
-            if (password == null) password = "Default";
+            if (password == null) Password = "Default";
             else Password = password;
             Followed_Games = new List<Game>();
             //Role = 0;
