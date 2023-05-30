@@ -1,3 +1,4 @@
+```plantuml
 @startuml
 
 skinparam pageExternalColor red
