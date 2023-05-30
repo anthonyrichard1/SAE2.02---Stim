@@ -75,7 +75,7 @@ namespace Model
         public float Average { get; private set; }
 
         [DataMember]
-        public string? Lien { 
+        public string Lien { 
             get => lien;
             private set
             {
@@ -83,7 +83,7 @@ namespace Model
                 lien = value;
             }
         }
-        private string? lien;
+        private string lien;
 
         public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {
@@ -106,6 +106,7 @@ namespace Model
 
         public override int GetHashCode()
         {
+            if (string.IsNullOrWhiteSpace(Name)) return 0;
             return Name.GetHashCode();  
         }
 
@@ -119,6 +120,7 @@ namespace Model
 
         public bool Equals(Game? other)
         {
+            if (string.IsNullOrWhiteSpace(Name)) return false;
             return other != null && Name.Equals(other.Name);
         }
 

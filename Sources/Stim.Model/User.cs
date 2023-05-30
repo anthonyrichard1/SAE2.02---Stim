@@ -51,8 +51,8 @@ namespace Model
         }
         private string? password;
 
-        public int Role { get; }
-        private int role;
+        //public int Role { get; }
+        //private int role;
         public List<Game> Followed_Games 
         {
             get;
@@ -61,12 +61,16 @@ namespace Model
 
         public User(string username, string biographie, string email, string password)
         {
-            Username = username;
-            Biographie = biographie;
-            Email = email;
-            Password = password;
+            if (username == null) Username = "Default";
+            else Username = username;
+            if (biographie == null) biographie = "Default";
+            else Biographie = biographie;
+            if (email == null) email = "Default";
+            else Email = email;
+            if (password == null) password = "Default";
+            else Password = password;
             Followed_Games = new List<Game>();
-            Role = 0;
+            //Role = 0;
         }
         public void AddReview(Game game, float rate, string text)
         {

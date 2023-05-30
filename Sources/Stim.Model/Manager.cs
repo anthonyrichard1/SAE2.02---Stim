@@ -4,25 +4,26 @@ namespace Model
 {
     public class Manager
     {
-        public IPersistance _persistance;
+        public IPersistance persistance;
         public ObservableCollection<Game> GameList { get;}
 
         public Manager(IPersistance persistance)
         {
-            _persistance = persistance;
+            persistance = persistance;
             GameList = persistance.LoadGame();
+            if (GameList == null) { GameList = new ObservableCollection<Game>();}
         }
 
         public void AddGametoGamesList(Game game)
         {
             GameList.Add(game);
-            _persistance.SaveGame(GameList);
+            persistance.SaveGame(GameList);
         }
 
         public void RemoveGameFromGamesList(Game game)
         {
             GameList.Remove(game);
-            _persistance.SaveGame(GameList);
+            persistance.SaveGame(GameList);
         }
 
         /*public void LoadGames()
@@ -31,7 +32,7 @@ namespace Model
         }*/
         public void SaveGames()
         {
-            _persistance.SaveGame(GameList);
+            persistance.SaveGame(GameList);
         }
     }
 }

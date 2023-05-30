@@ -29,7 +29,7 @@ namespace StimPersistance
             throw new NotImplementedException();
         }
 
-        public ObservableCollection<Game> LoadGame()
+        public ObservableCollection<Game>? LoadGame()
         {
             if (File.Exists("games.xml"))
             {
