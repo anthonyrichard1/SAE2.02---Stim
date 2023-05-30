@@ -67,7 +67,7 @@ namespace Model
             else Biographie = biographie;
             if (email == null) Email = "Default";
             else Email = email;
-            if (password == null) Password = "Default";
+            if (password == null) throw new ArgumentNullException("password");
             else Password = password;
             Followed_Games = new List<Game>();
             //Role = 0;
