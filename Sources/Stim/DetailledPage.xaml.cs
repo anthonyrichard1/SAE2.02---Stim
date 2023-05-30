@@ -12,7 +12,6 @@ public partial class DetailledPage : ContentPage
 
         avgLabel.Text = game.Average.ToString();
         AddStars(starsContainer, game.Average);
-        var test = game.Lien;
     }
 
     private void AddStars(object sender, EventArgs e)

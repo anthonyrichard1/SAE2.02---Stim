@@ -20,7 +20,7 @@ public partial class App : Application
 
         window.Stopped += (s, e) =>
         {
-            Manager.persistance = new Persistance(FileSystem.Current.AppDataDirectory);
+            Manager.Mgrpersistance = new Persistance(FileSystem.Current.AppDataDirectory);
             var test = Manager;
             Manager.SaveGames();
         };
