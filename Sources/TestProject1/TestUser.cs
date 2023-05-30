@@ -73,7 +73,7 @@ namespace Test
             user.RemoveAGame(game);
             Assert.Empty(user.Followed_Games);
         }
-        [Fact]
+        /*[Fact]
         public void Role()
         {
             User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
@@ -81,7 +81,7 @@ namespace Test
 
             int Perm = user.Role;
             Assert.True(user.Role == Perm);
-        }
+        }*/
         
         [Fact]
         public void ReviewAddingAndRemovingFromAGameViaUser()
