@@ -50,12 +50,12 @@ namespace Test
         public void Password()
         {
             User user = new("username", "biographie", "adresse.mail@gmail.com", "");
-            Assert.Equal("Default",user.Password);
+            Assert.Null(user.Password);
 
             Assert.Throws<ArgumentNullException>(() => new User("username", "biography", "adresse.mail@gmail.com", null));
 
             User user3 = new("username", "biographie", "adresse.mail@gmail.com", "54az6e");
-            Assert.Equal("Default", user3.Password);
+            Assert.Null(user3.Password);
         }
 
         [Fact]

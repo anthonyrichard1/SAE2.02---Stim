@@ -1,8 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Model
 {
-    public class User
+    public class User : INotifyPropertyChanged
     {
         public string Username
         {
@@ -44,23 +46,36 @@ namespace Model
             get => password;
             private set
             {
-                Regex rg = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$");
-                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) value="Default";
-                password = value;
+                Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) return;//throw new ArgumentNullException("password");
+                else password = value;
             }
         }
         private string password;
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         //public int Role { get; }
         //private int role;
-        public List<Game> Followed_Games 
+        public ObservableCollection<Game> Followed_Games 
         {
             get;
             private init;
         }
+        /*public string UserImage 
+        {   get => userImage;
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value)) userImage = value;
+                else userImage = "no_cover.png";
+            }
+        }
+        private string userImage;*/
 
-        public User(string username, string biographie, string email, string password)
+        public User(/*string userImage,*/string username, string biographie, string email, string password)
         {
+            /*if (userImage == null) UserImage="no_cover.png";
+            else UserImage = userImage;*/
             if (username == null) Username = "Default";
             else Username = username;
             if (biographie == null) Biographie = "Default";
@@ -69,7 +84,7 @@ namespace Model
             else Email = email;
             if (password == null) throw new ArgumentNullException("password");
             else Password = password;
-            Followed_Games = new List<Game>();
+            Followed_Games = new ObservableCollection<Game>();
             //Role = 0;
         }
         public void AddReview(Game game, float rate, string text)

@@ -5,11 +5,12 @@ namespace Stim;
 
 public partial class DetailledPage : ContentPage
 {
+    public Game CurrGame { get; set; }
 	public DetailledPage(Game game)
 	{
 		InitializeComponent();
         BindingContext = game;
-
+        CurrGame= game;
         avgLabel.Text = game.Average.ToString();
         AddStars(starsContainer, game.Average);
     }
@@ -36,5 +37,10 @@ public partial class DetailledPage : ContentPage
     private void AddReview(object sender, EventArgs e)
     {
         //popup add review
+    }
+
+    private void AddFollow(object sender, EventArgs e)
+    {
+        ((App)App.Current).Manager.CurrentUser.FollowAGame(CurrGame);
     }
 }

@@ -6,10 +6,12 @@ namespace Model
     {
         public IPersistance Mgrpersistance;
         public ObservableCollection<Game> GameList { get;}
+        public User CurrentUser { get; set; }
 
         public Manager(IPersistance persistance)
         {
             Mgrpersistance = persistance;
+            CurrentUser = new User("username", "bio", "email@email.com", "password88");
             GameList = persistance.LoadGame();
             if (GameList == null) { GameList = new ObservableCollection<Game>();}
         }
@@ -26,10 +28,6 @@ namespace Model
             Mgrpersistance.SaveGame(GameList);
         }
 
-        /*public void LoadGames()
-        {
-            _persistance.LoadGame();
-        }*/
         public void SaveGames()
         {
             Mgrpersistance.SaveGame(GameList);
