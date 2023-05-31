@@ -9,16 +9,16 @@ namespace Model
     public class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
-        public string? Name
+        public string Name
         {
             get => name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) name="Default";
                 name = value;
             }
         }
-        private string? name;
+        private string name;
 
         [DataMember]
         public string? Description
@@ -45,16 +45,16 @@ namespace Model
         private int year;
 
         [DataMember]
-        public string? Cover
+        public string Cover
         {
             get => cover;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
                 cover = value;
             }
         }
-        private string? cover;
+        private string cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -94,7 +94,7 @@ namespace Model
             Year = year;
             if (c_tags is not null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
-            if (string.IsNullOrWhiteSpace(cover)) Cover = "Default";
+            if (string.IsNullOrWhiteSpace(cover)) Cover = "no_cover.png";
             else Cover = cover;
             if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Default";
             else Lien = c_lien;
