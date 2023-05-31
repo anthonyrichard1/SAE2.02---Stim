@@ -1,8 +1,10 @@
 ﻿using Model;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace StimStub
 {
+    [ExcludeFromCodeCoverage]
     public class Stub : IPersistance
     {
         public ObservableCollection<Game> Games = new();

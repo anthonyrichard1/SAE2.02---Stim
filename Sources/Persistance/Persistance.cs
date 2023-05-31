@@ -5,9 +5,11 @@ using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 using Model;
 using System.Runtime.InteropServices;
+using System.Diagnostics.CodeAnalysis;
 
 namespace StimPersistance
 {
+    [ExcludeFromCodeCoverage]
     public class Persistance : IPersistance
     {
         public Persistance(string chemin)
