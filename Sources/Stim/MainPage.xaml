@@ -5,9 +5,6 @@
              Title="Accueil"
              Background="{StaticResource Secondary}">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         <ScrollView>
             <Grid BackgroundColor="{StaticResource Tertiary}">
                 <Grid.ColumnDefinitions>
