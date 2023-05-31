@@ -90,7 +90,7 @@ namespace Test
         [Fact]
         public void AddReview()
         {
-            User user = new("username", "biographie", "email@email.com", "password");
+            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
 
@@ -104,8 +104,8 @@ namespace Test
         [Fact]
         public void RemoveReview()
         {
-            User user = new("username", "biographie", "email@email.com", "password");
-            User user2 = new("username2", "biographie", "email2@email.com", "password");
+            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
+            User user2 = new(null,"username2", "biographie", "email2@email.com", "Azerty123*");
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
 
             user.AddReview(game, 2.5f, "bof");
@@ -163,7 +163,7 @@ namespace Test
         [Fact]
         public void Average()
         {
-            User user = new("username", "biographie", "email@email.com", "password");
+            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
 
             Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
 

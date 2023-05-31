@@ -46,8 +46,8 @@ namespace Model
             get => password;
             private set
             {
-                Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
-                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) return;//throw new ArgumentNullException("password");
+                Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
+                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException("password");
                 else password = value;
             }
         }
@@ -55,27 +55,27 @@ namespace Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        //public int Role { get; }
-        //private int role;
+
         public ObservableCollection<Game> Followed_Games 
         {
             get;
             private init;
         }
-        /*public string UserImage 
-        {   get => userImage;
+        public string UserImage 
+        {   
+            get => userImage;
             private set
             {
                 if (!string.IsNullOrWhiteSpace(value)) userImage = value;
                 else userImage = "no_cover.png";
             }
         }
-        private string userImage;*/
+        private string userImage;
 
-        public User(/*string userImage,*/string username, string biographie, string email, string password)
+        public User(string userImage,string username, string biographie, string email, string password)
         {
-            /*if (userImage == null) UserImage="no_cover.png";
-            else UserImage = userImage;*/
+            if (userImage == null) UserImage="no_cover.png";
+            else UserImage = userImage;
             if (username == null) Username = "Default";
             else Username = username;
             if (biographie == null) Biographie = "Default";
@@ -85,7 +85,6 @@ namespace Model
             if (password == null) throw new ArgumentNullException("password");
             else Password = password;
             Followed_Games = new ObservableCollection<Game>();
-            //Role = 0;
         }
         public void AddReview(Game game, float rate, string text)
         {

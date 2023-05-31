@@ -11,7 +11,7 @@ namespace Model
         public Manager(IPersistance persistance)
         {
             Mgrpersistance = persistance;
-            CurrentUser = new User("username", "bio", "email@email.com", "password88");
+            CurrentUser = new User(null,"username", "je suis née .... maintenat je fini à 19h30 à cause de l'IHM. GHGHTFCDXEFTGHYJKIJHNGFVCREDTGHNJIKJUHNYGVTFCREDZTGYHUNJIKJUHNYTGVFCREDRTYHUJIOUJNHYGVFRCCFTGYHUJIUJNHYTGBVCFDRRTGYHUI", "email@email.com", "password88");
             GameList = persistance.LoadGame();
             if (GameList == null) { GameList = new ObservableCollection<Game>();}
         }

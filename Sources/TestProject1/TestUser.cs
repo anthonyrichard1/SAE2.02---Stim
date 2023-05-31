@@ -7,30 +7,30 @@ namespace Test
         [Fact]
         public void Constructor()
         {
-            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user = new(null,"username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.NotNull(user);
         }
 
         [Fact]
         public void Username()
         {
-            User user = new("", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user = new(null, "", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Default", user.Username);
 
-            User user2 = new(null, "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user2 = new(null, null, "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Default",user2.Username);
         }
 
         [Fact]
         public void Biographie()
         {
-            User user = new("username", "", "adresse.mail@gmail.com", "Azerty123*");
+            User user = new(null, "username", "", "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Default", user.Biographie);
 
-            User user2 = new("username", null, "adresse.mail@gmail.com", "Azerty123*");
+            User user2 = new(null, "username", null, "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Default", user2.Biographie);
 
-            User user3 = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user3 = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
 
             string biographieOfAnUser = user3.Biographie;
             Assert.Equal("biographie", biographieOfAnUser);
@@ -39,29 +39,31 @@ namespace Test
         [Fact]
         public void Email()
         {
-            User user = new("username", "biographie", "", "Azerty123*");
+            User user = new(null, "username", "biographie", "", "Azerty123*");
             Assert.Equal("Default", user.Email);
 
-            User user2 = new("username", "biographie", null, "Azerty123*");
+            User user2 = new(null, "username", "biographie", null, "Azerty123*");
             Assert.Equal("Default", user2.Email);
         }
 
         [Fact]
         public void Password()
         {
-            User user = new("username", "biographie", "adresse.mail@gmail.com", "");
-            Assert.Null(user.Password);
 
-            Assert.Throws<ArgumentNullException>(() => new User("username", "biography", "adresse.mail@gmail.com", null));
+            Assert.Throws<ArgumentNullException>(() => new User (null, "username", "biographie", "adresse.mail@gmail.com", ""));
 
-            User user3 = new("username", "biographie", "adresse.mail@gmail.com", "54az6e");
-            Assert.Null(user3.Password);
+            Assert.Throws<ArgumentNullException>(() => new User(null, "username", "biography", "adresse.mail@gmail.com", null));
+
+            Assert.Throws<ArgumentNullException>(() => new User (null, "username", "biographie", "adresse.mail@gmail.com", "54az6e"));
+
+            User user = new(null, "username", "bio", "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Equal("Azerty123*", user.Password);
         }
 
         [Fact]
         public void AddingAndAddingGameToFollowed()
         {
-            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.NotNull(user);
             Assert.Empty(user.Followed_Games);
 
@@ -72,20 +74,11 @@ namespace Test
             user.RemoveAGame(game);
             Assert.Empty(user.Followed_Games);
         }
-        /*[Fact]
-        public void Role()
-        {
-            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal(0,user.Role);
 
-            int Perm = user.Role;
-            Assert.True(user.Role == Perm);
-        }*/
-        
         [Fact]
         public void ReviewAddingAndRemovingFromAGameViaUser()
         {
-            User user = new("username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" },"cover", "www.link.com");
             Assert.NotNull(user);
             Assert.NotNull(game);
