@@ -68,12 +68,12 @@ namespace Model #fcb773{
         {abstract}LoadUser():List<User>
     }
 
-    Game *- Review: "+/Reviews:List<Review>"
-    User o- Game: "+/FollowedGames:ObservableCollection<Game>"
-    Manager *-- IPersistance: "+/Mgrpersistance:IPersistance"
-    Manager *-- Game: "+/GameList:ObservableCollection<Game>" 
-    Manager o-- Game: "+/ReserchedGame:ObservableCollection<Game>"
-    Manager o-- User: "+/CurrentUser:User"
+    Game "0, n" *-> Review: "+/Reviews:List<Review>"
+    User "0, n" o----> Game: "+/FollowedGames:ObservableCollection<Game>"
+    Manager "1, 1" *--> IPersistance: "+/Mgrpersistance:IPersistance"
+    Manager "0, n" *-> Game: "+/GameList:ObservableCollection<Game>" 
+    Manager "0, n" o--> Game: "+/ReserchedGame:ObservableCollection<Game>"
+    Manager "0, 1" o-> User: "+/CurrentUser:User"
 }
 
 namespace StimPersistance #fcb773{
@@ -85,7 +85,7 @@ namespace StimPersistance #fcb773{
         +LoadUser():List<User>
     }
 
-    Persistance <|-- Model.IPersistance
+    Model.IPersistance <|- Persistance
 }
 
 namespace StimStub #fcb773{
@@ -96,9 +96,8 @@ namespace StimStub #fcb773{
         +LoadGame():ObservableCollection<Game>
         +LoadUser():List<User>
     }
-
-    Stub o-- Model.Game: "+/Games:ObservableCollection<Game>"
-    Stub <|- Model.IPersistance
+    Stub "0, n" o--> Model.Game: "+/Games:ObservableCollection<Game>"
+    Model.IPersistance <|-- Stub
 }
 
 @enduml
