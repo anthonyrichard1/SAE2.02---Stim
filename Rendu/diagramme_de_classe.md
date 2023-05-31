@@ -55,6 +55,7 @@ namespace Model #fcb773{
 
     class Manager{
         +Mgrpersistance:IPersistance
+        +CurrentUser:User
         +Manager(persistance:IPersistance)
         +AddGametoGamesList(game:Game):void
         +RemoveGameFromGamesList(game:Game):void
