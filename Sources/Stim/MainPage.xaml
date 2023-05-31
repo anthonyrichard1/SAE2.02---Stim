@@ -37,12 +37,12 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <SearchBar Grid.ColumnSpan="2" Placeholder="Rechercher un jeu" Margin="5"/>
-                    <SearchBar Grid.Column="0" Grid.Row="1" Placeholder="Tag 1" WidthRequest="200" HorizontalOptions="End" Margin="5"/>
-                    <SearchBar Grid.Column="1" Grid.Row="1" Placeholder="Tag 2" WidthRequest="200" HorizontalOptions="Start" Margin="5"/>
+                    <SearchBar x:Name="Game" TextChanged="SearchBar_GameChanged" Grid.ColumnSpan="2" Placeholder="Rechercher un jeu" Margin="5"/>
+                    <SearchBar x:Name="Tag1" TextChanged="SearchBar_GameChanged" Grid.Column="0" Grid.Row="1" Placeholder="Tag 1" WidthRequest="200" HorizontalOptions="End" Margin="5"/>
+                    <SearchBar x:Name="Tag2" TextChanged="SearchBar_GameChanged" Grid.Column="1" Grid.Row="1" Placeholder="Tag 2" WidthRequest="200" HorizontalOptions="Start" Margin="5"/>
                 </Grid>
 
-                <CollectionView ItemsSource="{Binding GameList}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1" Grid.Row="1">
+                <CollectionView ItemsSource="{Binding ResearchedGame}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 3"  Grid.Column="1" Grid.Row="1">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">

@@ -51,6 +51,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="MailKit" Version="4.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Persistance\Persistance.csproj" />
 	  <ProjectReference Include="..\Stim.Model\Model.csproj" />
 	  <ProjectReference Include="..\Stub\Stub.csproj" />

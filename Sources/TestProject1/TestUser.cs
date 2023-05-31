@@ -83,10 +83,6 @@ namespace Test
             Assert.NotNull(user);
             Assert.NotNull(game);
 
-
-        //    user.AddReview(game, 2.5f,"UwU");
-        //    Assert.Single(game.Reviews);
-
             user.RemoveSelfReview(game, 2.5f, "UwU");
             Assert.Empty(game.Reviews);
         }
