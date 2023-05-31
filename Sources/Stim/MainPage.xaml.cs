@@ -31,21 +31,14 @@ public partial class MainPage : ContentPage
         string Tag1Text = Tag1.Text;
         string Tag2Text = Tag2.Text;
         ((App)App.Current).Manager.ResearchedGame.Clear();
-        var filteredGames = ((App)App.Current).Manager.GameList;
-        if (Game != null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
+
+        var filteredGames = ((App)App.Current).Manager.GameList
             .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
             &&
             game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
             &&
             game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
             );
-        }
-        if (filteredGames ==null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList;
-        }
 
         foreach (var game in filteredGames)
         {
