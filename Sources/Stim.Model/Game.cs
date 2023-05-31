@@ -144,7 +144,8 @@ namespace Model
             {
                 sum += review.Rate;
             }
-            return (float)(Math.Round((sum / Reviews.Count) * 2, MidpointRounding.AwayFromZero) / 2);
+            Average= (float)(Math.Round((sum / Reviews.Count) * 2, MidpointRounding.AwayFromZero) / 2);
+            return Average;
         }
 
         public void AddReview(Review review)

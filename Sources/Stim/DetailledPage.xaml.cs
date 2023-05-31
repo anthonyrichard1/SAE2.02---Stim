@@ -11,8 +11,8 @@ public partial class DetailledPage : ContentPage
 		InitializeComponent();
         BindingContext = game;
         CurrGame= game;
-        avgLabel.Text = game.Average.ToString();
-        AddStars(starsContainer, game.Average);
+        avgLabel.Text = game.GetAvgRate().ToString();
+        AddStars(starsContainer, game.GetAvgRate());
     }
 
     private void AddStars(object sender, EventArgs e)
