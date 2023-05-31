@@ -1,4 +1,4 @@
-[![Build Status](https://codefirst.iut.uca.fr/api/badges/jade.van_brabandt/Stim/status.svg&token=4188e57c889322a13941a026c82869c25c1733a1)](https://codefirst.iut.uca.fr/jade.van_brabandt/Stim)  
+[![Build Status](https://codefirst.iut.uca.fr/api/badges/jade.van_brabandt/Stim/status.svg)](https://codefirst.iut.uca.fr/jade.van_brabandt/Stim)  
 [![Quality Gate Status](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Stim&metric=alert_status&token=4188e57c889322a13941a026c82869c25c1733a1)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Stim)
 [![Bugs](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Stim&metric=bugs&token=4188e57c889322a13941a026c82869c25c1733a1)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Stim)
 [![Code Smells](https://codefirst.iut.uca.fr/sonar/api/project_badges/measure?project=Stim&metric=code_smells&token=4188e57c889322a13941a026c82869c25c1733a1)](https://codefirst.iut.uca.fr/sonar/dashboard?id=Stim)
