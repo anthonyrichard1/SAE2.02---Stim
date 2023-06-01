@@ -1,7 +1,7 @@
 using Model;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using Application = Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific.Application;
-using Windows.Gaming.Preview.GamesEnumeration;
+//using Windows.Gaming.Preview.GamesEnumeration;
 
 namespace Stim;
 

@@ -8,5 +8,6 @@ namespace Model
         public void SaveUser(List<User> users);
         public ObservableCollection<Game> LoadGame();
         public List<User> LoadUser();
+
     }
 }

@@ -45,12 +45,14 @@ namespace StimStub
 
         public void SaveUser(List<User> users)
         {
-
+            foreach (User user in users) if (!users.Contains(user)) users.Add(user);
         }
 
         public List<User> LoadUser()
         {
-            return null;
+            List<User> tmp = new();
+
+            return tmp;
         }
     }
 }

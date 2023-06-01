@@ -28,7 +28,11 @@ namespace StimPersistance
 
         public void SaveUser(List<User> users)
         {
-            throw new NotImplementedException();
+            XmlWriterSettings settings = new() { Indent = true };
+            DataContractSerializer serializer = new(typeof(List<User>));
+
+            using (TextWriter tw = File.CreateText("users.xml"))
+            using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, users);
         }
 
         public ObservableCollection<Game> LoadGame()
@@ -43,7 +47,12 @@ namespace StimPersistance
 
         public List<User> LoadUser()
         {
-            throw new NotImplementedException();
+            if (File.Exists("users.xml"))
+            {
+                DataContractSerializer serializer = new(typeof(List<User>));
+                using (Stream stream = File.OpenRead("users.xml")) return serializer.ReadObject(stream) as List<User>;
+            }
+            return new();
         }        
     }
 }

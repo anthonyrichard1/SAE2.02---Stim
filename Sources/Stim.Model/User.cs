@@ -1,11 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace Model
 {
-    public class User : INotifyPropertyChanged
+    [DataContract]
+    public class User : INotifyPropertyChanged , IEquatable<User>
     {
+        [DataMember]
         public string Username
         {
             get => username;
@@ -16,7 +21,7 @@ namespace Model
             }
         }
         private string username;
-
+        [DataMember]
         public string Biographie 
         {
             get => biographie; 
@@ -27,7 +32,7 @@ namespace Model
             }
         }
         private string biographie;
-
+        [DataMember]
         public string Email
         {
             get => email;
@@ -40,7 +45,7 @@ namespace Model
             }
         }
         private string email;
-
+        [DataMember]
         public string Password
         {
             get => password;
@@ -55,7 +60,7 @@ namespace Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-
+        [DataMember]
         public ObservableCollection<Game> Followed_Games 
         {
             get;
@@ -86,6 +91,12 @@ namespace Model
             else Password = password;
             Followed_Games = new ObservableCollection<Game>();
         }
+        public bool Equals(User? other)
+        {
+            if (string.IsNullOrWhiteSpace(Username)) return false;
+            return other != null && Username.Equals(other.Username);
+        }
+
         public void AddReview(Game game, float rate, string text)
         {
             game.AddReview(new Review(Username, rate, text));

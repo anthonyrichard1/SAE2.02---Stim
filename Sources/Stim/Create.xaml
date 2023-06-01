@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Stim.Create"
+             Title="Create">
+    <Grid BackgroundColor="{StaticResource Tertiary}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
+        <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Image Source="no_cover.png"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Entry Placeholder="Adresse Mail" PlaceholderColor="{StaticResource Primary}" IsPassword="False" x:Name="Email" HeightRequest="50" ClearButtonVisibility="WhileEditing"/>
+                <Entry Placeholder="Username"     PlaceholderColor="{StaticResource Primary}" IsPassword="False" x:Name="Username" HeightRequest="50" Grid.Row="1" ClearButtonVisibility="WhileEditing"/>
+                <Entry Placeholder="Mot de passe" PlaceholderColor="{StaticResource Primary}" IsPassword="True" x:Name="Pswd" HeightRequest="50" Grid.Row="2" ClearButtonVisibility="WhileEditing"/>
+                <Grid Grid.Row="3" Margin="10,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Se connecter"    Clicked="Se_connecter"    HeightRequest="50" BackgroundColor="{StaticResource Gray500}"/>
+                    <Button Text="Créer un compte" Clicked="Creer_un_compte" HeightRequest="50" BackgroundColor="{StaticResource Gray500}" Grid.Column="1"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

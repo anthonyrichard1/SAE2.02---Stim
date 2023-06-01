@@ -64,6 +64,12 @@
 	  <Compile Update="DetailledPage - Copier.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	  <Compile Update="LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Create.xaml.cs">
+	    <DependentUpon>Create.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="UserInfo.xaml.cs">
 	    <DependentUpon>UserInfo.xaml</DependentUpon>
 	  </Compile>
@@ -77,6 +83,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="DetailledPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Create.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UserInfo.xaml">

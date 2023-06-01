@@ -39,7 +39,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border>
-                            <Label Text="{Binding CurrentUser.Biographie}" HeightRequest="200"/>
+                            <Label Text="{Binding CurrentUser.Biographie}" HeightRequest="200" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
                         </Border>
                         <Button ImageSource="pen.png" Grid.Column="1" MaximumHeightRequest="32" MaximumWidthRequest="32" Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="{StaticResource Gray500}"></Button>
                     </Grid>
@@ -54,16 +54,6 @@
                         <Button ImageSource="pen.png" Grid.Column="1" MaximumHeightRequest="32" MaximumWidthRequest="32" Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="{StaticResource Gray500}"></Button>
                     </Grid>
                     <UserInfo:UserInfo Bind="{Binding CurrentUser.Email}"/>
-                    <!--<Grid Margin="0,20,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border Margin="0,10,0,0" Padding="0">  
-                            <Label Text="{Binding CurrentUser.Email}"/>
-                        </Border>
-                        <Button ImageSource="pen.png" Grid.Column="1" MaximumHeightRequest="32" MaximumWidthRequest="32" Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="{StaticResource Gray500}"></Button>
-                    </Grid>-->
 
                 </VerticalStackLayout>
                 

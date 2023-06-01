@@ -8,6 +8,7 @@ namespace Model
         public ObservableCollection<Game> GameList { get;}
         public ObservableCollection<Game> ResearchedGame { get; set; }
         public User CurrentUser { get; set; }
+        public List<User> Users { get; set; }
 
         public Manager(IPersistance persistance)
         {
@@ -15,6 +16,7 @@ namespace Model
             CurrentUser = new User(null,"username", "je suis née .... maintenat je fini à 19h30 à cause de l'IHM. GHGHTFCDXEFTGHYJKIJHNGFVCREDTGHNJIKJUHNYGVTFCREDZTGYHUNJIKJUHNYTGVFCREDRTYHUJIOUJNHYGVFRCCFTGYHUJIUJNHYTGBVCFDRRTGYHUI", "email@email.com", "password88");
             GameList = persistance.LoadGame();
             ResearchedGame = persistance.LoadGame();
+            Users = persistance.LoadUser();
             if (GameList == null) { GameList = new ObservableCollection<Game>();}
         }
 
@@ -22,6 +24,11 @@ namespace Model
         {
             GameList.Add(game);
             Mgrpersistance.SaveGame(GameList);
+        }
+        public void AddUsertoUserList(User user)
+        {
+            Users.Add(user);
+            Mgrpersistance.SaveUser(Users);
         }
 
         public void RemoveGameFromGamesList(Game game)
@@ -33,6 +40,18 @@ namespace Model
         public void SaveGames()
         {
             Mgrpersistance.SaveGame(GameList);
+        }
+        public User? SearchUser(string username)
+        {
+            foreach (User user in Users)
+            {
+                if (user.Username == username) return user;
+            }
+            return null;
+        }
+        public void SaveUser()
+        {
+            Mgrpersistance.SaveUser(Users);
         }
     }
 }

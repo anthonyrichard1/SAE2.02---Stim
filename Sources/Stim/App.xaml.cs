@@ -22,6 +22,7 @@ public partial class App : Application
         {
             Manager.Mgrpersistance = new Persistance(FileSystem.Current.AppDataDirectory);
             Manager.SaveGames();
+            Manager.SaveUser();
         };
 
         return window;
