@@ -4,7 +4,12 @@ namespace Model
 {
     public class Manager
     {
-        public IPersistance Mgrpersistance;
+        public IPersistance Mgrpersistance
+        { 
+            get { return mgrpersistance; }
+            set { mgrpersistance = value; }
+        }
+        private IPersistance mgrpersistance;
         public ObservableCollection<Game> GameList { get;}
         public ObservableCollection<Game> ResearchedGame { get; set; }
         public User CurrentUser { get; set; }
@@ -13,7 +18,7 @@ namespace Model
         public Manager(IPersistance persistance)
         {
             Mgrpersistance = persistance;
-            CurrentUser = new User(null,"username", "je suis née .... maintenat je fini à 19h30 à cause de l'IHM. GHGHTFCDXEFTGHYJKIJHNGFVCREDTGHNJIKJUHNYGVTFCREDZTGYHUNJIKJUHNYTGVFCREDRTYHUJIOUJNHYGVFRCCFTGYHUJIUJNHYTGBVCFDRRTGYHUI", "email@email.com", "password88");
+            CurrentUser = new User("","username", "je suis née .... maintenat je fini à 19h30 à cause de l'IHM. GHGHTFCDXEFTGHYJKIJHNGFVCREDTGHNJIKJUHNYGVTFCREDZTGYHUNJIKJUHNYTGVFCREDRTYHUJIOUJNHYGVFRCCFTGYHUJIUJNHYTGBVCFDRRTGYHUI", "email@email.com", "password88");
             GameList = persistance.LoadGame();
             ResearchedGame = persistance.LoadGame();
             Users = persistance.LoadUser();

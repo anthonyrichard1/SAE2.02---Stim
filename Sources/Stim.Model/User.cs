@@ -66,6 +66,7 @@ namespace Model
             get;
             private init;
         }
+        [DataMember]
         public string UserImage 
         {   
             get => userImage;

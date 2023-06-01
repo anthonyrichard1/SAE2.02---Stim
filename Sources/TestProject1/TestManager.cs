@@ -26,5 +26,15 @@ namespace Test
             manager.RemoveGameFromGamesList(game);
             Assert.DoesNotContain(game, manager.GameList);
         }
+        [Fact]
+        public void AddUser()
+        {
+            IPersistance persistance = new Stub();
+            Manager manager = new(persistance);
+            User user = new("", "username", "", "gmail@gmail.com", "Azerty123*");
+            manager.AddUsertoUserList(user);
+
+            Assert.Contains(user, manager.Users);
+        }
     }
 }
