@@ -97,6 +97,10 @@ namespace Model
             if (string.IsNullOrWhiteSpace(Username)) return false;
             return other != null && Username.Equals(other.Username);
         }
+        public override int GetHashCode()
+        {
+            return Username.GetHashCode();
+        }
 
         public void AddReview(Game game, float rate, string text)
         {

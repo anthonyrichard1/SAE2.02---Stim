@@ -26,10 +26,10 @@ namespace StimPersistance
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
         }
 
-        public void SaveUser(List<User> users)
+        public void SaveUser(HashSet<User> users)
         {
             XmlWriterSettings settings = new() { Indent = true };
-            DataContractSerializer serializer = new(typeof(List<User>));
+            DataContractSerializer serializer = new(typeof(HashSet<User>));
 
             using (TextWriter tw = File.CreateText("users.xml"))
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, users);
@@ -45,12 +45,12 @@ namespace StimPersistance
             return new();
         }
 
-        public List<User> LoadUser()
+        public HashSet<User> LoadUser()
         {
             if (File.Exists("users.xml"))
             {
-                DataContractSerializer serializer = new(typeof(List<User>));
-                using (Stream stream = File.OpenRead("users.xml")) return serializer.ReadObject(stream) as List<User>;
+                DataContractSerializer serializer = new(typeof(HashSet<User>));
+                using (Stream stream = File.OpenRead("users.xml")) return serializer.ReadObject(stream) as HashSet<User>;
             }
             return new();
         }        

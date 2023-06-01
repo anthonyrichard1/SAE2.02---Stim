@@ -43,14 +43,14 @@ namespace StimStub
             return tmp;
         }
 
-        public void SaveUser(List<User> users)
+        public void SaveUser(HashSet<User> users)
         {
             foreach (User user in users) if (!users.Contains(user)) users.Add(user);
         }
 
-        public List<User> LoadUser()
+        public HashSet<User> LoadUser()
         {
-            List<User> tmp = new();
+            HashSet<User> tmp = new();
 
             return tmp;
         }

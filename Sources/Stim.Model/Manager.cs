@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Model
 {
@@ -13,7 +14,7 @@ namespace Model
         public ObservableCollection<Game> GameList { get;}
         public ObservableCollection<Game> ResearchedGame { get; set; }
         public User CurrentUser { get; set; }
-        public List<User> Users { get; set; }
+        public HashSet<User> Users { get; set; }
 
         public Manager(IPersistance persistance)
         {
@@ -22,7 +23,10 @@ namespace Model
             GameList = persistance.LoadGame();
             ResearchedGame = persistance.LoadGame();
             Users = persistance.LoadUser();
-            if (GameList == null) { GameList = new ObservableCollection<Game>();}
+            if (GameList == null) 
+            {
+                GameList = new ObservableCollection<Game>();
+            }
         }
 
         public void AddGametoGamesList(Game game)
