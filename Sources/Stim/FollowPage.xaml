@@ -16,10 +16,10 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.RowSpan="2"/>
+            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.RowSpan="2"/>
 
-            <CollectionView ItemsSource="{Binding Followed_Games}" Grid.Column="1" SelectionChanged="GoToDetail">
+            <CollectionView ItemsSource="{Binding Followed_Games}" SelectionMode="Single" Grid.Column="1" SelectionChanged="GoToDetail">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border HeightRequest="150">

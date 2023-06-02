@@ -34,7 +34,7 @@ public partial class AddGamePage : ContentPage
         }
         //      //if (_ImgPath!=null) NameEntry.Text + ".png";
         //      //System.IO.File.Copy(_ImgPath, /**/, true);
-        await this.ShowPopupAsync(new AddGameMessagePopup(message));
+        await this.ShowPopupAsync(new MessagePopup(message));
     }
 
     private async void Button_Clicked(object sender, EventArgs e)

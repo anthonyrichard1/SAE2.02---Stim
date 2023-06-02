@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using Model;
 using StimPersistance;
 
@@ -39,8 +40,9 @@ public partial class DetailledPage : ContentPage
         //popup add review
     }
 
-    private void AddFollow(object sender, EventArgs e)
+    private async void AddFollow(object sender, EventArgs e)
     {
+        await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
         ((App)App.Current).Manager.CurrentUser.FollowAGame(CurrGame);
     }
 }
