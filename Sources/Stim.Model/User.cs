@@ -127,5 +127,10 @@ namespace Model
             if (!Followed_Games.Contains(game)) return;
             Followed_Games.Remove(game);
         }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as User);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace Model
         public Manager(IPersistance persistance)
         {
             Mgrpersistance = persistance;
-            CurrentUser = new User("","username", "je suis née .... maintenat je fini à 19h30 à cause de l'IHM. GHGHTFCDXEFTGHYJKIJHNGFVCREDTGHNJIKJUHNYGVTFCREDZTGYHUNJIKJUHNYTGVFCREDRTYHUJIOUJNHYGVFRCCFTGYHUJIUJNHYTGBVCFDRRTGYHUI", "email@email.com", "password88");
+            CurrentUser = new User("","", "", "", "Azerty123*");
             GameList = persistance.LoadGame();
             ResearchedGame = persistance.LoadGame();
             Users = persistance.LoadUser();
