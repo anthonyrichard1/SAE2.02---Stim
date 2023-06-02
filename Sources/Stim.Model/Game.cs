@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -9,16 +10,20 @@ namespace Model
     public class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
-        public string Name
+        public string? Name
         {
             get => name;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) name="Default";
-                name = value;
+                else
+                {
+                    name = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string name;
+        private string? name;
 
         [DataMember]
         public string? Description
@@ -27,7 +32,11 @@ namespace Model
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
-                description = value;
+                else
+                {
+                    description = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
         private string? description;
@@ -39,22 +48,30 @@ namespace Model
             private set
             {
                 if (value < 1957 || value > 2023) return;
-                year = value;
+                else
+                {
+                    year = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
         private int year;
 
         [DataMember]
-        public string Cover
+        public string? Cover
         {
             get => cover;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
-                cover = value;
+                else
+                {
+                    cover = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string cover;
+        private string? cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -63,7 +80,11 @@ namespace Model
             private set
             {
                 if (value == null || value.Count > 3) return;
-                tags = value;
+                else
+                {
+                    tags = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
         private ObservableCollection<string> tags;
@@ -72,18 +93,31 @@ namespace Model
         public List<Review> Reviews { get; private init; }
 
         [DataMember]
-        public float Average { get; private set; }
+        public float Average
+        {
+            get => average;
+            private set
+            {
+                average = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private float average;
 
         [DataMember]
-        public string Lien { 
+        public string? Lien { 
             get => lien;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
-                lien = value;
+                else
+                {
+                    lien = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string lien;
+        private string? lien;
 
         public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {
@@ -103,6 +137,14 @@ namespace Model
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public override int GetHashCode()
         {
