@@ -17,7 +17,7 @@ namespace Model
             get => username;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) value = "Default";
+                if (string.IsNullOrWhiteSpace(value)) username = "Default";
                 else
                 {
                     username = value;
@@ -32,7 +32,7 @@ namespace Model
             get => biographie; 
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) value = "Default";
+                if (string.IsNullOrWhiteSpace(value)) biographie = "Default";
                 else
                 {
                     biographie = value;
