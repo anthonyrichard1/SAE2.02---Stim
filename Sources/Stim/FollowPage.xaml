@@ -16,41 +16,21 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
-            <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.Row="1"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.Row="1"/>
 
-            <Grid Grid.Column="1" Grid.Row="1" Margin="0,10,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
-                <Border>
-                    <Grid HeightRequest="300">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border>
-                            <Image Source="eldenring.jpg" Grid.Column="0" VerticalOptions="Start" HeightRequest="300"/>
+            <CollectionView ItemsSource="{Binding Followed_Games}" Grid.Column="1" SelectionChanged="GoToDetail">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border HeightRequest="150">
+                            <Grid ColumnDefinitions="*, *" RowDefinitions="*">
+                                <Image Source="{Binding Cover}"/>
+                                <Label Grid.Column="1"  Text="{Binding Name}"/>
+                            </Grid>
                         </Border>
-                        <Grid Grid.Column="1" Margin="10,10,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Label Text="Nom du jeu" TextColor="White" VerticalTextAlignment="Start" FontSize="25"/>
-                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non est elementum, facilisis ipsum id, facilisis ipsum. Sed efficitur erat ut libero pretium, non aliquam ex vehicula. Nam varius, lectus sit amet accumsan malesuada, justo urna iaculis velit, vitae sagittis felis orci sed eros. Curabitur vitae tristique ligula. Sed mauris tortor, efficitur et neque dignissim, dapibus scelerisque risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut pretium blandit diam ac laoreet. Donec non justo magna. Proin justo est, egestas ut mauris eu, sagittis fringilla leo. Aliquam erat volutpat. Sed auctor felis dui, quis eleifend eros feugiat sodales. Maecenas at ligula sit amet lacus suscipit congue. Fusce consequat iaculis augue vel efficitur. Etiam posuere libero eget libero finibus consectetur.
-Morbi mattis sit amet ligula sit amet molestie. Proin lobortis mi a eros eleifend bibendum. Donec arcu nibh, accumsan sit amet blandit vel, tincidunt dignissim eros. Vestibulum faucibus diam vel est porta rhoncus. Nunc scelerisque odio id diam viverra, id auctor magna placerat. Nam mollis urna a elit facilisis, a lobortis sapien porta. Maecenas sit amet diam tincidunt, fringilla ligula sit amet, vestibulum dolor. Proin pulvinar velit non turpis dictum bibendum. Phasellus a porta ligula.
-Suspendisse vulputate augue id quam accumsan imperdiet. Morbi tincidunt vulputate tellus, quis maximus felis tincidunt ut. Vestibulum accumsan quam sed posuere maximus. Suspendisse quis lacus ut quam facilisis mollis sed at purus. Maecenas sollicitudin augue leo, in mattis elit dignissim sed. Etiam lobortis quam et lectus posuere, sed mollis mi sodales. Nunc id ante quis mauris euismod mattis. Maecenas orci nibh, hendrerit in felis sit amet, facilisis tristique nisi. Aliquam quis dui ut urna rutrum aliquam. Vivamus iaculis interdum ipsum, id scelerisque magna. Nunc purus est, hendrerit quis neque eget, varius semper nunc. Nulla facilisi. Cras dignissim auctor libero, eu blandit orci pharetra vel."
-                                   TextColor="White" VerticalTextAlignment="Start" Grid.Row="1"/>
-                        </Grid>
-
-                    </Grid>
-                </Border>
-            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
     </ScrollView>
 </ContentPage>
