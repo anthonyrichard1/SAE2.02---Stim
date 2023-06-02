@@ -20,10 +20,11 @@ public partial class LoginPage : ContentPage
 				if (user.Password == Pswd.Text)
 				{
 					((App)App.Current).Manager.CurrentUser = user;
-					await Navigation.PushAsync(new MainPage());
-				}
+                    Application.Current.MainPage = new AppShell();
+                    await Shell.Current.GoToAsync("//MainPage");
+                }
 
-				else throw new NotImplementedException();
+                else throw new NotImplementedException();
 			}
 			else
 			{
@@ -34,6 +35,6 @@ public partial class LoginPage : ContentPage
 
     private async void Creer_un_compte(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Create());
+        await Shell.Current.GoToAsync("//MainPage");
     }
 }

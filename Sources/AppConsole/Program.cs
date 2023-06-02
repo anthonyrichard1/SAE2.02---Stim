@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace AppConsole
 {
     [ExcludeFromCodeCoverage]
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {

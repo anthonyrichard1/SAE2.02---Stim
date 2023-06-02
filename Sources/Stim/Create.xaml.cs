@@ -19,7 +19,8 @@ public partial class Create : ContentPage
                 {
                     ((App)App.Current).Manager.AddUsertoUserList(new("", Username.Text, "", Email.Text, Pswd.Text));
                     ((App)App.Current).Manager.CurrentUser = ((App)App.Current).Manager.SearchUser(Username.Text);
-                    await Navigation.PushAsync(new MainPage());
+                    Application.Current.MainPage = new AppShell();
+                    await Shell.Current.GoToAsync("//MainPage");
                 }
                 else throw new NotImplementedException();
             }
@@ -28,6 +29,7 @@ public partial class Create : ContentPage
     }
     private async void Se_connecter(object sender, EventArgs e)
     {
+        //Ca ça marche pas faut une autre commande, Marc svp aide moi
         await Navigation.PushAsync(new LoginPage());
     }
 }

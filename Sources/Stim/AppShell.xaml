@@ -10,9 +10,6 @@
     >
 
     <FlyoutItem>
-        <ShellContent Title="Login"
-                  ContentTemplate="{DataTemplate views:LoginPage}"
-                  Route="LoginPage"/>
         <ShellContent Title="Accueil"
                       ContentTemplate="{DataTemplate views:MainPage}"
                       Route="MainPage"/>
