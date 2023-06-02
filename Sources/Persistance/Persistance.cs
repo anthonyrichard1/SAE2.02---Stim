@@ -40,7 +40,7 @@ namespace StimPersistance
             if (File.Exists("games.xml"))
             {
                 DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
-                using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game>;
+                using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game> ?? new();
             }
             return new();
         }
@@ -50,7 +50,7 @@ namespace StimPersistance
             if (File.Exists("users.xml"))
             {
                 DataContractSerializer serializer = new(typeof(HashSet<User>));
-                using (Stream stream = File.OpenRead("users.xml")) return serializer.ReadObject(stream) as HashSet<User>;
+                using (Stream stream = File.OpenRead("users.xml")) return serializer.ReadObject(stream) as HashSet<User> ?? new();
             }
             return new();
         }        

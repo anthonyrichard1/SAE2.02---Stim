@@ -34,9 +34,9 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Entry Text="Adresse@adresse.com" Placeholder="Adresse Mail" PlaceholderColor="{StaticResource Primary}" IsPassword="False" x:Name="Email" HeightRequest="50" ClearButtonVisibility="WhileEditing"/>
+                <Entry Placeholder="Adresse Mail" PlaceholderColor="{StaticResource Primary}" IsPassword="False" x:Name="Email" HeightRequest="50" ClearButtonVisibility="WhileEditing"/>
                 <Entry Placeholder="Username"     PlaceholderColor="{StaticResource Primary}" IsPassword="False" x:Name="Username" HeightRequest="50" Grid.Row="1" ClearButtonVisibility="WhileEditing"/>
-                <Entry Text="Azerty123*" Placeholder="Mot de passe" PlaceholderColor="{StaticResource Primary}" IsPassword="True" x:Name="Pswd" HeightRequest="50" Grid.Row="2" ClearButtonVisibility="WhileEditing"/>
+                <Entry Placeholder="Mot de passe" PlaceholderColor="{StaticResource Primary}" IsPassword="True" x:Name="Pswd" HeightRequest="50" Grid.Row="2" ClearButtonVisibility="WhileEditing"/>
                 <Grid Grid.Row="3" Margin="10,0,0,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -46,6 +46,8 @@
                     <Button Text="Créer un compte" Clicked="Creer_un_compte" HeightRequest="50" BackgroundColor="{StaticResource Gray500}" Grid.Column="1"/>
                 </Grid>
             </Grid>
+            <HorizontalStackLayout x:Name="Error" Grid.Row="2">
+            </HorizontalStackLayout>
         </Grid>
     </Grid>
 </ContentPage>

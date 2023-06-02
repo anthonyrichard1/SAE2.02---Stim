@@ -44,6 +44,9 @@
                     <Button Text="Créer un compte" Clicked="Creer_un_compte" HeightRequest="50" BackgroundColor="{StaticResource Gray500}" Grid.Column="1"/>
                 </Grid>
             </Grid>
+            <HorizontalStackLayout x:Name="Error" Grid.Row="2">
+                
+            </HorizontalStackLayout>
         </Grid>
     </Grid>
 </ContentPage>

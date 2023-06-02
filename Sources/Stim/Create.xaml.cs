@@ -1,3 +1,4 @@
+using Microsoft.Maui.Graphics;
 using System.Text.RegularExpressions;
 
 namespace Stim;
@@ -10,7 +11,8 @@ public partial class Create : ContentPage
 	}
     private async void Creer_un_compte(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(Username.Text) || !string.IsNullOrWhiteSpace(Pswd.Text) || !string.IsNullOrWhiteSpace(Email.Text))
+        Error.Clear();
+        if (!string.IsNullOrWhiteSpace(Username.Text) && !string.IsNullOrWhiteSpace(Pswd.Text) && !string.IsNullOrWhiteSpace(Email.Text))
         {
             if (((App)App.Current).Manager.SearchUser(Username.Text) == null)
             {
@@ -22,14 +24,15 @@ public partial class Create : ContentPage
                     Application.Current.MainPage = new AppShell();
                     await Shell.Current.GoToAsync("//MainPage");
                 }
-                else throw new NotImplementedException();
+                else Error.Children.Add(new Label { Text = "Mot de passe incorrect", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
             }
-            else throw new NotImplementedException();
+            else Error.Children.Add(new Label { Text = "Ce nom d'utilisateur est déjà pris", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
         }
+        else Error.Children.Add(new Label { Text = "Champs vides", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
     }
-    private async void Se_connecter(object sender, EventArgs e)
+    private void Se_connecter(object sender, EventArgs e)
     {
         //Ca ça marche pas faut une autre commande, Marc svp aide moi
-        await Navigation.PushAsync(new LoginPage());
+        Application.Current.MainPage = new LoginPage();
     }
 }
