@@ -33,58 +33,15 @@ public partial class MainPage : ContentPage
         string Tag2Text = Tag2.Text;
         ((App)App.Current).Manager.ResearchedGame.Clear();
         IEnumerable<Game> filteredGames = ((App)App.Current).Manager.GameList;
-        if (GameText != null && Tag1Text != null && Tag2.Text != null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
+        if (GameText!=null) filteredGames = filteredGames
             .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
-            &&
-            game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            &&
-            game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
             );
-        }
-        else if (GameText == null && Tag1Text !=null && Tag2Text !=null)
-        {
-                filteredGames = ((App)App.Current).Manager.GameList
-                .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                &&
-                game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                );
-        }
-        else if (GameText != null && Tag1Text == null && Tag2Text != null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
-            .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
-            &&
-            game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            );
-        }
-        else if (GameText != null && Tag1Text != null && Tag2Text == null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
-            .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
-            &&
-            game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            );
-        }
-        else if (GameText == null && Tag1Text==null && Tag2Text!=null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
-            .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            );
-        }
-        else if (GameText==null &&Tag1Text!=null&& Tag2Text ==null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
+        if (Tag1Text != null) filteredGames = filteredGames
             .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
             );
-        }
-        else if (GameText!=null&& Tag1Text == null  && Tag2Text==null)
-        {
-            filteredGames = ((App)App.Current).Manager.GameList
-            .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
+        if (Tag2Text != null) filteredGames = filteredGames
+            .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
             );
-        }
 
         foreach (var game in filteredGames)
         {
