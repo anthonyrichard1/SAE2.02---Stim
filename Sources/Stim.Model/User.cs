@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,54 +12,77 @@ namespace Model
     public class User : INotifyPropertyChanged , IEquatable<User>
     {
         [DataMember]
-        public string Username
+        public string? Username
         {
             get => username;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) value = "Default";
-                username = value;
+                else
+                {
+                    username = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string username;
+        private string? username;
         [DataMember]
-        public string Biographie 
+        public string? Biographie 
         {
             get => biographie; 
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) value = "Default";
-                biographie = value;
+                else
+                {
+                    biographie = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string biographie;
+        private string? biographie;
         [DataMember]
-        public string Email
+        public string? Email
         {
             get => email;
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
                 if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
+                {
                     email = value;
+                    NotifyPropertyChanged();
+                }
                 else email = "Default";
             }
         }
-        private string email;
+        private string? email;
         [DataMember]
-        public string Password
+        public string? Password
         {
             get => password;
             private set
             {
                 Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
                 if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException("password");
-                else password = value;
+                else
+                {
+                    password = value;
+                    NotifyPropertyChanged();
+                }
             }
         }
-        private string password;
+        private string? password;
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         [DataMember]
         public ObservableCollection<Game> Followed_Games 
@@ -67,7 +91,7 @@ namespace Model
             private init;
         }
         [DataMember]
-        public string UserImage 
+        public string? UserImage 
         {   
             get => userImage;
             private set
@@ -76,7 +100,7 @@ namespace Model
                 else userImage = "no_cover.png";
             }
         }
-        private string userImage;
+        private string? userImage;
 
         public User(string userImage,string username, string biographie, string email, string password)
         {
@@ -128,9 +152,12 @@ namespace Model
             Followed_Games.Remove(game);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as User);
+            if (obj == null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return this.Equals((User)obj);
         }
     }
 }
