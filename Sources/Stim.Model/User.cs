@@ -15,7 +15,7 @@ namespace Model
         public string? Username
         {
             get => username;
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value)) username = "Default";
                 else

@@ -20,6 +20,6 @@ public partial class ProfilPage : ContentPage
     {
         var newName = await this.ShowPopupAsync(new EntryPopup("Username"));
         if (string.IsNullOrWhiteSpace(newName as string)) await this.ShowPopupAsync(new MessagePopup("Nom d'utilisateur invalide"));
-        else ((App)App.Current).Manager.CurrentUser.ChangeUsername(newName as string);
+        else ((App)App.Current).Manager.CurrentUser.Username = (newName as string);
     }
 }

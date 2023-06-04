@@ -27,7 +27,6 @@ public partial class MainPage : ContentPage
 
     private void SearchBar_GameChanged(object sender, TextChangedEventArgs e)
     {
-        SearchBar searchBar = (SearchBar)sender;
         string GameText = Game.Text;
         string Tag1Text = Tag1.Text;
         string Tag2Text = Tag2.Text;
@@ -47,7 +46,5 @@ public partial class MainPage : ContentPage
         {
             ((App)App.Current).Manager.ResearchedGame.Add(game);
         }
-
-
     }
 }

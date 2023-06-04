@@ -10,8 +10,7 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
-        //Faut changer le boot sur LoginPage plus tard, j'ai mit create là pour pouvoir use l'appli, ce référer au comment sur create et loginpage.
-        MainPage = new Create();
+        MainPage = new LoginPage();
         if (File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))) Manager = new Manager(new Persistance(FileSystem.Current.AppDataDirectory));
         else Manager = new(new Stub());
     }

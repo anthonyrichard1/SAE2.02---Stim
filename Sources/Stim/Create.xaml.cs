@@ -24,7 +24,7 @@ public partial class Create : ContentPage
                     Application.Current.MainPage = new AppShell();
                     await Shell.Current.GoToAsync("//MainPage");
                 }
-                else Error.Children.Add(new Label { Text = "Mot de passe incorrect", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
+                else Error.Children.Add(new Label { Text = "Mot de passe invalide, votre mot de passe doit contenir une Majuscule, une minuscule, un chiffre et faire au moins 8 caractères", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
             }
             else Error.Children.Add(new Label { Text = "Ce nom d'utilisateur est déjà pris", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
         }
