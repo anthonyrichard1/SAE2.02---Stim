@@ -22,14 +22,14 @@ public partial class DetailledPage : ContentPage
         }
     }
 
-    private void AddStars(object sender, EventArgs e)
+    public void AddStars(object sender, EventArgs e)
     {
         HorizontalStackLayout layout = sender as HorizontalStackLayout;
         Review rev = layout.BindingContext as Review;
         AddStars(layout, rev.Rate);
     }
 
-    private static void AddStars(HorizontalStackLayout container, float rate)
+    public static void AddStars(HorizontalStackLayout container, float rate)
     {
         for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
         if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });

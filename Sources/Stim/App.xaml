@@ -9,6 +9,73 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate x:Key="tagsTemplate">
+                <Label Padding="5,0,0,0" Margin="0" Text="{Binding}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="gameTemplate">
+                <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
+                    <Grid HeightRequest="635">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="900" HeightRequest="455"/>
+                        <Label FontAttributes="Bold" FontSize="30" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="Tags :" Margin="0" Padding="0"/>
+                            <CollectionView ItemsSource="{Binding Tags}" Grid.Row="1" Margin="0" ItemTemplate="{StaticResource tagsTemplate}"/>
+
+                            <Label Text="{Binding Year}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="reviewTemplate">
+                <VerticalStackLayout>
+                    <HorizontalStackLayout> <!--BindingContextChanged="AddStars"-->
+                        <Label Text="{Binding AuthorName}" FontSize="20"/>
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding Text}"/>
+                </VerticalStackLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="followTemplate">
+                <Border HeightRequest="150">
+                    <Grid ColumnDefinitions="*, *" RowDefinitions="*">
+                        <Image Source="{Binding Cover}"/>
+                        <Label Grid.Column="1"  Text="{Binding Name}"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="followLoginTemplate">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border>
+                        <Image Source="{Binding Cover}" Grid.Column="0" HeightRequest="100"/>
+                    </Border>
+                    <Border Grid.Column="1">
+                        <Label Text="{Binding Name}"/>
+                    </Border>
+                    <Border Grid.Column="2">
+                        <Label Text="X" FontSize="50"/>
+                    </Border>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

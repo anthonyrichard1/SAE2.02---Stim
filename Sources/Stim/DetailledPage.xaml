@@ -53,13 +53,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Text="Tags :"/>
-                        <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Label Padding="10,0,0,0" Text="{Binding}"/>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                        <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}" ItemTemplate="{StaticResource tagsTemplate}"/>
                     </Grid>
 
                     <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/>
@@ -69,18 +63,8 @@
 
                     <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
                         <Label Text="Avis de la communauté :" FontSize="30"/>
-                        <CollectionView ItemsSource="{Binding Reviews}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <VerticalStackLayout>
-                                        <HorizontalStackLayout BindingContextChanged="AddStars">
-                                            <Label Text="{Binding AuthorName}" FontSize="20"/>
-                                        </HorizontalStackLayout>
-                                        <Label Text="{Binding Text}"/>
-                                    </VerticalStackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                        <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
+
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
