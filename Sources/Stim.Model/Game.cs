@@ -169,7 +169,7 @@ namespace Model
         public override string ToString()
         {
             StringBuilder builder = new();
-            builder.Append($"{Name} : {Description} : {Year} : {Cover}\n");
+            builder.Append($"{Name} : {Description} : {Year} : {Cover} : {lien}\n");
 
             foreach (Review review in Reviews)
             {
