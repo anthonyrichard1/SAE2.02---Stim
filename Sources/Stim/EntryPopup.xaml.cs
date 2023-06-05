@@ -14,4 +14,9 @@ public partial class EntryPopup : Popup
     {
         if (!string.IsNullOrWhiteSpace(Entrytxt.Text)) Close(Entrytxt.Text);
     }
+
+    private void Valider(object sender, EventArgs e)
+    {
+
+    }
 }
