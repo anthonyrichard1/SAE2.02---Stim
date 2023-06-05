@@ -8,11 +8,12 @@ namespace AppConsole
     public static class Program
     {
         private static Manager Manager { get; set; } = new(new Stub());        
-        private static string? choixstr;
-        private static int choixint;
 
         public static void Main(string[] args)
         {
+            string? choixstr;
+            int choixint = 0;
+
             while (choixint != 99)
             {
                 Console.WriteLine("-----MENU PRINCIPAL-----\n" +
@@ -29,7 +30,6 @@ namespace AppConsole
                 "99-Quitter");
 
                 choixstr = Console.ReadLine();
-                choixint = 0;
 
                 if (int.TryParse(choixstr, out choixint)) switch (choixint)
                     {
@@ -104,12 +104,12 @@ namespace AppConsole
                             Console.WriteLine("Nom du jeu : ");
                             string? name3 = Console.ReadLine();
                             bool find2 = false;
-                            foreach (Game g in Manager.GameList) if (g.Name == name3) foreach (Review rev in g.Reviews)
-                                    {
-                                        Console.WriteLine(rev);
-                                        find2 = true;
-                                        break;
-                                    }
+                            foreach (Game g in Manager.GameList) if (g.Name == name3)
+                                {
+                                    foreach (Review rev in g.Reviews) Console.WriteLine(rev);
+                                    find2 = true;
+                                    break;
+                                }
                             if (!find2) Console.WriteLine("Jeu suivant introuvable : " + name3);     
                             break;
 
@@ -129,7 +129,7 @@ namespace AppConsole
                                     Review rev = new(username2, rateint, revstr);
                                     g.AddReview(rev);
                                     Console.WriteLine("Commentaire ajouté !");
-                                    find2 = true;
+                                    find3 = true;
                                     break;
                                     }
                             if (!find3) Console.WriteLine("Jeu suivant introuvable : " + name4);
