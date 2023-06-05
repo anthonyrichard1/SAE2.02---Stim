@@ -7,21 +7,21 @@ namespace StimStub
     [ExcludeFromCodeCoverage]
     public class Stub : IPersistance
     {
-        public ObservableCollection<Game> Games = new();
+        public List<Game> Games = new();
 
         public Stub()
         {
             Games = LoadGame();
         }
 
-        public void SaveGame(ObservableCollection<Game> games)
+        public void SaveGame(List<Game> games)
         {
             foreach (Game game in games) if (!Games.Contains(game)) Games.Add(game);
         }
 
-        public ObservableCollection<Game> LoadGame()
+        public List<Game> LoadGame()
         {
-            ObservableCollection<Game> tmp = new();
+            List<Game> tmp = new();
 
             tmp.Add(new("Elden Ring", "Elden Ring est un jeu de rôle d'action de 2022 qui a été développé par FromSoftware, publié par Bandai Namco Entertainment et réalisé par Hidetaka Miyazaki avec la construction du monde fournie par l'écrivain fantastique George R. R. Martin. Il est sorti sur PlayStation 4, PlayStation 5, Microsoft Windows, Xbox One et Xbox Series X / S le 25 février. Les joueurs contrôlent un personnage de joueur personnalisable qui est en quête de réparer l'Elden Ring et de devenir le nouveau Elden Lord.\r\n\r\nElden Ring est présenté à travers une perspective à la troisième personne; les joueurs parcourent librement son monde ouvert interactif. Les six zones principales sont traversées en utilisant le coursier Torrent du personnage du joueur comme principal mode de déplacement. Des donjons cachés linéaires peuvent être explorés pour trouver des objets utiles. Les joueurs peuvent utiliser plusieurs types d'armes et de sorts magiques, y compris l'engagement non direct activé par la mécanique furtive. Partout dans le monde du jeu, les points de contrôle permettent des déplacements rapides et permettent aux joueurs d'améliorer leurs attributs en utilisant une monnaie du jeu appelée Runes. Elden Ring propose un mode multijoueur en ligne dans lequel les joueurs peuvent se rejoindre pour des combats coopératifs et joueur contre joueur.\r\n\r\nLors de la planification, FromSoftware voulait créer un jeu en monde ouvert avec un gameplay similaire à Dark Souls ; la société voulait qu'Elden Ring agisse comme une évolution du premier titre éponyme de la série. Miyazaki admirait le travail de Martin, dont il espérait que les contributions produiraient un récit plus accessible que ceux des jeux précédents de la société. Martin a eu la liberté illimitée de concevoir la trame de fond tandis que Miyazaki était l'auteur principal du récit du jeu. Les développeurs se sont concentrés sur l'échelle environnementale, le jeu de rôle et l'histoire ; l'échelle a nécessité la construction de plusieurs structures à l'intérieur du monde ouvert.\r\n\r\nElden Ring a été acclamé par la critique; les critiques ont loué son monde ouvert, ses systèmes de jeu et son cadre, mais certains ont critiqué ses performances techniques. Il a remporté plusieurs prix du jeu de l'année et s'est vendu à plus de 20 millions d'exemplaires en un an. Une extension appelée Shadow of the Erdtree a été annoncée en février 2023.", 2022, new List<string> { "Action", "Solo", "RPG" }, "elden_ring.jpg", "https://www.instant-gaming.com/fr/4824-acheter-elden-ring-pc-jeu-steam-europe/"));
             tmp[0].AddReview(new("User 1", 5, "C'est trop bien"));

@@ -4,9 +4,9 @@ namespace Model
 {
     public interface IPersistance
     {
-        public void SaveGame(ObservableCollection<Game> games);
+        public void SaveGame(List<Game> games);
         public void SaveUser(HashSet<User> users);
-        public ObservableCollection<Game> LoadGame();
+        public List<Game> LoadGame();
         public HashSet<User> LoadUser();
 
     }

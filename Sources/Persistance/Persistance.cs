@@ -17,10 +17,10 @@ namespace StimPersistance
             Directory.SetCurrentDirectory(chemin);
         }
 
-        public void SaveGame(ObservableCollection<Game> games)
+        public void SaveGame(List<Game> games)
         {
             XmlWriterSettings settings = new() { Indent = true };
-            DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
+            DataContractSerializer serializer = new(typeof(List<Game>));
 
             using (TextWriter tw = File.CreateText("games.xml"))
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
@@ -35,12 +35,12 @@ namespace StimPersistance
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, users);
         }
 
-        public ObservableCollection<Game> LoadGame()
+        public List<Game> LoadGame()
         {
             if (File.Exists("games.xml"))
             {
-                DataContractSerializer serializer = new(typeof(ObservableCollection<Game>));
-                using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as ObservableCollection<Game> ?? new();
+                DataContractSerializer serializer = new(typeof(List<Game>));
+                using (Stream stream = File.OpenRead("games.xml")) return serializer.ReadObject(stream) as List<Game> ?? new();
             }
             return new();
         }

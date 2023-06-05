@@ -16,20 +16,20 @@ public partial class Create : ContentPage
         {
             if (((App)App.Current).Manager.SearchUser(Username.Text) == null)
             {
-                Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
-                if (rg.IsMatch(Pswd.Text))
+                Regex rg = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                if (rg.IsMatch(Email.Text))
                 {
-                    ((App)App.Current).Manager.AddUsertoUserList(new("", Username.Text, "", Email.Text, Pswd.Text));
-                    ((App)App.Current).Manager.CurrentUser = ((App)App.Current).Manager.SearchUser(Username.Text);
-                    Application.Current.MainPage = new AppShell();
-                    await Shell.Current.GoToAsync("//MainPage");
+                    rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
+                    if (rg.IsMatch(Pswd.Text))
+                    {
+                        ((App)App.Current).Manager.AddUsertoUserList(new("", Username.Text, "", Email.Text, Pswd.Text));
+                        ((App)App.Current).Manager.CurrentUser = ((App)App.Current).Manager.SearchUser(Username.Text);
+                        Application.Current.MainPage = new AppShell();
+                        await Shell.Current.GoToAsync("//MainPage");
+                    }
+                    else Error.Children.Add(new Label { Text = "Mot de passe invalide, votre mot de passe doit contenir une Majuscule, une minuscule, un chiffre et faire au moins 8 caractères", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
                 }
-                else Error.Children.Add(new Label { Text = "Mot de passe invalide, votre mot de passe doit contenir une Majuscule, une minuscule, un chiffre et faire au moins 8 caractères", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
-                rg = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                /*if ( rg.IsMatch )
-                {
-
-                }*/
+                else Error.Children.Add(new Label { Text = "Email invalide", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
             }
             else Error.Children.Add(new Label { Text = "Ce nom d'utilisateur est déjà pris", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
         }
