@@ -20,7 +20,7 @@ namespace AppConsole
 
         private static void Menu()
         {
-            while (true)
+            while (choixint != 99)
             {
                 Console.WriteLine("-----MENU PRINCIPAL-----\n" +
                 "1-Ajouter un jeu\n" +
@@ -32,7 +32,8 @@ namespace AppConsole
                 "7-Ajouter un commentaire\n" +
                 "8-Supprimer un commentaire\n" +
                 "9-Ajouter jeu suivis\n" +
-                "10-Supprimer jeu suivis\n");
+                "10-Supprimer jeu suivis\n" +
+                "99-Quitter");
 
                 choixstr = Console.ReadLine();
                 choixint = 0;
@@ -46,6 +47,7 @@ namespace AppConsole
                             string? description = Console.ReadLine();
                             string? year="";
                             int yearint=0;
+
                             while (!int.TryParse(year, out yearint))
                             {
                                 Console.WriteLine("Année du jeu : ");
