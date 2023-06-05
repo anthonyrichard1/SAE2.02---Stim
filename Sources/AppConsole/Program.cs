@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.VisualBasic;
+using Model;
 using StimPersistance;
 using StimStub;
 using System.Diagnostics.CodeAnalysis;
@@ -10,9 +11,7 @@ namespace AppConsole
     {
         static void Main(string[] args)
         {
-            Manager stub = new(new Stub());
-            Manager persistance = new(new Persistance("../../../../"));
-            persistance.Mgrpersistance.SaveGame(stub.GameList);
+            Console.WriteLine("");
         }
     }
 }
