@@ -61,6 +61,13 @@ namespace Test
         }
 
         [Fact]
+        public void UserImage()
+        {
+            User user = new("userimage", "username", "bio", "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Equal("userimage", user.UserImage);
+        }
+
+        [Fact]
         public void AddingAndAddingGameToFollowed()
         {
             User user = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
@@ -86,6 +93,21 @@ namespace Test
             user.RemoveSelfReview(game, 2.5f, "UwU");
             Assert.Empty(game.Reviews);
         }
-        
+
+        [Fact]
+        public void Eq()
+        {
+            User user = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user2 = new("userimage", "username2", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user3 = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            User user4 = null;
+            string user5 = "";
+
+            Assert.False(user.Equals(user2 as User));
+            Assert.False(user.Equals(user2 as object));
+            Assert.True(user.Equals(user3 as object));
+            Assert.False(user.Equals(user4 as object));
+            Assert.False(user.Equals(user2 as object));
+        }
     }
 }
