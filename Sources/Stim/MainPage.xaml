@@ -39,7 +39,7 @@
                     <SearchBar x:Name="Tag2" TextChanged="SearchBar_GameChanged" Grid.Column="1" Grid.Row="1" Placeholder="Tag 2" WidthRequest="200" HorizontalOptions="Start" Margin="5"/>
                 </Grid>
 
-                <CollectionView ItemsSource="{Binding ResearchedGame}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 5"  Grid.Column="1" Grid.Row="1" ItemTemplate="{StaticResource gameTemplate}"/>
+                <CollectionView ItemsSource="{Binding}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 5"  Grid.Column="1" Grid.Row="1" ItemTemplate="{StaticResource gameTemplate}"/>
             </Grid>
         </ScrollView>
         <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="GoToAddGamePage"/>

@@ -11,7 +11,7 @@ namespace Model
             set { mgrpersistance = value; }
         }
         private IPersistance mgrpersistance;
-        public ObservableCollection<Game> GameList { get;}
+        public ObservableCollection<Game> GameList { get; set; }
 
         // dégage ça
         // fait une méthode qui te renvoie une liste filtrer avec les params (genre ton nom :D)
