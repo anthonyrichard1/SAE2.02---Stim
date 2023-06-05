@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Linq;
 
 namespace Model
 {
@@ -159,6 +158,14 @@ namespace Model
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != GetType()) return false;
             return this.Equals((User)obj);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new();
+            builder.Append($"{Username} : {Biographie} : {Email} : {Password}\n");
+            foreach (Game game in Followed_Games) builder.Append($"{game.Name}\n");
+            return builder.ToString();
         }
     }
 }
