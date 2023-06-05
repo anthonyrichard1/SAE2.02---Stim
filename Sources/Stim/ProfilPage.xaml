@@ -61,30 +61,8 @@
                     <Label HorizontalOptions="Center" Text="Mes suivis"/>
                     <ScrollView>
                         <Border>
-                        <CollectionView ItemsSource="{Binding CurrentUser.Followed_Games}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="5*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Border>
-                                            <Image Source="{Binding Cover}" Grid.Column="0" HeightRequest="100"/>
-                                        </Border>
-                                        <Border Grid.Column="1">
-                                            <Label Text="{Binding Name}"/>
-                                        </Border>
-                                        <Border Grid.Column="2">
-                                            <Label Text="X" FontSize="50"/>
-                                        </Border>
-                                    </Grid>
-
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Border>
+                            <CollectionView ItemsSource="{Binding CurrentUser.Followed_Games}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged" ItemTemplate="{StaticResource followLoginTemplate}"/>
+                        </Border>
                     </ScrollView>
                 </VerticalStackLayout>
             </Grid>

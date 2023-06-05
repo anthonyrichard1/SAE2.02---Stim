@@ -19,20 +19,16 @@ namespace Model
         // il y aura pas le pb car c'est le retour d'une collection Obs
         // donc potentiellement si les astres sont alignés ça devrait la mettre à jour
         public ObservableCollection<Game> ResearchedGame { get; set; }
-        public User CurrentUser { get; set; }
+        public Game? SelectedGame { get; set; }
+        public User? CurrentUser { get; set; }
         public HashSet<User> Users { get; set; }
 
         public Manager(IPersistance persistance)
         {
             Mgrpersistance = persistance;
-            CurrentUser = new User("","", "", "", "Azerty123*");
             GameList = persistance.LoadGame();
             ResearchedGame = persistance.LoadGame();
             Users = persistance.LoadUser();
-            if (GameList == null) 
-            {
-                GameList = new ObservableCollection<Game>();
-            }
         }
 
         public IEnumerable<Game> FilterGames(string? filterName, string? filterTag1, string? filterTag2)

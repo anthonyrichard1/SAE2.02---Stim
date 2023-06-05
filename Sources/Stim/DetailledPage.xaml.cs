@@ -6,27 +6,30 @@ namespace Stim;
 
 public partial class DetailledPage : ContentPage
 {
-    public Game CurrGame { get; set; }
-	public DetailledPage(Game game)
+    private Game currentGame;
+
+	public DetailledPage()
 	{
 		InitializeComponent();
-        BindingContext = game;
-        CurrGame= game;
-        if (CurrGame != null)
+        currentGame = (App.Current as App).Manager.SelectedGame;
+        BindingContext = currentGame;
+
+        if (currentGame is null) Navigation.PopAsync();
+        else
         {
-            avgLabel.Text = game.GetAvgRate().ToString();
-            AddStars(starsContainer, game.GetAvgRate());
+            avgLabel.Text = currentGame.GetAvgRate().ToString();
+            AddStars(starsContainer, currentGame.GetAvgRate());
         }
     }
 
-    private void AddStars(object sender, EventArgs e)
+    public void AddStars(object sender, EventArgs e)
     {
         HorizontalStackLayout layout = sender as HorizontalStackLayout;
         Review rev = layout.BindingContext as Review;
         AddStars(layout, rev.Rate);
     }
 
-    private static void AddStars(HorizontalStackLayout container, float rate)
+    public static void AddStars(HorizontalStackLayout container, float rate)
     {
         for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
         if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });
@@ -46,6 +49,6 @@ public partial class DetailledPage : ContentPage
     private async void AddFollow(object sender, EventArgs e)
     {
         await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
-        ((App)App.Current).Manager.CurrentUser.FollowAGame(CurrGame);
+        ((App)App.Current).Manager.CurrentUser.FollowAGame(currentGame);
     }
 }

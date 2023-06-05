@@ -12,6 +12,7 @@ public partial class FollowPage : ContentPage
 
 	public async void GoToDetail(object sender, EventArgs e)
 	{
-		await Navigation.PushAsync(new DetailledPage((sender as CollectionView).SelectedItem as Game));
+		(App.Current as App).Manager.SelectedGame = (sender as CollectionView).SelectedItem as Game;
+		await Navigation.PushAsync(new DetailledPage());
 	}
 }

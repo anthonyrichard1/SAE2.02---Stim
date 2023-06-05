@@ -19,18 +19,8 @@
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.RowSpan="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.RowSpan="2"/>
 
-            <CollectionView ItemsSource="{Binding Followed_Games}" SelectionMode="Single" Grid.Column="1" SelectionChanged="GoToDetail">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border HeightRequest="150">
-                            <Grid ColumnDefinitions="*, *" RowDefinitions="*">
-                                <Image Source="{Binding Cover}"/>
-                                <Label Grid.Column="1"  Text="{Binding Name}"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <CollectionView ItemsSource="{Binding Followed_Games}" SelectionMode="Single" Grid.Column="1" SelectionChanged="GoToDetail" ItemTemplate="{StaticResource followTemplate}"/>
+
         </Grid>
     </ScrollView>
 </ContentPage>

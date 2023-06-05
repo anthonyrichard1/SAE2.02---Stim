@@ -1,6 +1,7 @@
 ﻿using Model;
 using StimPersistance;
 using StimStub;
+using System.Diagnostics;
 
 namespace Stim;
 
@@ -20,9 +21,19 @@ public partial class App : Application
 
         window.Stopped += (s, e) =>
         {
-            Manager.Mgrpersistance = new Persistance(FileSystem.Current.AppDataDirectory);
-            Manager.SaveGames();
-            Manager.SaveUser();
+            if (!(File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))))
+            {
+                Manager Manager2 = new(new Persistance(FileSystem.Current.AppDataDirectory));
+                Manager2.GameList = Manager.GameList;
+                Manager2.Users = Manager2.Users;
+                Manager2.SaveGames();
+                Manager2.SaveUser();
+            }
+            else
+            {
+                Manager.SaveGames();
+                Manager.SaveUser();
+            }            
         };
 
         return window;
