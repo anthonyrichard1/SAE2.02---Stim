@@ -17,8 +17,7 @@ public partial class DetailledPage : ContentPage
         if (currentGame is null) Navigation.PopAsync();
         else
         {
-            avgLabel.Text = currentGame.GetAvgRate().ToString();
-            AddStars(starsContainer, currentGame.GetAvgRate());
+            AddStars(starsContainer, currentGame.Average);
         }
     }
 
@@ -29,7 +28,7 @@ public partial class DetailledPage : ContentPage
         AddStars(layout, rev.Rate);
     }
 
-    public static void AddStars(HorizontalStackLayout container, float rate)
+    public static void AddStars(HorizontalStackLayout container, double rate)
     {
         for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
         if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });
@@ -63,5 +62,22 @@ public partial class DetailledPage : ContentPage
         {
             await this.ShowPopupAsync(new MessagePopup("Jeu déjà suivis !"));
         } 
+    }
+
+    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    {
+        Navigation.PopAsync();
+        base.OnNavigatedFrom(args);
+    }
+
+    protected override void OnDisappearing()
+    {
+        Navigation.PopAsync();
+        base.OnDisappearing();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
     }
 }

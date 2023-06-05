@@ -92,17 +92,7 @@ namespace Model
         [DataMember]
         public List<Review> Reviews { get; private init; }
 
-        [DataMember]
-        public float Average
-        {
-            get => average;
-            private set
-            {
-                average = value;
-                NotifyPropertyChanged();
-            }
-        }
-        private float average;
+        public double Average => Math.Round((double)Reviews.Select(review=>review.Rate).Average(), 1); // FAUT FIX POUR QUAND Y'A PAS DE REVIEWS
 
         [DataMember]
         public string? Lien { 
@@ -133,7 +123,6 @@ namespace Model
             if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Default";
             else Lien = c_lien;
             Reviews = new List<Review>();
-            Average = 0;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -179,26 +168,13 @@ namespace Model
             return builder.ToString();
         }
 
-        public float GetAvgRate()
-        {
-            float sum = 0;
-            foreach (Review review in Reviews)
-            {
-                sum += review.Rate;
-            }
-            Average= (float)(Math.Round((sum / Reviews.Count) * 2, MidpointRounding.AwayFromZero) / 2);
-            return Average;
-        }
-
         public void AddReview(Review review)
         {
             Reviews.Add(review);
-            Average = GetAvgRate();
         }
         public void RemoveReview(Review review)
         {
             Reviews.Remove(review);
-            Average = GetAvgRate();
         }
         public void DescChange(string newdesc)
         {

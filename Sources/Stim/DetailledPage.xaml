@@ -58,7 +58,7 @@
 
                     <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/>
                     <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
-                        <Label Padding="0,5,0,0" FontSize="25" x:Name="avgLabel"/>
+                        <Label Padding="0,5,0,0" FontSize="25" Text="{Binding Average}"/>
                     </HorizontalStackLayout>
 
                     <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
