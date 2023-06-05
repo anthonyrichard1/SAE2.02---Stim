@@ -6,16 +6,19 @@ namespace Stim;
 
 public partial class DetailledPage : ContentPage
 {
-    public Game CurrGame { get; set; }
-	public DetailledPage(Game game)
+    private Game currentGame;
+
+	public DetailledPage()
 	{
 		InitializeComponent();
-        BindingContext = game;
-        CurrGame= game;
-        if (CurrGame != null)
+        currentGame = (App.Current as App).Manager.SelectedGame;
+        BindingContext = currentGame;
+
+        if (currentGame is null) Navigation.PopAsync();
+        else
         {
-            avgLabel.Text = game.GetAvgRate().ToString();
-            AddStars(starsContainer, game.GetAvgRate());
+            avgLabel.Text = currentGame.GetAvgRate().ToString();
+            AddStars(starsContainer, currentGame.GetAvgRate());
         }
     }
 
@@ -46,6 +49,6 @@ public partial class DetailledPage : ContentPage
     private async void AddFollow(object sender, EventArgs e)
     {
         await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
-        ((App)App.Current).Manager.CurrentUser.FollowAGame(CurrGame);
+        ((App)App.Current).Manager.CurrentUser.FollowAGame(currentGame);
     }
 }
