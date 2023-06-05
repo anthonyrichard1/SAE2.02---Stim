@@ -20,7 +20,6 @@
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.RowSpan="2"/>
 
             <CollectionView ItemsSource="{Binding Followed_Games}" SelectionMode="Single" Grid.Column="1" SelectionChanged="GoToDetail" ItemTemplate="{StaticResource followTemplate}"/>
-
         </Grid>
     </ScrollView>
 </ContentPage>

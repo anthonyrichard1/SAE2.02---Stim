@@ -51,10 +51,14 @@
                 </VerticalStackLayout>
             </DataTemplate>
             <DataTemplate x:Key="followTemplate">
-                <Border HeightRequest="150">
-                    <Grid ColumnDefinitions="*, *" RowDefinitions="*">
+                <Border HeightRequest="150" Margin="10">
+                    <Grid ColumnDefinitions="auto,*,3*,auto" RowDefinitions="*">
                         <Image Source="{Binding Cover}"/>
-                        <Label Grid.Column="1"  Text="{Binding Name}"/>
+                        <Label Grid.Column="1"  Text="{Binding Name}" FontSize="50"/>
+                        <ScrollView Grid.Column="2">
+                            <Label Text="{Binding Description}"/>
+                        </ScrollView>
+                        <CollectionView Grid.Column="3" ItemsSource="{Binding Tags}" Grid.Row="1" Margin="0" ItemTemplate="{StaticResource tagsTemplate}" HorizontalOptions="End"/>
                     </Grid>
                 </Border>
             </DataTemplate>

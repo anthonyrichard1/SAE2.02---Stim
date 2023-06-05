@@ -48,7 +48,20 @@ public partial class DetailledPage : ContentPage
 
     private async void AddFollow(object sender, EventArgs e)
     {
-        await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
-        ((App)App.Current).Manager.CurrentUser.FollowAGame(currentGame);
+        bool flag = false;
+        foreach (Game game in ((App)App.Current).Manager.CurrentUser.Followed_Games)
+        {
+            if (game == null) throw new Exception();
+            else if (currentGame == game) { flag = true; break; }
+        }
+        if (!flag)
+        {
+            await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
+            ((App)App.Current).Manager.CurrentUser.FollowAGame(currentGame);
+        }
+        else
+        {
+            await this.ShowPopupAsync(new MessagePopup("Jeu déjà suivis !"));
+        } 
     }
 }
