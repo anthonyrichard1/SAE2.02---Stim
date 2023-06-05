@@ -24,8 +24,8 @@ public partial class App : Application
             if (!(File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))))
             {
                 Manager Manager2 = new(new Persistance(FileSystem.Current.AppDataDirectory));
-                Manager2.GameList = Manager.GameList;
-                Manager2.Users = Manager2.Users;
+                foreach (var game in Manager.GameList) Manager2.AddGametoGamesList(game);
+                foreach (var user in Manager.Users)  Manager2.AddUsertoUserList(user);
                 Manager2.SaveGames();
                 Manager2.SaveUser();
             }

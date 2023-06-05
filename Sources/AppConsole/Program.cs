@@ -1,24 +1,17 @@
-﻿using Microsoft.VisualBasic;
-using Model;
-using StimPersistance;
+﻿using Model;
 using StimStub;
 using System.Diagnostics.CodeAnalysis;
 
 namespace AppConsole
 {
     [ExcludeFromCodeCoverage]
-    static class Program
+    public static class Program
     {
-        public static Manager Manager { get; set; } = new(new Stub());
-        public static string? choixstr;
-        public static int choixint;
+        private static Manager Manager { get; set; } = new(new Stub());        
+        private static string? choixstr;
+        private static int choixint;
 
-        static void Main(string[] args)
-        {
-            Program.Menu();
-        }
-
-        private static void Menu()
+        public static void Main(string[] args)
         {
             while (choixint != 99)
             {
@@ -39,21 +32,21 @@ namespace AppConsole
                 choixint = 0;
 
                 if (int.TryParse(choixstr, out choixint)) switch (choixint)
-                {
-                    case 1:
+                    {
+                        case 1:
                             Console.WriteLine("Nom du jeu : ");
                             string? name = Console.ReadLine();
                             Console.WriteLine("Description du jeu : ");
                             string? description = Console.ReadLine();
-                            string? year="";
-                            int yearint=0;
+                            string? year = "";
+                            int yearint = 0;
 
                             while (!int.TryParse(year, out yearint))
                             {
                                 Console.WriteLine("Année du jeu : ");
                                 year = Console.ReadLine();
                             }
-                            
+
                             Console.WriteLine("Tag 1 du jeu : ");
                             string? tag1 = Console.ReadLine();
                             Console.WriteLine("Tag 2 du jeu : ");
@@ -64,27 +57,30 @@ namespace AppConsole
                             string? cover = Console.ReadLine();
                             Console.WriteLine("Lien boutique du jeu : ");
                             string? lien = Console.ReadLine();
-                            Game game = new(name, description, yearint, new List<string>{ tag1, tag2, tag3 }, cover, lien);
+                            Game game = new(name, description, yearint, new List<string> { tag1, tag2, tag3 }, cover, lien);
                             Manager.AddGametoGamesList(game);
                             Console.WriteLine("Jeu suivant ajouté : " + game.Name);
-                        break;
+                            break;
 
-                    case 2:
+                        case 2:
                             Console.WriteLine("Nom du jeu : ");
                             string? name2 = Console.ReadLine();
+                            bool find = false;
                             foreach (Game g in Manager.GameList) if (g.Name == name2)
-                            {
-                                Manager.RemoveGameFromGamesList(g);
-                                Console.WriteLine("Jeu suivant supprimé : " + g.Name);
-                                break;
-                            }
-                        break;
+                                {
+                                    Manager.RemoveGameFromGamesList(g);
+                                    Console.WriteLine("Jeu suivant supprimé : " + g.Name);
+                                    find = true;
+                                    break;
+                                }
+                            if (!find) Console.WriteLine("Jeu suivant introuvable : " + name2);
+                            break;
 
-                    case 3:
+                        case 3:
                             AfficherJeux();
-                        break;
+                            break;
 
-                    case 4:
+                        case 4:
                             Console.WriteLine("Nom de l'utilisateur : ");
                             string? username = Console.ReadLine();
                             Console.WriteLine("Image de l'utilisateur : ");
@@ -100,29 +96,67 @@ namespace AppConsole
                             Console.WriteLine("Utilisateur suivant ajouté : " + user.Username);
                             break;
 
-                    case 5:
+                        case 5:
                             AfficherUsers();
-                        break;
+                            break;
 
-                    case 6:
-                        break;
+                        case 6:
+                            Console.WriteLine("Nom du jeu : ");
+                            string? name3 = Console.ReadLine();
+                            bool find2 = false;
+                            foreach (Game g in Manager.GameList) if (g.Name == name3) foreach (Review rev in g.Reviews)
+                                    {
+                                        Console.WriteLine(rev);
+                                        find2 = true;
+                                        break;
+                                    }
+                            if (!find2) Console.WriteLine("Jeu suivant introuvable : " + name3);     
+                            break;
 
-                    case 7:
-                        break;
+                        case 7:
+                            Console.WriteLine("Nom du jeu : ");
+                            string? name4 = Console.ReadLine();
+                            bool find3 = false;
+                            foreach (Game g in Manager.GameList) if (g.Name == name4)
+                                    {
+                                    Console.WriteLine("Votre nom d'utilisateur : ");
+                                    string? username2 = Console.ReadLine();
+                                    int rateint;
+                                    string? ratestr = "";
+                                    while (!int.TryParse(ratestr, out rateint)) ratestr = Console.ReadLine();
+                                    Console.WriteLine("Votre commentaire : ");
+                                    string? revstr = Console.ReadLine();
+                                    Review rev = new(username2, rateint, revstr);
+                                    g.AddReview(rev);
+                                    Console.WriteLine("Commentaire ajouté !");
+                                    find2 = true;
+                                    break;
+                                    }
+                            if (!find3) Console.WriteLine("Jeu suivant introuvable : " + name4);
+                            break;
 
-                    case 8:
-                        break;
+                        case 8:
+                            Console.WriteLine("Nom du jeu : ");
+                            string? name5 = Console.ReadLine();
+                            bool find4 = false;
+                            foreach (Game g in Manager.GameList) if (g.Name == name5)
+                                {
+                                    Console.WriteLine("Votre nom d'utilisateur : ");
+                                    string? username2 = Console.ReadLine();
+                                    //foreach (Review rev in g.Reviews) if (rev.AuthorName)
+                                }
+                                break;
 
-                    case 9:
-                        break;
+                        case 9:
+                            break;
 
-                    case 10:
-                        break;
+                        case 10:
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
 
-                }
+                    }
             }
         }
 

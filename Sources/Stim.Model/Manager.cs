@@ -5,21 +5,17 @@ namespace Model
 {
     public class Manager
     {
-        public IPersistance Mgrpersistance
-        { 
-            get { return mgrpersistance; }
-            set { mgrpersistance = value; }
-        }
-        private IPersistance mgrpersistance;
-        public List<Game> GameList { get; set; }
+        private readonly IPersistance mgrpersistance;
+        public IReadOnlyList<Game> GameList => gameList.AsReadOnly();
+        private List<Game> gameList;
         public Game? SelectedGame { get; set; }
         public User? CurrentUser { get; set; }
-        public HashSet<User> Users { get; set; }
+        public HashSet<User> Users { get; private set; }
 
         public Manager(IPersistance persistance)
         {
-            Mgrpersistance = persistance;
-            GameList = persistance.LoadGame();
+            mgrpersistance = persistance;
+            gameList = persistance.LoadGame();
             Users = persistance.LoadUser();
         }
 
@@ -41,24 +37,24 @@ namespace Model
 
         public void AddGametoGamesList(Game game)
         {
-            GameList.Add(game);
-            Mgrpersistance.SaveGame(GameList);
+            gameList.Add(game);
+            mgrpersistance.SaveGame(gameList);
         }
         public void AddUsertoUserList(User user)
         {
             Users.Add(user);
-            Mgrpersistance.SaveUser(Users);
+            mgrpersistance.SaveUser(Users);
         }
 
         public void RemoveGameFromGamesList(Game game)
         {
-            GameList.Remove(game);
-            Mgrpersistance.SaveGame(GameList);
+            gameList.Remove(game);
+            mgrpersistance.SaveGame(gameList);
         }
 
         public void SaveGames()
         {
-            Mgrpersistance.SaveGame(GameList);
+            mgrpersistance.SaveGame(gameList);
         }
         public User? SearchUser(string username)
         {
@@ -70,7 +66,7 @@ namespace Model
         }
         public void SaveUser()
         {
-            Mgrpersistance.SaveUser(Users);
+            mgrpersistance.SaveUser(Users);
         }
     }
 }
