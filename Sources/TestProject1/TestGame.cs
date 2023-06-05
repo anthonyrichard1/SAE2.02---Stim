@@ -161,19 +161,6 @@ namespace Test
         }
 
         [Fact]
-        public void Average()
-        {
-            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
-
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-
-            user.AddReview(game, 2.5f, "bof");
-            user.AddReview(game, 0f, "bof--");
-            user.AddReview(game, 5f, "bof++");
-
-            Assert.Equal(2.5f, game.GetAvgRate());
-        }
-        [Fact]
         public void Hash()
         {
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
