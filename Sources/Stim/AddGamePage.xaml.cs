@@ -29,8 +29,10 @@ public partial class AddGamePage : ContentPage
         {
             message = "Jeu ajouté !";
             ((App)App.Current).Manager.AddGametoGamesList(new Game(NameEntry.Text, DescriptionEntry.Text, year, new List<string> { TagEntry1.Text, TagEntry2.Text, TagEntry3.Text }, imgName, LinkEntry.Text));
-            Navigation.RemovePage(this);
+            await this.ShowPopupAsync(new MessagePopup(message));
+            await Navigation.PopModalAsync();
             ((App)App.Current).Manager.SaveGames();
+
         }
         //      //if (_ImgPath!=null) NameEntry.Text + ".png";
         //      //System.IO.File.Copy(_ImgPath, /**/, true);

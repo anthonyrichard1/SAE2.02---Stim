@@ -122,8 +122,9 @@ namespace Model
             return other != null && Username.Equals(other.Username);
         }
         public override int GetHashCode()
-        {
-            return Username.GetHashCode();
+        { 
+            if (Username!=null) return Username.GetHashCode();
+            return 0;
         }
 
         public void AddReview(Game game, float rate, string text)

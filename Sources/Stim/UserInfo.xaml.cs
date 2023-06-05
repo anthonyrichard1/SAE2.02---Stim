@@ -13,7 +13,6 @@ public partial class UserInfo : ContentView
     private static void OnBindChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var contentView = (UserInfo)bindable;
-        contentView.OnBindChanged((string)oldValue, (string)newValue);
     }
 
     public UserInfo()
@@ -22,8 +21,8 @@ public partial class UserInfo : ContentView
         BindingContext = ((App)App.Current).Manager;
     }
 
-    private void OnBindChanged(string oldValue, string newValue)
+    private void Button_Clicked(object sender, EventArgs e)
     {
-        // Réagissez aux changements de la propriété de liaison ici
+
     }
 }

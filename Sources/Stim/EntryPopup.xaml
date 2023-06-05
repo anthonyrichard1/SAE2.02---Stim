@@ -5,10 +5,11 @@
              x:Class="Stim.EntryPopup"
                CanBeDismissedByTappingOutsideOfPopup="False">
     <VerticalStackLayout>
-        <Grid ColumnDefinitions="*" RowDefinitions="auto, auto, auto">
+        <Grid ColumnDefinitions="*" RowDefinitions="auto, auto, auto,auto">
             <Label x:Name="LabelTxt"/>
-            <Entry Grid.Row="1"/>
-            <Button Grid.Row="2" x:Name="Entrytxt" Text="Valider" HorizontalOptions="Center" VerticalOptions="End" Background="{StaticResource Transparent}" Clicked="CloseButton"/>
+            <Entry Grid.Row="1" x:Name="Entrytxt"/>
+            <Button Grid.Row="2" Text="Valider" HorizontalOptions="Center" VerticalOptions="End" Background="{StaticResource Transparent}" Clicked="Valider"/>
+            <Button Grid.Row="3" Text="Annuler" HorizontalOptions="Center" VerticalOptions="End" Background="{StaticResource Transparent}" Clicked="CloseButton"/>
         </Grid>
     </VerticalStackLayout>
 </toolkit:Popup>

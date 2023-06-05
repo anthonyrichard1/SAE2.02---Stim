@@ -9,10 +9,12 @@ using System.Collections.Generic;
 
 public partial class MainPage : ContentPage
 {
+    public IEnumerable<Game> filterdGame { get;  private set; }
+
     public MainPage()
     {
         InitializeComponent();
-        BindingContext = ((App)App.Current).Manager;
+        BindingContext = ((App)App.Current).Manager.FilterGames(null,null,null);
     }
 
     private async void OnClickGameList(object sender, EventArgs e)
@@ -22,7 +24,7 @@ public partial class MainPage : ContentPage
 
     private async void GoToAddGamePage(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddGamePage());
+        await Navigation.PushModalAsync(new AddGamePage());
     }
 
     private void SearchBar_GameChanged(object sender, TextChangedEventArgs e)
@@ -30,21 +32,7 @@ public partial class MainPage : ContentPage
         string GameText = Game.Text;
         string Tag1Text = Tag1.Text;
         string Tag2Text = Tag2.Text;
-        ((App)App.Current).Manager.ResearchedGame.Clear();
-        IEnumerable<Game> filteredGames = ((App)App.Current).Manager.GameList;
-        if (GameText!=null) filteredGames = filteredGames
-            .Where(game => game.Name.IndexOf(GameText, StringComparison.OrdinalIgnoreCase) >= 0
-            );
-        if (Tag1Text != null) filteredGames = filteredGames
-            .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag1Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            );
-        if (Tag2Text != null) filteredGames = filteredGames
-            .Where(game => game.Tags.Any(tag => tag.IndexOf(Tag2Text, StringComparison.OrdinalIgnoreCase) >= 0)
-            );
 
-        foreach (var game in filteredGames)
-        {
-            ((App)App.Current).Manager.ResearchedGame.Add(game);
-        }
+        BindingContext=((App)App.Current).Manager.FilterGames(GameText, Tag1Text, Tag2Text);
     }
 }

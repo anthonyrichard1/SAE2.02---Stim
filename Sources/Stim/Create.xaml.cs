@@ -12,7 +12,7 @@ public partial class Create : ContentPage
     private async void Creer_un_compte(object sender, EventArgs e)
     {
         Error.Clear();
-        if (!string.IsNullOrWhiteSpace(Username.Text) && !string.IsNullOrWhiteSpace(Pswd.Text) && !string.IsNullOrWhiteSpace(Email.Text))
+        if (!string.IsNullOrWhiteSpace(Username.Text) || !string.IsNullOrWhiteSpace(Pswd.Text) || !string.IsNullOrWhiteSpace(Email.Text))
         {
             if (((App)App.Current).Manager.SearchUser(Username.Text) == null)
             {
@@ -25,6 +25,11 @@ public partial class Create : ContentPage
                     await Shell.Current.GoToAsync("//MainPage");
                 }
                 else Error.Children.Add(new Label { Text = "Mot de passe invalide, votre mot de passe doit contenir une Majuscule, une minuscule, un chiffre et faire au moins 8 caractères", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
+                rg = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                /*if ( rg.IsMatch )
+                {
+
+                }*/
             }
             else Error.Children.Add(new Label { Text = "Ce nom d'utilisateur est déjà pris", TextColor = Colors.Red, VerticalTextAlignment = TextAlignment.Start });
         }
@@ -32,7 +37,6 @@ public partial class Create : ContentPage
     }
     private void Se_connecter(object sender, EventArgs e)
     {
-        //Ca ça marche pas faut une autre commande, Marc svp aide moi
         Application.Current.MainPage = new LoginPage();
     }
 }

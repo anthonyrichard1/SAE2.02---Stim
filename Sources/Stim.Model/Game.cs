@@ -10,7 +10,7 @@ namespace Model
     public class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
-        public string? Name
+        public string Name
         {
             get => name;
             private set
