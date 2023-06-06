@@ -23,7 +23,7 @@ namespace Model
                 }
             }
         }
-        private string name;
+        private string name = default!;
 
         [DataMember]
         public string Description
@@ -39,7 +39,7 @@ namespace Model
                 }
             }
         }
-        private string description;
+        private string description = default!;
 
         [DataMember]
         public int Year
@@ -55,7 +55,7 @@ namespace Model
                 }
             }
         }
-        private int year;
+        private int year = default!;
 
         [DataMember]
         public string Cover
@@ -71,7 +71,7 @@ namespace Model
                 }
             }
         }
-        private string cover;
+        private string cover = default!;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -87,7 +87,7 @@ namespace Model
                 }
             }
         }
-        private ObservableCollection<string> tags;
+        private ObservableCollection<string> tags = default!;
 
         [DataMember]
         public List<Review> Reviews { get; private init; }
@@ -112,7 +112,7 @@ namespace Model
                 }
             }
         }
-        private string lien;
+        private string lien = default!;
 
         public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {

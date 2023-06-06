@@ -11,6 +11,17 @@ namespace Model
     public sealed class User : INotifyPropertyChanged , IEquatable<User>
     {
         [DataMember]
+        public string UserImage
+        {
+            get => userImage;
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value)) userImage = value;
+                else userImage = "no_cover.png";
+            }
+        }
+        private string userImage = default!;
+        [DataMember]
         public string? Username
         {
             get => username;
@@ -24,11 +35,11 @@ namespace Model
                 }
             }
         }
-        private string username;
+        private string username=default!;
         [DataMember]
         public string Biographie 
         {
-            get => biographie ?? "Pas de biographie"; 
+            get => biographie; 
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
@@ -39,7 +50,7 @@ namespace Model
                 }
             }
         }
-        private string biographie;
+        private string biographie = default!;
         [DataMember]
         public string Email
         {
@@ -55,7 +66,7 @@ namespace Model
                 else email = "Default";
             }
         }
-        private string email;
+        private string email = default!;
         [DataMember]
         public string Password
         {
@@ -71,7 +82,7 @@ namespace Model
                 }
             }
         }
-        private string password;
+        private string password = default!;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -89,17 +100,6 @@ namespace Model
             get;
             private init;
         }
-        [DataMember]
-        public string? UserImage 
-        {   
-            get => userImage;
-            private set
-            {
-                if (!string.IsNullOrWhiteSpace(value)) userImage = value;
-                else userImage = "no_cover.png";
-            }
-        }
-        private string? userImage;
 
         public User(string userImage,string username, string biographie, string email, string password)
         {
@@ -111,7 +111,7 @@ namespace Model
             else Biographie = biographie;
             if (email == null) Email = "Default";
             else Email = email;
-            if (password == null) throw new ArgumentNullException("password");
+            if (password == null) throw new ArgumentNullException(nameof(password));
             else Password = password;
             Followed_Games = new ObservableCollection<Game>();
         }

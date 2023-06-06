@@ -12,15 +12,15 @@ public partial class Create : ContentPage
     private async void Creer_un_compte(object sender, EventArgs e)
     {
         Error.Clear();
-        if (!string.IsNullOrWhiteSpace(Username.Text) || !string.IsNullOrWhiteSpace(Pswd.Text) || !string.IsNullOrWhiteSpace(Email.Text))
+        if (!(string.IsNullOrWhiteSpace(Username.Text) || string.IsNullOrWhiteSpace(Pswd.Text) || string.IsNullOrWhiteSpace(Email.Text)))
         {
             if (((App)App.Current).Manager.SearchUser(Username.Text) == null)
             {
-                Regex rg = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (rg.IsMatch(Email.Text))
+                GeneratedRegexAttribute rg = new GeneratedRegexAttribute("^([a-zA-Z0-9_.])+@([a-zA-Z0-9_]+[.])+[a-zA-Z0-9_]{2,}$");
+                if (rg.Match(Email.Text))
                 {
-                    rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
-                    if (rg.IsMatch(Pswd.Text))
+                    rg = new GeneratedRegexAttribute("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
+                    if (rg.Match(Pswd.Text))
                     {
                         ((App)App.Current).Manager.AddUsertoUserList(new("", Username.Text, "", Email.Text, Pswd.Text));
                         ((App)App.Current).Manager.CurrentUser = ((App)App.Current).Manager.SearchUser(Username.Text);

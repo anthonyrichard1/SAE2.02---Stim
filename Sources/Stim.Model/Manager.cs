@@ -27,10 +27,10 @@ namespace Model
                 .Where(game => game.Name.IndexOf(filterName, StringComparison.OrdinalIgnoreCase) >= 0
                 );
             if (filterTag1 != null) retList = retList
-                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.IndexOf(filterTag1, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.Contains(filterTag1, StringComparison.OrdinalIgnoreCase))
                 );
             if (filterTag2 != null) retList = retList
-                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.IndexOf(filterTag2, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.Contains(filterTag2, StringComparison.OrdinalIgnoreCase))
                 );
             return retList;
         }
