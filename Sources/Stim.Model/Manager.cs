@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Model
@@ -24,13 +25,13 @@ namespace Model
             IEnumerable<Game> retList;
             retList = GameList;
             if (filterName != null) retList = retList
-                .Where(game => game.Name.IndexOf(filterName, StringComparison.OrdinalIgnoreCase) >= 0
+                .Where(game => game.Name.Contains(filterName, StringComparison.OrdinalIgnoreCase)
                 );
             if (filterTag1 != null) retList = retList
-                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.IndexOf(filterTag1, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.Contains(filterTag1, StringComparison.OrdinalIgnoreCase))
                 );
             if (filterTag2 != null) retList = retList
-                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.IndexOf(filterTag2, StringComparison.OrdinalIgnoreCase) >= 0)
+                .Where(game => game.Tags != null && game.Tags.Any(tag => tag != null && tag.Contains(filterTag2, StringComparison.OrdinalIgnoreCase))
                 );
             return retList;
         }
@@ -51,7 +52,7 @@ namespace Model
             gameList.Remove(game);
             mgrpersistance.SaveGame(gameList);
         }
-
+        [ExcludeFromCodeCoverage]
         public void SaveGames()
         {
             mgrpersistance.SaveGame(gameList);
@@ -64,6 +65,7 @@ namespace Model
             }
             return null;
         }
+        [ExcludeFromCodeCoverage]
         public void SaveUser()
         {
             mgrpersistance.SaveUser(Users);

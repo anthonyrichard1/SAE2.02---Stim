@@ -121,7 +121,8 @@ namespace Test
 
             compListAsList = compList.ToList();
             compListAsList.Clear();
-            compList = compListAsList; list = manager.FilterGames("Elden Ring", "Action", "Solo");
+            compList = compListAsList;
+            list = manager.FilterGames("Elden Ring", "Action", "Solo");
             foreach (var game in manager.GameList)
             {
                 if (game.Name=="Elden Ring" && game.Tags.Any(tag => tag == "Action" && game.Tags.Any(tag => tag == "Solo")))
@@ -133,6 +134,31 @@ namespace Test
                 }
             }
             Assert.Equal(compList, list);
+            list = manager.FilterGames(null, "Action", "Solo");
+            compListAsList = compList.ToList();
+            compListAsList.Clear();
+            compList = compListAsList;
+            compList = compListAsList; list = manager.FilterGames("Elden Ring", "Action", null);
+            foreach (var game in manager.GameList)
+            {
+                if (game.Name == "Elden Ring" && game.Tags.Any(tag => tag == "Action"))
+                {
+                    compListAsList = compList.ToList();
+                    compListAsList.Add(game);
+                    compList = compListAsList;
+                    break;
+                }
+            }
+            Assert.Equal(compList, list);
+        }
+        [Fact]
+        public void Search()
+        {
+            IPersistance persistance = new Stub();
+            Manager manager = new(persistance);
+            User user = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            manager.AddUsertoUserList(user);
+            Assert.Equal(user, manager.SearchUser("username"));
         }
     }
 }

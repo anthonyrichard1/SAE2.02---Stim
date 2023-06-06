@@ -108,5 +108,10 @@ namespace Test
             Assert.False(user.Equals(user4 as object));
             Assert.False(user.Equals(user2 as object));
         }
+        [Fact]
+        public void Hashcode()
+        {
+            User user = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+        }
     }
 }
