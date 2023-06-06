@@ -87,7 +87,7 @@ namespace Model
                 }
             }
         }
-        private ObservableCollection<string> tags = default!;
+        private ObservableCollection<string> tags;
 
         [DataMember]
         public List<Review> Reviews { get; private init; }

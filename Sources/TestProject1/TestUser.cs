@@ -108,5 +108,7 @@ namespace Test
             Assert.False(user.Equals(user4 as object));
             Assert.False(user.Equals(user2 as object));
         }
+        [Fact]
+        public void Hashcode
     }
 }
