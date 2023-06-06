@@ -15,28 +15,13 @@
             </DataTemplate>
             <DataTemplate x:Key="gameTemplate">
                 <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
-                    <Grid HeightRequest="635">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
+                    <Grid HeightRequest="635" RowDefinitions="auto, auto, auto">
                         <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="900" HeightRequest="455"/>
                         <Label FontAttributes="Bold" FontSize="30" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
-                        <Grid Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                        <Grid Grid.Row="2" ColumnDefinitions="*, auto" RowDefinitions="auto, auto">
                             <Label Text="Tags :" Margin="0" Padding="0"/>
                             <CollectionView ItemsSource="{Binding Tags}" Grid.Row="1" Margin="0" ItemTemplate="{StaticResource tagsTemplate}"/>
-
                             <Label Text="{Binding Year}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
                         </Grid>
                     </Grid>
@@ -44,7 +29,7 @@
             </DataTemplate>
             <DataTemplate x:Key="reviewTemplate">
                 <VerticalStackLayout>
-                    <HorizontalStackLayout> <!--BindingContextChanged="AddStars"-->
+                    <HorizontalStackLayout> <!--CONVERTER-->
                         <Label Text="{Binding AuthorName}" FontSize="20"/>
                     </HorizontalStackLayout>
                     <Label Text="{Binding Text}"/>
@@ -52,7 +37,7 @@
             </DataTemplate>
             <DataTemplate x:Key="followTemplate">
                 <Border HeightRequest="150" Margin="10">
-                    <Grid ColumnDefinitions="auto,*,3*,auto" RowDefinitions="*">
+                    <Grid ColumnDefinitions="auto, *, 3*, auto" RowDefinitions="*">
                         <Image Source="{Binding Cover}"/>
                         <Label Grid.Column="1"  Text="{Binding Name}" FontSize="50"/>
                         <ScrollView Grid.Column="2">
@@ -63,12 +48,7 @@
                 </Border>
             </DataTemplate>
             <DataTemplate x:Key="followLoginTemplate">
-                <Grid Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid Margin="10" ColumnDefinitions="*, 5*, *">
                     <Border>
                         <Image Source="{Binding Cover}" Grid.Column="0" HeightRequest="100"/>
                     </Border>
