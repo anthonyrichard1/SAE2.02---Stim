@@ -25,7 +25,7 @@ namespace Test
         public void Biographie()
         {
             User user = new(null, "username", "", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("Default", user.Biographie);
+            Assert.Equal("Pas de biographie", user.Biographie);
 
             User user2 = new(null, "username", null, "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Default", user2.Biographie);

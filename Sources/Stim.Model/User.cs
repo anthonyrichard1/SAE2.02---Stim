@@ -24,14 +24,14 @@ namespace Model
                 }
             }
         }
-        private string? username;
+        private string username;
         [DataMember]
-        public string? Biographie 
+        public string Biographie 
         {
-            get => biographie; 
+            get => biographie ?? "Pas de biographie"; 
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) biographie = "Default";
+                if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
                 else
                 {
                     biographie = value;
@@ -39,9 +39,9 @@ namespace Model
                 }
             }
         }
-        private string? biographie;
+        private string biographie;
         [DataMember]
-        public string? Email
+        public string Email
         {
             get => email;
             private set
@@ -55,9 +55,9 @@ namespace Model
                 else email = "Default";
             }
         }
-        private string? email;
+        private string email;
         [DataMember]
-        public string? Password
+        public string Password
         {
             get => password;
             private set
@@ -71,7 +71,7 @@ namespace Model
                 }
             }
         }
-        private string? password;
+        private string password;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

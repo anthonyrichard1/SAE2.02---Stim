@@ -36,4 +36,9 @@ public partial class MainPage : ContentPage
 
         BindingContext=((App)App.Current).Manager.FilterGames(GameText, Tag1Text, Tag2Text);
     }
+    protected override void OnAppearing()
+    {
+        SearchBar_GameChanged(null,null);
+        base.OnAppearing();
+    }
 }

@@ -12,7 +12,7 @@ namespace Model
         [DataMember]
         public string Name
         {
-            get => name;
+            get => name ?? "Default";
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) name="Default";
@@ -23,12 +23,12 @@ namespace Model
                 }
             }
         }
-        private string? name;
+        private string name;
 
         [DataMember]
-        public string? Description
+        public string Description
         {
-            get => description;
+            get => description ?? "Pas de description";
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
@@ -39,7 +39,7 @@ namespace Model
                 }
             }
         }
-        private string? description;
+        private string description;
 
         [DataMember]
         public int Year
@@ -58,9 +58,9 @@ namespace Model
         private int year;
 
         [DataMember]
-        public string? Cover
+        public string Cover
         {
-            get => cover;
+            get => cover ?? "no_cover.png";
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
@@ -71,7 +71,7 @@ namespace Model
                 }
             }
         }
-        private string? cover;
+        private string cover;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -95,13 +95,13 @@ namespace Model
         public double Average => AverageCalc();
         public double AverageCalc()
         {
-            if (Reviews.Count > 0) return Math.Round((double)Reviews.Select(review => review.Rate).Average(), 1); // FAUT FIX POUR QUAND Y'A PAS DE REVIEWS
+            if (Reviews.Count > 0) return Math.Round((double)Reviews.Select(review => review.Rate).Average(), 1); 
             else return 0;
         }
 
         [DataMember]
-        public string? Lien { 
-            get => lien;
+        public string Lien { 
+            get => lien ?? "Pas de lien";
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
@@ -112,20 +112,20 @@ namespace Model
                 }
             }
         }
-        private string? lien;
+        private string lien;
 
         public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {
             if (string.IsNullOrWhiteSpace(name)) Name = "Default";
             else Name = name;
-            if (string.IsNullOrWhiteSpace(description)) Description = "Default";
+            if (string.IsNullOrWhiteSpace(description)) Description = "Pas de description";
             else Description = description;
             Year = year;
             if (c_tags is not null) tags = new ObservableCollection<string>(c_tags);
             else tags = new ObservableCollection<string>();
             if (string.IsNullOrWhiteSpace(cover)) Cover = "no_cover.png";
             else Cover = cover;
-            if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Default";
+            if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Pas de lien";
             else Lien = c_lien;
             Reviews = new List<Review>();
         }

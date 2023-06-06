@@ -40,7 +40,7 @@ namespace Test
             Assert.False(game.Description == "");
 
             Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.True(game2.Description=="Default");
+            Assert.True(game2.Description=="Pas de description");
 
             Game game3 = new("name", "good", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             Assert.Equal("good", game3.Description);
@@ -82,9 +82,9 @@ namespace Test
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Assert.NotNull(game.Lien);
             Game game2 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", null);
-            Assert.Equal("Default", game2.Lien);
+            Assert.Equal("Pas de lien", game2.Lien);
             Game game3 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "");
-            Assert.Equal("Default", game3.Lien);
+            Assert.Equal("Pas de lien", game3.Lien);
         }
 
         [Fact]

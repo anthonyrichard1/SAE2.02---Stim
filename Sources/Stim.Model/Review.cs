@@ -30,7 +30,7 @@ namespace Model
         private string? text;
 
         [DataMember]
-        public string? AuthorName { get; set; }
+        public string AuthorName { get; set; }
 
         public Review(string username, float rate, string text)
         {
