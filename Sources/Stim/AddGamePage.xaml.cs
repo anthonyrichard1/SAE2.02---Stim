@@ -2,8 +2,6 @@ using Model;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using Application = Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific.Application;
 using CommunityToolkit.Maui.Views;
-//using Windows.Gaming.Preview.GamesEnumeration;
-
 namespace Stim;
 
 public partial class AddGamePage : ContentPage

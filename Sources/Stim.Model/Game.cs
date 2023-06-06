@@ -92,7 +92,12 @@ namespace Model
         [DataMember]
         public List<Review> Reviews { get; private init; }
 
-        public double Average => Math.Round((double)Reviews.Select(review=>review.Rate).Average(), 1); // FAUT FIX POUR QUAND Y'A PAS DE REVIEWS
+        public double Average => AverageCalc();
+        public double AverageCalc()
+        {
+            if (Reviews.Count > 0) return Math.Round((double)Reviews.Select(review => review.Rate).Average(), 1); // FAUT FIX POUR QUAND Y'A PAS DE REVIEWS
+            else return 0;
+        }
 
         [DataMember]
         public string? Lien { 
