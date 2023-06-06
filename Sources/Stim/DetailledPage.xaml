@@ -10,32 +10,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ScrollView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Grid ColumnDefinitions="*, 10*, *">
+                <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0"/>
+                <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="2"/>
 
-                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
-                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
-
-                <Grid Background="{StaticResource Tertiary}" Grid.Column="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-
+                <Grid Background="{StaticResource Tertiary}" Grid.Column="1" ColumnDefinitions="*, *, *, *" RowDefinitions="auto, *, auto, auto, auto">
                     <Image Grid.RowSpan="4" Margin="5, 0, 0, 0" Source="{Binding Cover}" Aspect="AspectFit"/>
                     <Label Grid.Column="1" Text="{Binding Name}" FontSize="30"/>
                     <Label Grid.Column="2" Text="{Binding Year}" HorizontalOptions="Center"/>
@@ -46,12 +25,7 @@
                         <Label Text="{Binding Description}"/>
                     </ScrollView>
 
-                    <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
+                    <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" RowDefinitions="auto, auto">
                         <Label Text="Tags :"/>
                         <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}" ItemTemplate="{StaticResource tagsTemplate}"/>
                     </Grid>
@@ -64,11 +38,10 @@
                     <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
                         <Label Text="Avis de la communauté :" FontSize="30"/>
                         <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
-
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
         </ScrollView>
-        <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="AddReview"/>
+        <ImageButton Style="{StaticResource addButton}" Clicked="AddReview"/>
     </Grid>
 </ContentPage>

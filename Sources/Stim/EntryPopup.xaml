@@ -8,8 +8,8 @@
         <Grid ColumnDefinitions="*" RowDefinitions="auto, auto, auto,auto">
             <Label x:Name="LabelTxt"/>
             <Entry Grid.Row="1" x:Name="Entrytxt"/>
-            <Button Grid.Row="2" Text="Valider" HorizontalOptions="Center" VerticalOptions="End" Background="{StaticResource Transparent}" Clicked="Valider"/>
-            <Button Grid.Row="3" Text="Annuler" HorizontalOptions="Center" VerticalOptions="End" Background="{StaticResource Transparent}" Clicked="CloseButton"/>
+            <Button Grid.Row="2" Text="Valider" Style="{StaticResource popupButton}" Clicked="Valider"/>
+            <Button Grid.Row="3" Text="Annuler" Style="{StaticResource popupButton}" Clicked="CloseButton"/>
         </Grid>
     </VerticalStackLayout>
 </toolkit:Popup>

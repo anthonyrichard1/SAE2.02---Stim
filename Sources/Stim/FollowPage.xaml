@@ -4,21 +4,9 @@
              x:Class="Stim.FollowPage"
              Title="Suivis">
     <ScrollView>
-        <Grid BackgroundColor="#495057">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
+        <Grid BackgroundColor="#495057" ColumnDefinitions="*, 5*, *" RowDefinitions="auto, *">
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0" Grid.RowSpan="2"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2" Grid.RowSpan="2"/>
-
             <CollectionView ItemsSource="{Binding Followed_Games}" SelectionMode="Single" Grid.Column="1" SelectionChanged="GoToDetail" ItemTemplate="{StaticResource followTemplate}"/>
         </Grid>
     </ScrollView>

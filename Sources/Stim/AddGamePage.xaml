@@ -23,9 +23,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0"/>
             <VerticalStackLayout Background="{StaticResource Tertiary}" Grid.Column="1" Grid.RowSpan="7"/>
-            <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="4"/>
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="4"/>
 
             <VerticalStackLayout Grid.Column="1">
                 <Label Text="Nom" FontSize="30" HorizontalOptions="Center"/>
