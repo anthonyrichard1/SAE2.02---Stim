@@ -93,9 +93,9 @@ namespace Model
         public List<Review> Reviews { get; private init; }
 
         public double Average => AverageCalc();
-        public double AverageCalc()
+        private double AverageCalc()
         {
-            if (Reviews.Count > 0) return Math.Round((double)Reviews.Select(review => review.Rate).Average(), 1); 
+            if (Reviews.Count > 0) return Math.Round(Reviews.Select(review => review.Rate).Average(), 1); 
             else return 0;
         }
 
