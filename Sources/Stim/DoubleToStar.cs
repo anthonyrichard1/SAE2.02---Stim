@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
-namespace Stim
+namespace Stim.Converter
 {
     public class DoubleToStar : IValueConverter
     {
+        public string EtoileVide { get; set; }
+        public string EtoileMiPleine { get; set; }
+        public string EtoilePleine { get; set; }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter != null && parameter is string && !string.IsNullOrEmpty(parameter as string))
+            if (value is double && parameter is string)
             {
-                string param = parameter as string;
-                double rate = double.Parse(param.Split('|')[0]);
-                int pos = int.Parse(param.Split('|')[0]);
+                double rate = double.Parse(value.ToString());
+                int pos = int.Parse(parameter as string);
 
-                if (pos <= rate ) return "etoile_pleine.png";
-                if (pos - 1 < rate && rate < pos) return "etoile_mi_plein.png";
+                if (pos <= rate) return EtoilePleine;
+                if (pos - 1 < rate && rate < pos) return EtoileMiPleine;
             }
-            return "etoile_vide.png";
+            return EtoileVide;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

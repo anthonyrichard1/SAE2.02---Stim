@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Stim"
+             xmlns:conv="clr-namespace:Stim.Converter"
              x:Class="Stim.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,7 +10,9 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
+            <conv:DoubleToStar x:Key="DoubleToStar" EtoilePleine="etoile_pleine.png" EtoileMiPleine="etoile_mi_pleine.png" EtoileVide="etoile_vide.png"/>
+
             <DataTemplate x:Key="tagsTemplate">
                 <Label Padding="5,0,0,0" Margin="0" Text="{Binding}"/>
             </DataTemplate>
@@ -28,12 +31,20 @@
                 </Border>
             </DataTemplate>
             <DataTemplate x:Key="reviewTemplate">
-                <VerticalStackLayout>
-                    <HorizontalStackLayout> <!--CONVERTER-->
-                        <Label Text="{Binding AuthorName}" FontSize="20"/>
-                    </HorizontalStackLayout>
-                    <Label Text="{Binding Text}"/>
-                </VerticalStackLayout>
+                <Border Margin="0, 5">
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding AuthorName}" FontSize="20"/>
+                            <Label Text="{Binding Rate}" FontSize="20"/>
+                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='1'}"/>
+                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='2'}"/>
+                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='3'}"/>
+                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='4'}"/>
+                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='5'}"/>
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Text}"/>
+                    </VerticalStackLayout>
+                </Border>
             </DataTemplate>
             <DataTemplate x:Key="followTemplate">
                 <Border HeightRequest="150" Margin="10">

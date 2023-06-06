@@ -5,7 +5,7 @@
              Title="{Binding Name}"
              Background="{StaticResource Secondary}">
 
-    <Grid>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -31,8 +31,13 @@
                     </Grid>
 
                     <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/>
-                    <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
+                    <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" HorizontalOptions="End">
                         <Label Padding="0,5,0,0" FontSize="25" Text="{Binding Average}"/>
+                        <Image Style="{StaticResource star}" Source="{Binding Average, Converter={StaticResource DoubleToStar}, ConverterParameter='1'}"/>
+                        <Image Style="{StaticResource star}" Source="{Binding Average, Converter={StaticResource DoubleToStar}, ConverterParameter='2'}"/>
+                        <Image Style="{StaticResource star}" Source="{Binding Average, Converter={StaticResource DoubleToStar}, ConverterParameter='3'}"/>
+                        <Image Style="{StaticResource star}" Source="{Binding Average, Converter={StaticResource DoubleToStar}, ConverterParameter='4'}"/>
+                        <Image Style="{StaticResource star}" Source="{Binding Average, Converter={StaticResource DoubleToStar}, ConverterParameter='5'}"/>
                     </HorizontalStackLayout>
 
                     <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
