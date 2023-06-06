@@ -6,7 +6,7 @@ namespace Model
     public class Review
     {
         [DataMember]
-        public float Rate
+        public double Rate
         {
             get => rate;
             private set
@@ -15,7 +15,7 @@ namespace Model
                 rate = value;
             }
         }
-        private float rate;
+        private double rate;
 
         [DataMember]
         public string? Text
@@ -32,7 +32,7 @@ namespace Model
         [DataMember]
         public string AuthorName { get; set; }
 
-        public Review(string username, float rate, string text)
+        public Review(string username, double rate, string text)
         {
             AuthorName = username;
             Rate = rate;
