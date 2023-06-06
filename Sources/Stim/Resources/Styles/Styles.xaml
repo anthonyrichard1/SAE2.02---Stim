@@ -405,4 +405,10 @@
         <Setter Property="Background" Value="{StaticResource Secondary}"/>
     </Style>
 
+    <Style TargetType="Image" x:Key="star">
+        <Setter Property="Background" Value="{StaticResource Transparent}"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30" />
+    </Style>
+
 </ResourceDictionary>
