@@ -33,15 +33,17 @@
             <DataTemplate x:Key="reviewTemplate">
                 <Border Margin="0, 5">
                     <VerticalStackLayout>
-                        <HorizontalStackLayout>
+                        <Grid ColumnDefinitions="auto, *">
                             <Label Text="{Binding AuthorName}" FontSize="20"/>
-                            <Label Text="{Binding Rate}" FontSize="20"/>
-                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='1'}"/>
-                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='2'}"/>
-                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='3'}"/>
-                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='4'}"/>
-                            <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='5'}"/>
-                        </HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding Rate, StringFormat='{0}/5'}" FontSize="20"/>
+                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='1'}"/>
+                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='2'}"/>
+                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='3'}"/>
+                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='4'}"/>
+                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='5'}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
                         <Label Text="{Binding Text}"/>
                     </VerticalStackLayout>
                 </Border>
