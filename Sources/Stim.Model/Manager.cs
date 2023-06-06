@@ -7,7 +7,7 @@ namespace Model
     {
         private readonly IPersistance mgrpersistance;
         public IReadOnlyList<Game> GameList => gameList.AsReadOnly();
-        private List<Game> gameList;
+        private readonly List<Game> gameList;
         public Game? SelectedGame { get; set; }
         public User? CurrentUser { get; set; }
         public HashSet<User> Users { get; private set; }

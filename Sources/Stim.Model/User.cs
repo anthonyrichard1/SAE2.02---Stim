@@ -120,6 +120,15 @@ namespace Model
             if (string.IsNullOrWhiteSpace(Username)) return false;
             return other != null && Username.Equals(other.Username);
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return this.Equals((User)obj);
+        }
+
         public override int GetHashCode()
         { 
             if (Username!=null) return Username.GetHashCode();
@@ -150,14 +159,6 @@ namespace Model
         {
             if (!Followed_Games.Contains(game)) return;
             Followed_Games.Remove(game);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj == null) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return this.Equals((User)obj);
         }
 
         public override string ToString()

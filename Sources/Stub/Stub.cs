@@ -7,7 +7,12 @@ namespace StimStub
     [ExcludeFromCodeCoverage]
     public class Stub : IPersistance
     {
-        public List<Game> Games = new();
+        public List<Game> Games
+        {
+            get { return games; }
+            set { games = value; }
+        }
+        private List<Game> games;
 
         public Stub()
         {

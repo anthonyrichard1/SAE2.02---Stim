@@ -31,7 +31,7 @@ namespace Model
             get => description;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) description="Defaut";
                 else
                 {
                     description = value;
@@ -47,7 +47,7 @@ namespace Model
             get => year;
             private set
             {
-                if (value < 1957 || value > 2023) return;
+                if (value < 1957 || value > 2023) year=2023;
                 else
                 {
                     year = value;
@@ -79,7 +79,7 @@ namespace Model
             get => tags;
             private set
             {
-                if (value == null || value.Count > 3) return;
+                if (value == null || value.Count > 3) tags = new ObservableCollection<string>();
                 else
                 {
                     tags = value;
@@ -104,7 +104,7 @@ namespace Model
             get => lien;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
+                if (string.IsNullOrWhiteSpace(value)) lien = "Pas de lien";
                 else
                 {
                     lien = value;
