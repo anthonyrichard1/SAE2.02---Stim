@@ -7,12 +7,12 @@ using System.Text;
 namespace Model
 {
     [DataContract]
-    public class Game : INotifyPropertyChanged, IEquatable<Game>
+    public sealed class Game : INotifyPropertyChanged, IEquatable<Game>
     {
         [DataMember]
         public string Name
         {
-            get => name ?? "Default";
+            get => name;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) name="Default";
@@ -28,7 +28,7 @@ namespace Model
         [DataMember]
         public string Description
         {
-            get => description ?? "Pas de description";
+            get => description;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;
@@ -60,7 +60,7 @@ namespace Model
         [DataMember]
         public string Cover
         {
-            get => cover ?? "no_cover.png";
+            get => cover;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
@@ -101,7 +101,7 @@ namespace Model
 
         [DataMember]
         public string Lien { 
-            get => lien ?? "Pas de lien";
+            get => lien;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) return;

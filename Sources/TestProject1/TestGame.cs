@@ -172,7 +172,7 @@ namespace Test
         {
             Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Game game2 = new("name2", "description", 2020, new List<String> { "1" }, "cover2", "www.link.com");
-            Game game3 = null;
+            Game? game3 = null;
             string game4 = "";
 
             Assert.False(game.Equals(game2 as Game));

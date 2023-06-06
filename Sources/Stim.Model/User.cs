@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace Model
 {
     [DataContract]
-    public class User : INotifyPropertyChanged , IEquatable<User>
+    public sealed class User : INotifyPropertyChanged , IEquatable<User>
     {
         [DataMember]
         public string? Username
@@ -63,7 +63,7 @@ namespace Model
             private set
             {
                 Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
-                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException("password");
+                if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException(value);
                 else
                 {
                     password = value;

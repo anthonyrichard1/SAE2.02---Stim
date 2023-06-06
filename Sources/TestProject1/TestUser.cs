@@ -100,8 +100,7 @@ namespace Test
             User user = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             User user2 = new("userimage", "username2", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             User user3 = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            User user4 = null;
-            string user5 = "";
+            User? user4 = null;
 
             Assert.False(user.Equals(user2 as User));
             Assert.False(user.Equals(user2 as object));
