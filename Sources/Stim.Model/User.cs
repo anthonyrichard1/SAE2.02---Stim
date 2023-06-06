@@ -11,7 +11,7 @@ namespace Model
     public sealed class User : INotifyPropertyChanged , IEquatable<User>
     {
         [DataMember]
-        public string? Username
+        public string Username
         {
             get => username;
             set
@@ -29,7 +29,7 @@ namespace Model
         public string Biographie 
         {
             get => biographie ?? "Pas de biographie"; 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
                 else
@@ -44,7 +44,7 @@ namespace Model
         public string Email
         {
             get => email;
-            private set
+            set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
                 if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
@@ -60,7 +60,7 @@ namespace Model
         public string Password
         {
             get => password;
-            private set
+            set
             {
                 Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
                 if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException(value);
@@ -167,5 +167,6 @@ namespace Model
             foreach (Game game in Followed_Games) builder.Append($"{game.Name}\n");
             return builder.ToString();
         }
+
     }
 }

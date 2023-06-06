@@ -12,11 +12,12 @@ public partial class EntryPopup : Popup
 
     public void CloseButton(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(Entrytxt.Text)) Close(Entrytxt.Text);
+        Close();
     }
 
     private void Valider(object sender, EventArgs e)
     {
-
+        if (!string.IsNullOrWhiteSpace(Entrytxt.Text)) Close(Entrytxt.Text);
+        else Error.Children.Add(new Label { Text="Champ vide", TextColor=Colors.Red });
     }
 }
