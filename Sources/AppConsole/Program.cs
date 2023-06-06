@@ -7,157 +7,50 @@ namespace AppConsole
     [ExcludeFromCodeCoverage]
     public static class Program
     {
-        private static Manager Manager { get; set; } = new(new Stub());        
+        private static Manager Manager { get; set; } = new(new Stub());
 
         public static void Main(string[] args)
         {
-            string? choixstr;
-            int choixint = 0;
+            Game game = new("Jeu sans nom", "C'est un jeu", 1980, new List<string> { "aventure", "multijoueur", "combat" }, "no_cover.png", "boutiqueEnLigne.fr");
+            User user = new("moi.png", "Moi", "Il s'agit de moi-même car je suis cette personne", "moi.moi@moi.com", "123456abcdef**");
+            Console.WriteLine("-----TEST FONCTIONNELS-----");
+            Console.WriteLine("-----AJOUTER UN JEU-----");
+            Console.WriteLine("nom = Jeu Sans Nom, description = C'est un jeu, année = 1980, tags = aventure-combat-multijoueur, lien = boutiqueEnLigne.fr");
+            Manager.AddGametoGamesList(game);
+            Console.WriteLine("résultat : ");
+            AfficherJeux();
 
-            while (choixint != 99)
-            {
-                Console.WriteLine("-----MENU PRINCIPAL-----\n" +
-                "1-Ajouter un jeu\n" +
-                "2-Supprimer un jeu\n" +
-                "3-Afficher les jeux\n" +
-                "4-Ajouter un utilisateur\n" +
-                "5-Afficher les utilisateur\n" +
-                "6-Afficher les commentaires d'un jeu\n" +
-                "7-Ajouter un commentaire\n" +
-                "8-Supprimer un commentaire\n" +
-                "9-Ajouter jeu suivis\n" +
-                "10-Supprimer jeu suivis\n" +
-                "99-Quitter");
+            Console.WriteLine("-----SUPPRIMER UN JEU-----");
+            Console.WriteLine("nom = Jeu Sans Nom, description = C'est un jeu, année = 1980, tags = aventure-combat-multijoueur, lien = boutiqueEnLigne.fr");
+            Manager.RemoveGameFromGamesList(game);
+            Console.WriteLine("Résultat : ");
+            AfficherJeux();
 
-                choixstr = Console.ReadLine();
+            Console.WriteLine("-----AJOUTER UN UTILISATEUR-----");
+            Console.WriteLine("nom d'utilisateur = Moi, biographie = Il s'agit de moi-même car je suis cette personne, photo = moi.png, email = moi.moi@moi.com, mot de passe = 123456abcdef**");
+            Manager.AddUsertoUserList(user);
+            AfficherUsers();
 
-                if (int.TryParse(choixstr, out choixint)) switch (choixint)
-                    {
-                        case 1:
-                            Console.WriteLine("Nom du jeu : ");
-                            string? name = Console.ReadLine();
-                            Console.WriteLine("Description du jeu : ");
-                            string? description = Console.ReadLine();
-                            string? year = "";
-                            int yearint = 0;
+            Console.WriteLine("-----AJOUTER UN COMMENTAIRE SUR UN JEU-----");
+            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 1.3");
+            Manager.GameList[3].AddReview(new("Moi", 1.3f, "Ce jeu est vraiment très bien !"));
+            Console.WriteLine(Manager.GameList[3]);
 
-                            while (!int.TryParse(year, out yearint))
-                            {
-                                Console.WriteLine("Année du jeu : ");
-                                year = Console.ReadLine();
-                            }
+            Console.WriteLine("-----SUPPRIMER UN COMMENTAIRE SUR UN JEU-----");
+            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 1.3");
+            user.RemoveSelfReview(Manager.GameList[3], 1.3f, "Ce jeu est vraiment très bien !");
+            Console.WriteLine(Manager.GameList[3]);
 
-                            Console.WriteLine("Tag 1 du jeu : ");
-                            string? tag1 = Console.ReadLine();
-                            Console.WriteLine("Tag 2 du jeu : ");
-                            string? tag2 = Console.ReadLine();
-                            Console.WriteLine("Tag 3 du jeu : ");
-                            string? tag3 = Console.ReadLine();
-                            Console.WriteLine("Cover du jeu : ");
-                            string? cover = Console.ReadLine();
-                            Console.WriteLine("Lien boutique du jeu : ");
-                            string? lien = Console.ReadLine();
-                            Game game = new(name, description, yearint, new List<string> { tag1, tag2, tag3 }, cover, lien);
-                            Manager.AddGametoGamesList(game);
-                            Console.WriteLine("Jeu suivant ajouté : " + game.Name);
-                            break;
+            Console.WriteLine("-----AJOUTER UN JEU AUX SUIVIS-----");
+            Console.WriteLine("jeux = Elden ring");
+            user.FollowAGame(Manager.GameList[0]);
+            Console.WriteLine(user);
 
-                        case 2:
-                            Console.WriteLine("Nom du jeu : ");
-                            string? name2 = Console.ReadLine();
-                            bool find = false;
-                            foreach (Game g in Manager.GameList) if (g.Name == name2)
-                                {
-                                    Manager.RemoveGameFromGamesList(g);
-                                    Console.WriteLine("Jeu suivant supprimé : " + g.Name);
-                                    find = true;
-                                    break;
-                                }
-                            if (!find) Console.WriteLine("Jeu suivant introuvable : " + name2);
-                            break;
+            Console.WriteLine("-----SUPPRIMER UN JEU DES SUIVIS-----");
+            Console.WriteLine("jeux = Elden ring");
+            user.RemoveAGame(Manager.GameList[0]);
+            Console.WriteLine(user);
 
-                        case 3:
-                            AfficherJeux();
-                            break;
-
-                        case 4:
-                            Console.WriteLine("Nom de l'utilisateur : ");
-                            string? username = Console.ReadLine();
-                            Console.WriteLine("Image de l'utilisateur : ");
-                            string? image = Console.ReadLine();
-                            Console.WriteLine("Biographie de l'utilisateur : ");
-                            string? biographie = Console.ReadLine();
-                            Console.WriteLine("Email de l'utilisateur : ");
-                            string? email = Console.ReadLine();
-                            Console.WriteLine("Password de l'utilisateur : ");
-                            string? password = Console.ReadLine();
-                            User user = new(image, username, biographie, email, password);
-                            Manager.AddUsertoUserList(user);
-                            Console.WriteLine("Utilisateur suivant ajouté : " + user.Username);
-                            break;
-
-                        case 5:
-                            AfficherUsers();
-                            break;
-
-                        case 6:
-                            Console.WriteLine("Nom du jeu : ");
-                            string? name3 = Console.ReadLine();
-                            bool find2 = false;
-                            foreach (Game g in Manager.GameList) if (g.Name == name3)
-                                {
-                                    foreach (Review rev in g.Reviews) Console.WriteLine(rev);
-                                    find2 = true;
-                                    break;
-                                }
-                            if (!find2) Console.WriteLine("Jeu suivant introuvable : " + name3);     
-                            break;
-
-                        case 7:
-                            Console.WriteLine("Nom du jeu : ");
-                            string? name4 = Console.ReadLine();
-                            bool find3 = false;
-                            foreach (Game g in Manager.GameList) if (g.Name == name4)
-                                    {
-                                    Console.WriteLine("Votre nom d'utilisateur : ");
-                                    string? username2 = Console.ReadLine();
-                                    int rateint;
-                                    string? ratestr = "";
-                                    while (!int.TryParse(ratestr, out rateint)) ratestr = Console.ReadLine();
-                                    Console.WriteLine("Votre commentaire : ");
-                                    string? revstr = Console.ReadLine();
-                                    Review rev = new(username2, rateint, revstr);
-                                    g.AddReview(rev);
-                                    Console.WriteLine("Commentaire ajouté !");
-                                    find3 = true;
-                                    break;
-                                    }
-                            if (!find3) Console.WriteLine("Jeu suivant introuvable : " + name4);
-                            break;
-
-                        case 8:
-                            Console.WriteLine("Nom du jeu : ");
-                            string? name5 = Console.ReadLine();
-                            bool find4 = false;
-                            foreach (Game g in Manager.GameList) if (g.Name == name5)
-                                {
-                                    Console.WriteLine("Votre nom d'utilisateur : ");
-                                    string? username2 = Console.ReadLine();
-                                    //foreach (Review rev in g.Reviews) if (rev.AuthorName)
-                                }
-                                break;
-
-                        case 9:
-                            break;
-
-                        case 10:
-                            break;
-
-                        default:
-                            break;
-
-                    }
-            }
         }
 
         private static void AfficherJeux()
