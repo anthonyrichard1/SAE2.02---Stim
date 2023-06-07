@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Model
@@ -51,7 +52,7 @@ namespace Model
             gameList.Remove(game);
             mgrpersistance.SaveGame(gameList);
         }
-
+        [ExcludeFromCodeCoverage]
         public void SaveGames()
         {
             mgrpersistance.SaveGame(gameList);
@@ -64,6 +65,7 @@ namespace Model
             }
             return null;
         }
+        [ExcludeFromCodeCoverage]
         public void SaveUser()
         {
             mgrpersistance.SaveUser(Users);

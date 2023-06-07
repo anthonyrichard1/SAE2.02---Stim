@@ -4,7 +4,11 @@ using CommunityToolkit.Maui.Views;
 namespace Stim;
 public partial class UserInfo : ContentView
 {
-
+    public event EventHandler popUp;
+    public void PopUp(object sender, EventArgs e)
+    {
+        popUp?.Invoke(sender, e);
+    }
     public string Name
     {
         get => (string)GetValue(NameProperty); 
@@ -28,38 +32,38 @@ public partial class UserInfo : ContentView
 
     private async void Modif(object sender, EventArgs e)
     {
-        if      (Button == 0)
-        {
-            var result = await this.ShowPopupAsync(new EntryPopup("Username"));
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                ((App)App.Current).Manager.CurrentUser.Username = result;
-            }
-        }
-        else if (Button == 1)
-        {
-            var result = await this.(new EntryPopup("Username"));
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                ((App)App.Current).Manager.CurrentUser.Username = result;
-            }
-        }
-        else if (Button == 2)
-        {
-            var result = await this.(new EntryPopup("Password"));
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                ((App)App.Current).Manager.CurrentUser.Password = result;
-            }
-        }
-        else if (Button == 3)
-        {
-            var result = await this.(new EntryPopup("Email"));
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                ((App)App.Current).Manager.CurrentUser.Email = result;
-            }
-        }
-        else throw new ArgumentOutOfRangeException();
+        //if      (Button == 0)
+        //{
+        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
+        //    if (string.IsNullOrWhiteSpace((string)result))
+        //    {
+        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
+        //    }
+        //}
+        //else if (Button == 1)
+        //{
+        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
+        //    if (string.IsNullOrWhiteSpace((string)result))
+        //    {
+        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
+        //    }
+        //}
+        //else if (Button == 2)
+        //{
+        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
+        //    if (string.IsNullOrWhiteSpace((string)result))
+        //    {
+        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
+        //    }
+        //}
+        //else if (Button == 3)
+        //{
+        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
+        //    if (string.IsNullOrWhiteSpace((string)result))
+        //    {
+        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
+        //    }
+        //}
+        throw new ArgumentOutOfRangeException();
     }
 }
