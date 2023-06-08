@@ -58,9 +58,9 @@ namespace Test
         {
             Review rev = new("User 1", 3, "rev");
             rev.EditRate(-2);
-            Assert.Equal(0, rev.Rate);
+            Assert.Equal(3, rev.Rate);
             rev.EditRate(18);
-            Assert.Equal(0, rev.Rate);
+            Assert.Equal(3, rev.Rate);
             rev.EditRate(4.5f);
             Assert.Equal(4.5f, rev.Rate);
         }

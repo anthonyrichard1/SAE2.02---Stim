@@ -38,7 +38,7 @@ namespace Model
         public string Biographie 
         {
             get => biographie; 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
                 else biographie = value;
@@ -50,12 +50,15 @@ namespace Model
         public string Email
         {
             get => email;
-            private set
+            set
             {
-                Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value)) email = value;
+                Regex rg_email = new Regex("^([a-zA-Z0-9_-]+[.])*[a-zA-Z0-9_-]+@([a-zA-Z0-9_-]+[.])+[a-zA-Z0-9_-]{2,4}$");
+                if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
+                {
+                    email = value;
+                    NotifyPropertyChanged();
+                }
                 else email = "Default";
-                NotifyPropertyChanged();
             }
         }
         private string email = default!;
@@ -63,7 +66,7 @@ namespace Model
         public string Password
         {
             get => password;
-            private set
+            set
             {
                 Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
                 if (string.IsNullOrWhiteSpace(value) || !rg.IsMatch(value)) throw new ArgumentNullException(value);
@@ -122,7 +125,7 @@ namespace Model
             return 0;
         }
 
-        public void AddReview(Game game, float rate, string text)
+        public void AddReview(Game game, double rate, string text)
         {
             game.AddReview(new Review(Username, rate, text));
         }
@@ -155,5 +158,6 @@ namespace Model
             foreach (Game game in Followed_Games) builder.Append($"{game.Name}\n");
             return builder.ToString();
         }
+
     }
 }

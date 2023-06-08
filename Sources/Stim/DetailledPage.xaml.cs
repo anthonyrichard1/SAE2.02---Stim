@@ -1,6 +1,5 @@
 using CommunityToolkit.Maui.Views;
 using Model;
-using StimPersistance;
 
 namespace Stim;
 
@@ -9,8 +8,8 @@ public partial class DetailledPage : ContentPage
 	public DetailledPage()
 	{
 		InitializeComponent();
-        BindingContext = (App.Current as App).Manager.SelectedGame;
         if ((App.Current as App).Manager.SelectedGame is null) Navigation.RemovePage(this);
+        BindingContext = (App.Current as App).Manager.SelectedGame;        
     }
 
     private async void GoToMainPage(object sender, EventArgs e)
@@ -18,9 +17,9 @@ public partial class DetailledPage : ContentPage
         await Navigation.PushModalAsync(new MainPage());
     }
 
-    private void AddReview(object sender, EventArgs e)
+    private async void AddReview(object sender, EventArgs e)
     {
-        //popup add review
+        await this.ShowPopupAsync(new ReviewPopUp());
     }
 
     private async void AddFollow(object sender, EventArgs e)

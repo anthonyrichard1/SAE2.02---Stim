@@ -112,6 +112,7 @@ namespace Test
         public void Hashcode()
         {
             User user = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
+            Assert.Equal(user.GetHashCode(), user.Username?.GetHashCode());
         }
     }
 }

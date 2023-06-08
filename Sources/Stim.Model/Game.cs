@@ -74,8 +74,10 @@ namespace Model
         }
         private ObservableCollection<string> tags;
 
+        public ReadOnlyCollection<Review> Reviews => reviews.AsReadOnly();
+
         [DataMember]
-        public List<Review> Reviews { get; private init; }
+        private readonly List<Review> reviews;
 
         public double Average => Reviews.Any() ? Math.Round(Reviews.Select(review => review.Rate).Average(), 1) : 0;
 
@@ -104,7 +106,7 @@ namespace Model
             else Cover = cover;
             if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Pas de lien";
             else Lien = c_lien;
-            Reviews = new List<Review>();
+            reviews = new List<Review>();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -147,11 +149,16 @@ namespace Model
 
         public void AddReview(Review review)
         {
-            Reviews.Add(review);
+            reviews.Add(review);
+            NotifyPropertyChanged(nameof(Reviews));
+            NotifyPropertyChanged(nameof(Average));
         }
         public void RemoveReview(Review review)
         {
-            Reviews.Remove(review);
+            reviews.Remove(review);
+            NotifyPropertyChanged(nameof(Reviews));
+            NotifyPropertyChanged(nameof(Average));
+            
         }
         public void DescChange(string newdesc)
         {
