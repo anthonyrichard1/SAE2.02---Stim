@@ -4,13 +4,14 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Stim.ReviewPopUp"
              CanBeDismissedByTappingOutsideOfPopup="False">
-    
-        <Grid ColumnDefinitions="*" RowDefinitions="*, *, *, *, *">
-            <Label x:Name="placeholder" Style="{StaticResource popupLabel}"/>
-            <Entry Grid.Row="1" x:Name="Entrytxt" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Entry Grid.Row="2" x:Name="Val"      VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Button Grid.Row="3" Text="Valider" Style="{StaticResource popupButton}" Clicked="Valider"/>
-            <Button Grid.Row="4" Text="Annuler" Style="{StaticResource popupButton}" Clicked="CloseButton"/>
-        <HorizontalStackLayout x:Name="Error"/>
+
+    <Grid RowDefinitions="auto, auto, auto, auto, auto, auto, *" ColumnDefinitions="*, *" Style="{StaticResource popupGrid}">
+        <Label Grid.ColumnSpan="2" Text="Commentaire" Style="{StaticResource popupLabel}"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="2" x:Name="Entrytxt" Style="{StaticResource popupEntry}"/>
+        <Label Grid.ColumnSpan="2" Grid.Row="3" Text="Note sur 5" Style="{StaticResource popupLabel}"/>
+        <Entry Grid.ColumnSpan="2" Grid.Row="4" x:Name="Val" Style="{StaticResource popupEntry}" WidthRequest="25" HorizontalTextAlignment="Center"/>
+        <Button Grid.Row="5" Style="{StaticResource popupButton}" Text="Annuler" Clicked="CloseButton"/>
+        <Button Grid.Row="5" Grid.Column="2" Style="{StaticResource popupButton}" Text="Valider" Clicked="Valider"/>
+        <Label Grid.ColumnSpan="2" Grid.Row="6" x:Name="Error" Style="{StaticResource popupLabel}" TextColor="Red" Text=""/>
     </Grid>
 </toolkit:Popup>

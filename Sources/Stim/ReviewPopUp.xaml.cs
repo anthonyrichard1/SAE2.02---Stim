@@ -7,10 +7,11 @@ namespace Stim;
 public partial class ReviewPopUp : Popup
 {
     private readonly bool editing = false;
-    private Review prevRev = null;
-	public ReviewPopUp(Review previousRev = null)
-	{
-		InitializeComponent();
+    private readonly Review prevRev = null;
+
+    public ReviewPopUp(Review previousRev = null)
+    {
+        InitializeComponent();
         if (previousRev != null)
         {
             prevRev = previousRev;
@@ -18,7 +19,7 @@ public partial class ReviewPopUp : Popup
             Val.Text = previousRev.Rate.ToString();
             editing = true;
         }
-	}
+    }
 
     public void CloseButton(object sender, EventArgs e)
     {
@@ -35,7 +36,6 @@ public partial class ReviewPopUp : Popup
         bool isDouble = double.TryParse(Val.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out double rate);
         if (!string.IsNullOrWhiteSpace(Entrytxt.Text) && isDouble)
         {
-            //Error.Text = "";
             if (editing == true)
             {
                 if (prevRev.Text != Entrytxt.Text) prevRev.EditReview(Entrytxt.Text);
@@ -52,6 +52,6 @@ public partial class ReviewPopUp : Popup
             ((App)App.Current).Manager.SaveGames();
             Close(res);
         }
-        //else Error.Text = "Champ vide ou invalide";
+        else Error.Text = "Champ vide ou invalide";
     }
 }
