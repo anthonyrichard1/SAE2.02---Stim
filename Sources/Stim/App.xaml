@@ -2,8 +2,8 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Stim"
-             xmlns:conv="clr-namespace:Stim.Converter"
              x:Class="Stim.App">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -11,21 +11,19 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <conv:DoubleToStar x:Key="DoubleToStar" EtoilePleine="etoile_pleine.png" EtoileMiPleine="etoile_mi_pleine.png" EtoileVide="etoile_vide.png"/>
-
             <DataTemplate x:Key="tagsTemplate">
                 <Label Padding="5,0,0,0" Margin="0" Text="{Binding}"/>
             </DataTemplate>
             <DataTemplate x:Key="gameTemplate">
                 <Border MinimumWidthRequest="200" Margin="10, 10, 10, 10">
                     <Grid HeightRequest="635" RowDefinitions="auto, auto, auto">
-                        <Image Source="{Binding Cover}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="900" HeightRequest="455"/>
-                        <Label FontAttributes="Bold" FontSize="30" Text="{Binding Name}" Grid.Row="1" HorizontalTextAlignment="Center"/>
+                        <Image Source="{Binding Cover, FallbackValue='no_cover.png'}" Aspect="AspectFit" Margin="0,0,0,0" WidthRequest="900" HeightRequest="455"/>
+                        <Label FontAttributes="Bold" FontSize="30" Text="{Binding Name, FallbackValue='Default'}" Grid.Row="1" HorizontalTextAlignment="Center"/>
 
                         <Grid Grid.Row="2" ColumnDefinitions="*, auto" RowDefinitions="auto, auto">
                             <Label Text="Tags :" Margin="0" Padding="0"/>
                             <CollectionView ItemsSource="{Binding Tags}" Grid.Row="1" Margin="0" ItemTemplate="{StaticResource tagsTemplate}"/>
-                            <Label Text="{Binding Year}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+                            <Label Text="{Binding Year, FallbackValue='2023'}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -34,27 +32,20 @@
                 <Border Margin="0, 5">
                     <VerticalStackLayout>
                         <Grid ColumnDefinitions="auto, *">
-                            <Label Text="{Binding AuthorName}" FontSize="20"/>
-                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
-                                <Label Text="{Binding Rate, StringFormat='{0}/5'}" FontSize="20"/>
-                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='1'}"/>
-                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='2'}"/>
-                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='3'}"/>
-                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='4'}"/>
-                                <Image Style="{StaticResource star}" Source="{Binding Rate, Converter={StaticResource DoubleToStar}, ConverterParameter='5'}"/>
-                            </HorizontalStackLayout>
+                            <Label Text="{Binding AuthorName, FallbackValue='Default'}" FontSize="20"/>
+                            <local:StarsContainer Rate="{Binding Rate, FallbackValue='0'}" Grid.Column="2"/>
                         </Grid>
-                        <Label Text="{Binding Text}"/>
+                        <Label Text="{Binding Text, FallbackValue='Default'}"/>
                     </VerticalStackLayout>
                 </Border>
             </DataTemplate>
             <DataTemplate x:Key="followTemplate">
                 <Border HeightRequest="150" Margin="10">
                     <Grid ColumnDefinitions="auto, *, 3*, auto" RowDefinitions="*">
-                        <Image Source="{Binding Cover}"/>
-                        <Label Grid.Column="1"  Text="{Binding Name}" FontSize="50"/>
+                        <Image Source="{Binding Cover, FallbackValue='no_cover.png'}"/>
+                        <Label Grid.Column="1"  Text="{Binding Name, FallbackValue='Default'}" FontSize="50"/>
                         <ScrollView Grid.Column="2">
-                            <Label Text="{Binding Description}"/>
+                            <Label Text="{Binding Description, FallbackValue='Default'}"/>
                         </ScrollView>
                         <CollectionView Grid.Column="3" ItemsSource="{Binding Tags}" Grid.Row="1" Margin="0" ItemTemplate="{StaticResource tagsTemplate}" HorizontalOptions="End"/>
                     </Grid>
@@ -63,10 +54,10 @@
             <DataTemplate x:Key="followLoginTemplate">
                 <Grid Margin="10" ColumnDefinitions="*, 5*, *">
                     <Border>
-                        <Image Source="{Binding Cover}" Grid.Column="0" HeightRequest="100"/>
+                        <Image Source="{Binding Cover, FallbackValue='no_cover.png'}" Grid.Column="0" HeightRequest="100"/>
                     </Border>
                     <Border Grid.Column="1">
-                        <Label Text="{Binding Name}"/>
+                        <Label Text="{Binding Name, FallbackValue='Default'}"/>
                     </Border>
                     <Border Grid.Column="2">
                         <Label Text="X" FontSize="50"/>
