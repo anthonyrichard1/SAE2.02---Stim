@@ -56,7 +56,7 @@ namespace Model
         {
             if (!string.IsNullOrWhiteSpace(text)) Text = text+" (Modifié)";
         }
-        public void EditRate(float newval)
+        public void EditRate(double newval)
         {
             Rate= newval;
         }
