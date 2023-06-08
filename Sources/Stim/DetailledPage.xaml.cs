@@ -19,7 +19,15 @@ public partial class DetailledPage : ContentPage
 
     private async void AddReview(object sender, EventArgs e)
     {
-        await this.ShowPopupAsync(new ReviewPopUp());
+        var res = await this.ShowPopupAsync(new ReviewPopUp());
+        if (res != null && res is int i && i == 1) await this.ShowPopupAsync(new MessagePopup("Commentaire ajouté !"));
+    }
+
+    private async void EditReview(object sender, EventArgs e)
+    {
+        var res = await this.ShowPopupAsync(new ReviewPopUp((sender as ImageButton).BindingContext as Review));
+        if (res != null && res is int i && i == 2) await this.ShowPopupAsync(new MessagePopup("Commentaire modifié !"));
+    }
     }
 
     private async void AddFollow(object sender, EventArgs e)

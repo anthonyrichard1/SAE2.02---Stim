@@ -28,17 +28,6 @@
                     </Grid>
                 </Border>
             </DataTemplate>
-            <DataTemplate x:Key="reviewTemplate">
-                <Border Margin="0, 5">
-                    <VerticalStackLayout>
-                        <Grid ColumnDefinitions="auto, *">
-                            <Label Text="{Binding AuthorName, FallbackValue='Default'}" FontSize="20"/>
-                            <local:StarsContainer Rate="{Binding Rate, FallbackValue='0'}" Grid.Column="2"/>
-                        </Grid>
-                        <Label Text="{Binding Text, FallbackValue='Default'}"/>
-                    </VerticalStackLayout>
-                </Border>
-            </DataTemplate>
             <DataTemplate x:Key="followTemplate">
                 <Border HeightRequest="150" Margin="10">
                     <Grid ColumnDefinitions="auto, *, 3*, auto" RowDefinitions="*">

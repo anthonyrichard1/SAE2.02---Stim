@@ -150,15 +150,17 @@ namespace Model
         public void AddReview(Review review)
         {
             reviews.Add(review);
-            NotifyPropertyChanged(nameof(Reviews));
-            NotifyPropertyChanged(nameof(Average));
+            UpdateReviews();
         }
         public void RemoveReview(Review review)
         {
             reviews.Remove(review);
+            UpdateReviews();
+        }
+        public void UpdateReviews()
+        {
             NotifyPropertyChanged(nameof(Reviews));
             NotifyPropertyChanged(nameof(Average));
-            
         }
         public void DescChange(string newdesc)
         {

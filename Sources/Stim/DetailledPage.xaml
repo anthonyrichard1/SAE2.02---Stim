@@ -6,6 +6,21 @@
              Title="{Binding Name, FallbackValue='Default'}"
              Background="{StaticResource Secondary}">
 
+    <ContentPage.Resources>
+        <DataTemplate x:Key="reviewTemplate">
+            <Border Margin="0, 5">
+                <VerticalStackLayout>
+                    <Grid ColumnDefinitions="auto, auto, auto, *">
+                        <Label Text="{Binding AuthorName, FallbackValue='Default'}" FontSize="20"/>
+                        <ImageButton Grid.Column="2" Source="pen.png" Background="{StaticResource Transparent}" HeightRequest="30" Clicked="EditReview"/>
+                        <local:StarsContainer Grid.Column="4" Rate="{Binding Rate, FallbackValue='0'}"/>
+                    </Grid>
+                    <Label Text="{Binding Text, FallbackValue='Default'}"/>
+                </VerticalStackLayout>
+            </Border>
+        </DataTemplate>
+    </ContentPage.Resources>
+
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

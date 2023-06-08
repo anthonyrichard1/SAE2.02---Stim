@@ -1,16 +1,8 @@
 ﻿namespace Stim;
 using Model;
-using StimPersistance;
-using StimStub;
-using Microsoft.Maui.Storage;
-using MailKit.Search;
-using System.Linq;
-using System.Collections.Generic;
 
 public partial class MainPage : ContentPage
 {
-    public IEnumerable<Game> filterdGame { get;  private set; }
-
     public MainPage()
     {
         InitializeComponent();
@@ -19,8 +11,8 @@ public partial class MainPage : ContentPage
 
     private async void OnClickGameList(object sender, EventArgs e)
     {
-       (App.Current as App).Manager.SelectedGame = (sender as CollectionView).SelectedItem as Game;
-       await Navigation.PushAsync(new DetailledPage());
+        (App.Current as App).Manager.SelectedGame = (sender as CollectionView).SelectedItem as Game;
+        await Navigation.PushAsync(new DetailledPage());
     }
 
     private async void Addgame(object sender, EventArgs e)
