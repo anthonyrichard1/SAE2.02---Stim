@@ -15,4 +15,9 @@ public partial class FollowPage : ContentPage
 		(App.Current as App).Manager.SelectedGame = (sender as CollectionView).SelectedItem as Game;
 		await Navigation.PushAsync(new DetailledPage());
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+    }
 }
