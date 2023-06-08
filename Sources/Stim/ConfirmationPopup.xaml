@@ -4,8 +4,8 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Stim.ConfirmationPopup"
                CanBeDismissedByTappingOutsideOfPopup="False">
-    
-    <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
+
+    <Grid RowDefinitions="auto, *" ColumnDefinitions="*, *" Style="{StaticResource popupGrid}">
         <Label Grid.ColumnSpan="2" x:Name="placeholder" Style="{StaticResource popupLabel}"/>
         <Button Grid.Row="2" Style="{StaticResource popupButton}" Text="Non" Clicked="No"/>
         <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource popupButton}" Text="Oui" Clicked="Yes"/>
