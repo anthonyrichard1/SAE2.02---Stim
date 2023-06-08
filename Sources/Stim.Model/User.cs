@@ -46,7 +46,7 @@ namespace Model
             get => email;
             set
             {
-                Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                Regex rg_email = new Regex("^([a-zA-Z0-9_-]+[.])*[a-zA-Z0-9_-]+@([a-zA-Z0-9_-]+[.])+[a-zA-Z0-9_-]{2,4}$");
                 if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
                 {
                     email = value;

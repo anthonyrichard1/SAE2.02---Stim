@@ -4,10 +4,24 @@ using CommunityToolkit.Maui.Views;
 namespace Stim;
 public partial class UserInfo : ContentView
 {
-    public event EventHandler popUp;
-    public void PopUp(object sender, EventArgs e)
+    public bool IsPswd
     {
-        popUp?.Invoke(sender, e);
+        get => (bool)GetValue(IsPswdProperty);
+        set => SetValue(IsPswdProperty, value);
+    }
+    public static readonly BindableProperty IsPswdProperty =
+        BindableProperty.Create(nameof(Name), typeof(bool), typeof(UserInfo), false);
+    public int LabelHeight
+    {
+        get => (int)GetValue(LabelHeightProperty);
+        set => SetValue(LabelHeightProperty, value);
+    }
+    public static readonly BindableProperty LabelHeightProperty =
+        BindableProperty.Create(nameof(Name), typeof(int), typeof(UserInfo), 32);
+    public event EventHandler PopUp;
+    public void popUp(object sender, EventArgs e)
+    {
+        PopUp?.Invoke(sender, e);
     }
     public string Name
     {
@@ -28,42 +42,10 @@ public partial class UserInfo : ContentView
     public UserInfo()
     {
         InitializeComponent();
-    }
-
-    private async void Modif(object sender, EventArgs e)
-    {
-        //if      (Button == 0)
-        //{
-        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
-        //    if (string.IsNullOrWhiteSpace((string)result))
-        //    {
-        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
-        //    }
-        //}
-        //else if (Button == 1)
-        //{
-        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
-        //    if (string.IsNullOrWhiteSpace((string)result))
-        //    {
-        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
-        //    }
-        //}
-        //else if (Button == 2)
-        //{
-        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
-        //    if (string.IsNullOrWhiteSpace((string)result))
-        //    {
-        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
-        //    }
-        //}
-        //else if (Button == 3)
-        //{
-        //    //var result = await CurrentPage.ShowPopupAsync(new EntryPopup("Username"));
-        //    if (string.IsNullOrWhiteSpace((string)result))
-        //    {
-        //        ((App)App.Current).Manager.CurrentUser.Username = (string)result;
-        //    }
-        //}
-        throw new ArgumentOutOfRangeException();
+        if (IsPswd)
+        {
+            Label.IsVisible = false;
+        }
+        else Label.IsVisible = true;
     }
 }

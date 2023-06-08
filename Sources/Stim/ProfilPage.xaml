@@ -31,20 +31,10 @@
                 </Grid.ColumnDefinitions>
                 <VerticalStackLayout Grid.Column="0" Margin="10,0,0,0">
                     <Image Source="{Binding UserImage}" HeightRequest="200" WidthRequest="200" Margin="0,0,10,0"/>
-                    <local:UserInfo Name="{Binding Username}" Button="0" popUp="PopUp"/>
-
-                    <Grid Margin="0,20,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border>
-                            <Label Text="{Binding Biographie}" HeightRequest="200" HorizontalTextAlignment="Start" VerticalTextAlignment="Start"/>
-                        </Border>
-                        <Button ImageSource="pen.png" Grid.Column="1" MaximumHeightRequest="32" MaximumWidthRequest="32" Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="{StaticResource Gray500}"></Button>
-                    </Grid>
-                    <local:UserInfo Name="{Binding Password}"  Button="2"  popUp="PopUp"/>
-                    <local:UserInfo Name="{Binding Email}" Button="3" popUp="PopUp"/>
+                    <local:UserInfo Name="{Binding Username}" Button="0" PopUp="PopUpUsername"/>
+                    <local:UserInfo Name="{Binding Biographie}" Button="1" PopUp="PopUpBio" LabelHeight="200"/>
+                    <local:UserInfo Name="{Binding Password}"  Button="2"  PopUp="PopUpPswd" IsPswd="False"/>
+                    <local:UserInfo Name="{Binding Email}" Button="3" PopUp="PopUpEmail"/>
                 </VerticalStackLayout>
                 
                 <VerticalStackLayout Grid.Column="1" Margin="100,0,0,0">

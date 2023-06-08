@@ -33,12 +33,14 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Entry Placeholder="Username" PlaceholderColor="{StaticResource Primary}"
+                <Entry Text="Bel"
+                       Placeholder="Username" PlaceholderColor="{StaticResource Primary}"
                        IsPassword="False"
                        x:Name="Username"
                        HeightRequest="50"
                        ClearButtonVisibility="WhileEditing"/>
-                <Entry Placeholder="Mot de passe"
+                <Entry Text="BelBel1*"
+                       Placeholder="Mot de passe"
                        PlaceholderColor="{StaticResource Primary}"
                        IsPassword="True" x:Name="Pswd"
                        HeightRequest="50"
