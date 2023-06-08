@@ -8,34 +8,18 @@ namespace Stim;
 public partial class App : Application
 {
     public Manager Manager { get; set; }
+
     public App()
     {
         InitializeComponent();
-        MainPage = new LoginPage();
-        if (File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))) Manager = new Manager(new Persistance(FileSystem.Current.AppDataDirectory));
-        else Manager = new(new Stub());
+        MainPage = new NavigationPage(new LoginPage());
+        Manager = new(new Persistance(FileSystem.Current.AppDataDirectory));
+        if (!File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))) FirstStart();
     }
-    protected override Window CreateWindow(IActivationState activationState)
+
+    private void FirstStart()
     {
-        Window window = base.CreateWindow(activationState);
-
-        window.Stopped += (s, e) =>
-        {
-            if (!(File.Exists(Path.Combine(FileSystem.Current.AppDataDirectory, "games.xml"))))
-            {
-                Manager Manager2 = new(new Persistance(FileSystem.Current.AppDataDirectory));
-                foreach (var game in Manager.GameList) Manager2.AddGametoGamesList(game);
-                foreach (var user in Manager.Users)  Manager2.AddUsertoUserList(user);
-                Manager2.SaveGames();
-                Manager2.SaveUser();
-            }
-            else
-            {
-                Manager.SaveGames();
-                Manager.SaveUser();
-            }            
-        };
-
-        return window;
-    } 
+        Manager mgrtmp = new(new Stub());
+        foreach (var game in mgrtmp.GameList) Manager.AddGametoGamesList(game);
+    }
 }

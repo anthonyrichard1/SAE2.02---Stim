@@ -11,42 +11,48 @@ namespace Model
     public sealed class User : INotifyPropertyChanged , IEquatable<User>
     {
         [DataMember]
-        public string Username
+        public string UserImage
+        {
+            get => userImage;
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value)) userImage = value;
+                else userImage = "no_cover.png";
+                NotifyPropertyChanged();
+            }
+        }
+        private string userImage = default!;
+        [DataMember]
+        public string? Username
         {
             get => username;
             set
             {
                 if (string.IsNullOrWhiteSpace(value)) username = "Default";
-                else
-                {
-                    username = value;
-                    NotifyPropertyChanged();
-                }
+                else username = value;
+                NotifyPropertyChanged();
             }
         }
-        private string username;
+        private string username=default!;
         [DataMember]
         public string Biographie 
         {
-            get => biographie ?? "Pas de biographie"; 
+            get => biographie; 
             set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
-                else
-                {
-                    biographie = value;
-                    NotifyPropertyChanged();
-                }
+                else biographie = value;
+                NotifyPropertyChanged();
             }
         }
-        private string biographie;
+        private string biographie = default!;
         [DataMember]
         public string Email
         {
             get => email;
             set
             {
-                Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+                Regex rg_email = new Regex("^([a-zA-Z0-9_-]+[.])*[a-zA-Z0-9_-]+@([a-zA-Z0-9_-]+[.])+[a-zA-Z0-9_-]{2,4}$");
                 if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
                 {
                     email = value;
@@ -55,7 +61,7 @@ namespace Model
                 else email = "Default";
             }
         }
-        private string email;
+        private string email = default!;
         [DataMember]
         public string Password
         {
@@ -71,17 +77,12 @@ namespace Model
                 }
             }
         }
-        private string password;
+        private string password = default!;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         [DataMember]
         public ObservableCollection<Game> Followed_Games 
@@ -89,17 +90,6 @@ namespace Model
             get;
             private init;
         }
-        [DataMember]
-        public string? UserImage 
-        {   
-            get => userImage;
-            private set
-            {
-                if (!string.IsNullOrWhiteSpace(value)) userImage = value;
-                else userImage = "no_cover.png";
-            }
-        }
-        private string? userImage;
 
         public User(string userImage,string username, string biographie, string email, string password)
         {
@@ -111,7 +101,7 @@ namespace Model
             else Biographie = biographie;
             if (email == null) Email = "Default";
             else Email = email;
-            if (password == null) throw new ArgumentNullException("password");
+            if (password == null) throw new ArgumentNullException(nameof(password));
             else Password = password;
             Followed_Games = new ObservableCollection<Game>();
         }
@@ -120,6 +110,15 @@ namespace Model
             if (string.IsNullOrWhiteSpace(Username)) return false;
             return other != null && Username.Equals(other.Username);
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return this.Equals((User)obj);
+        }
+
         public override int GetHashCode()
         { 
             if (Username!=null) return Username.GetHashCode();
@@ -150,14 +149,6 @@ namespace Model
         {
             if (!Followed_Games.Contains(game)) return;
             Followed_Games.Remove(game);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj == null) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return this.Equals((User)obj);
         }
 
         public override string ToString()

@@ -1,74 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Stim"
              x:Class="Stim.DetailledPage"
-             Title="{Binding Name}"
+             Title="{Binding Name, FallbackValue='Default'}"
              Background="{StaticResource Secondary}">
 
-    <Grid>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ScrollView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Grid ColumnDefinitions="*, 10*, *">
+                <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0"/>
+                <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="2"/>
 
-                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="0"/>
-                <VerticalStackLayout BackgroundColor="{StaticResource Secondary}" Grid.Column="2"/>
+                <Grid Background="{StaticResource Tertiary}" Grid.Column="1" ColumnDefinitions="*, *, *, *" RowDefinitions="auto, *, auto, auto, auto">
+                    <Image Grid.RowSpan="4" Margin="5, 0, 0, 0" Source="{Binding Cover, FallbackValue='no_cover.png'}" Aspect="AspectFit"/>
+                    <Label Grid.Column="1" Text="{Binding Name, FallbackValue='Default'}" FontSize="30"/>
+                    <Label Grid.Column="2" Text="{Binding Year, FallbackValue='2023'}" HorizontalOptions="Center"/>
+                    <ImageButton Grid.Column="3" Style="{StaticResource removeButton}" Clicked="RemoveGame" HorizontalOptions="Start"/>
+                    <Button Grid.Column="4" Style="{StaticResource followButton}" Clicked="AddFollow"/>
 
-                <Grid Background="{StaticResource Tertiary}" Grid.Column="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-
-                    <Image Grid.RowSpan="4" Margin="5, 0, 0, 0" Source="{Binding Cover}" Aspect="AspectFit"/>
-                    <Label Grid.Column="1" Text="{Binding Name}" FontSize="30"/>
-                    <Label Grid.Column="2" Text="{Binding Year}" HorizontalOptions="Center"/>
-                    <Button Grid.Column="3" Margin="10" Text="Suivre" HorizontalOptions="Center"
-                            VerticalOptions="Center" Background="transparent" CornerRadius="0" BorderWidth="3" BorderColor="{StaticResource Secondary}" Clicked="AddFollow"/>
-
-                    <ScrollView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1">
-                        <Label Text="{Binding Description}"/>
+                    <ScrollView Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1">
+                        <Label Text="{Binding Description, FallbackValue='Default'}"/>
                     </ScrollView>
 
-                    <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
+                    <Grid Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="2" RowDefinitions="auto, auto">
                         <Label Text="Tags :"/>
                         <CollectionView Grid.Row="1" ItemsSource="{Binding Tags}" ItemTemplate="{StaticResource tagsTemplate}"/>
                     </Grid>
 
-                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien}"/>
-                    <HorizontalStackLayout Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" x:Name="starsContainer" HorizontalOptions="End">
-                        <Label Padding="0,5,0,0" FontSize="25" Text="{Binding Average}"/>
-                    </HorizontalStackLayout>
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien, FallbackValue='Default'}"/>
 
+                    <local:StarsContainer Rate="{Binding Average, FallbackValue='0'}" Grid.Column="4" Grid.Row="3"/>
+                    
                     <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
                         <Label Text="Avis de la communauté :" FontSize="30"/>
                         <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
-
                     </VerticalStackLayout>
                 </Grid>
             </Grid>
         </ScrollView>
-        <ImageButton Source="add_white.png" Background="transparent" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="End" Margin="0, 0, 10, 10" Clicked="AddReview"/>
+        <ImageButton Style="{StaticResource addButton}" Clicked="AddReview"/>
     </Grid>
 </ContentPage>

@@ -15,15 +15,12 @@ namespace Model
             get => name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) name="Default";
-                else
-                {
-                    name = value;
-                    NotifyPropertyChanged();
-                }
+                if (string.IsNullOrWhiteSpace(value)) name = "Default";
+                else name = value;
+                NotifyPropertyChanged();
             }
         }
-        private string name;
+        private string name = default!;
 
         [DataMember]
         public string Description
@@ -31,15 +28,12 @@ namespace Model
             get => description;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
-                else
-                {
-                    description = value;
-                    NotifyPropertyChanged();
-                }
+                if (string.IsNullOrWhiteSpace(value)) description = "Defaut";
+                else description = value;
+                NotifyPropertyChanged();
             }
         }
-        private string description;
+        private string description = default!;
 
         [DataMember]
         public int Year
@@ -47,15 +41,12 @@ namespace Model
             get => year;
             private set
             {
-                if (value < 1957 || value > 2023) return;
-                else
-                {
-                    year = value;
-                    NotifyPropertyChanged();
-                }
+                if (value < 1957 || value > 2023) year = 2023;
+                else year = value;
+                NotifyPropertyChanged();
             }
         }
-        private int year;
+        private int year = default!;
 
         [DataMember]
         public string Cover
@@ -63,15 +54,12 @@ namespace Model
             get => cover;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
-                else
-                {
-                    cover = value;
-                    NotifyPropertyChanged();
-                }
+                if (string.IsNullOrWhiteSpace(value)) cover = "no_cover.png";
+                else cover = value;
+                NotifyPropertyChanged();
             }
         }
-        private string cover;
+        private string cover = default!;
 
         [DataMember]
         public ObservableCollection<string> Tags
@@ -79,12 +67,9 @@ namespace Model
             get => tags;
             private set
             {
-                if (value == null || value.Count > 3) return;
-                else
-                {
-                    tags = value;
-                    NotifyPropertyChanged();
-                }
+                if (value == null || value.Count > 3) tags = new ObservableCollection<string>();
+                else tags = value;
+                NotifyPropertyChanged();
             }
         }
         private ObservableCollection<string> tags;
@@ -93,27 +78,19 @@ namespace Model
         public ReadOnlyCollection<Review> Reviews { get; private set; }
         private readonly List<Review> reviews;
 
-        public double Average => AverageCalc();
-        public double AverageCalc()
-        {
-            if (Reviews.Count > 0) return Math.Round((double)Reviews.Select(review => review.Rate).Average(), 1); 
-            else return 0;
-        }
+        public double Average => Reviews.Any() ? Math.Round(Reviews.Select(review => review.Rate).Average(), 1) : 0;
 
         [DataMember]
         public string Lien { 
             get => lien;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) return;
-                else
-                {
-                    lien = value;
-                    NotifyPropertyChanged();
-                }
+                if (string.IsNullOrWhiteSpace(value)) lien = "Pas de lien";
+                else lien = value;
+                NotifyPropertyChanged();
             }
         }
-        private string lien;
+        private string lien = default!;
 
         public Game(string name, string description, int year, List<string> c_tags, string cover, string c_lien)
         {
@@ -135,12 +112,7 @@ namespace Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         public override int GetHashCode()
         {

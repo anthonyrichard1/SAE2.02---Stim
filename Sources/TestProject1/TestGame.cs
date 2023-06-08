@@ -51,10 +51,10 @@ namespace Test
         {
 
             Game game = new("name", "description", 1111, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal(0, game.Year);
+            Assert.Equal(2023, game.Year);
 
             Game game2 = new("name", "description", 9999, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal(0, game2.Year);
+            Assert.Equal(2023, game2.Year);
 
             Game game3 = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             Assert.Equal(2012, game3.Year);

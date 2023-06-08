@@ -1,38 +1,15 @@
 using CommunityToolkit.Maui.Views;
 using Model;
-using StimPersistance;
 
 namespace Stim;
 
 public partial class DetailledPage : ContentPage
 {
-    private Game currentGame;
-
 	public DetailledPage()
 	{
 		InitializeComponent();
-        currentGame = (App.Current as App).Manager.SelectedGame;
-        BindingContext = currentGame;
-
-        if (currentGame is null) Navigation.PopAsync();
-        else
-        {
-            AddStars(starsContainer, currentGame.Average);
-        }
-    }
-
-    public void AddStars(object sender, EventArgs e)
-    {
-        HorizontalStackLayout layout = sender as HorizontalStackLayout;
-        Review rev = layout.BindingContext as Review;
-        AddStars(layout, rev.Rate);
-    }
-
-    public static void AddStars(HorizontalStackLayout container, double rate)
-    {
-        for (int i = 0; i < (int)rate; i++) container.Children.Add(new Image { Source = "etoile_pleine.png", WidthRequest = 30 });
-        if ((int)rate != rate) container.Children.Add(new Image { Source = "etoile_mi_pleine.png", WidthRequest = 30 });
-        while (container.Children.Count != 6) container.Children.Add(new Image { Source = "etoile_vide.png", WidthRequest = 30 });
+        BindingContext = (App.Current as App).Manager.SelectedGame;
+        if ((App.Current as App).Manager.SelectedGame is null) Navigation.RemovePage(this);
     }
 
     private async void GoToMainPage(object sender, EventArgs e)
@@ -40,9 +17,9 @@ public partial class DetailledPage : ContentPage
         await Navigation.PushModalAsync(new MainPage());
     }
 
-    private void AddReview(object sender, EventArgs e)
+    private async void AddReview(object sender, EventArgs e)
     {
-        //popup add review
+        await this.ShowPopupAsync(new ReviewPopUp((App.Current as App).Manager.SelectedGame));
     }
 
     private async void AddFollow(object sender, EventArgs e)
@@ -51,12 +28,12 @@ public partial class DetailledPage : ContentPage
         foreach (Game game in ((App)App.Current).Manager.CurrentUser.Followed_Games)
         {
             if (game == null) throw new Exception();
-            else if (currentGame == game) { flag = true; break; }
+            else if ((App.Current as App).Manager.SelectedGame == game) { flag = true; break; }
         }
         if (!flag)
         {
             await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
-            ((App)App.Current).Manager.CurrentUser.FollowAGame(currentGame);
+            ((App)App.Current).Manager.CurrentUser.FollowAGame((App.Current as App).Manager.SelectedGame);
         }
         else
         {
@@ -64,20 +41,14 @@ public partial class DetailledPage : ContentPage
         } 
     }
 
-    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    private async void RemoveGame(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
-        base.OnNavigatedFrom(args);
-    }
-
-    protected override void OnDisappearing()
-    {
-        Navigation.PopAsync();
-        base.OnDisappearing();
-    }
-
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
+        var res = await this.ShowPopupAsync(new ConfirmationPopup("Voulez-vous vraiment supprimer " + (App.Current as App).Manager.SelectedGame.Name + " ?"));
+        if (res != null && res is bool && (bool)res)
+        {
+            (App.Current as App).Manager.RemoveGameFromGamesList((App.Current as App).Manager.SelectedGame);
+            await Navigation.PopAsync();
+            await this.ShowPopupAsync(new MessagePopup("Jeu supprimé !"));
+        }
     }
 }

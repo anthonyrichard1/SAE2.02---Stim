@@ -7,7 +7,7 @@ public partial class EntryPopup : Popup
 	public EntryPopup(string fieldName)
 	{
 		InitializeComponent();
-        LabelTxt.Text = fieldName;
+        placeholder.Text = fieldName;
 	}
 
     public void CloseButton(object sender, EventArgs e)
