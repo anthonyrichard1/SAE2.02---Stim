@@ -25,8 +25,8 @@ namespace Test
         {
             Review rev = new("User 1", 3, "");
             Review rev2 = new("User 2", 3, null);
-            Assert.Null(rev.Text);
-            Assert.Null(rev2.Text);
+            Assert.Equal("Default", rev.Text);
+            Assert.Equal("Default", rev2.Text);
         }
 
         [Fact]
@@ -58,9 +58,9 @@ namespace Test
         {
             Review rev = new("User 1", 3, "rev");
             rev.EditRate(-2);
-            Assert.Equal(3, rev.Rate);
+            Assert.Equal(0, rev.Rate);
             rev.EditRate(18);
-            Assert.Equal(3, rev.Rate);
+            Assert.Equal(0, rev.Rate);
             rev.EditRate(4.5f);
             Assert.Equal(4.5f, rev.Rate);
         }

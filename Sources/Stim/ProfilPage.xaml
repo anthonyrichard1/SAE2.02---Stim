@@ -6,12 +6,11 @@
              Title="Profil">
     <ScrollView>
 
-        <Grid BackgroundColor="#495057">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="#495057" ColumnDefinitions="*, 5*, *" RowDefinitions="auto, *">
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0"/>
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="2"/>
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0" Grid.Row="1"/>
+            <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="2" Grid.Row="1"/>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

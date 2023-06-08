@@ -23,9 +23,9 @@ public partial class MainPage : ContentPage
        await Navigation.PushAsync(new DetailledPage());
     }
 
-    private async void GoToAddGamePage(object sender, EventArgs e)
+    private async void Addgame(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new AddGamePage());
+        await Navigation.PushAsync(new AddGamePage());
     }
 
     private void SearchBar_GameChanged(object sender, TextChangedEventArgs e)
@@ -36,9 +36,13 @@ public partial class MainPage : ContentPage
 
         BindingContext=((App)App.Current).Manager.FilterGames(GameText, Tag1Text, Tag2Text);
     }
+
     protected override void OnAppearing()
     {
-        SearchBar_GameChanged(null,null);
+        Game.Text = "";
+        Tag1.Text = "";
+        Tag2.Text = "";
+        SearchBar_GameChanged(null, null);
         base.OnAppearing();
     }
 }
