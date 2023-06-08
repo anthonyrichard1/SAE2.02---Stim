@@ -23,9 +23,9 @@ public partial class MainPage : ContentPage
        await Navigation.PushAsync(new DetailledPage());
     }
 
-    private async void GoToAddGamePage(object sender, EventArgs e)
+    private async void Addgame(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new AddGamePage());
+        await Navigation.PushAsync(new AddGamePage());
     }
 
     private void SearchBar_GameChanged(object sender, TextChangedEventArgs e)
