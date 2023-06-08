@@ -17,8 +17,7 @@ namespace Model
             {
                 if (string.IsNullOrWhiteSpace(value)) name = "Default";
                 else name = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private string name = default!;
@@ -31,8 +30,7 @@ namespace Model
             {
                 if (string.IsNullOrWhiteSpace(value)) description = "Defaut";
                 else description = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private string description = default!;
@@ -45,8 +43,7 @@ namespace Model
             {
                 if (value < 1957 || value > 2023) year = 2023;
                 else year = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private int year = default!;
@@ -59,8 +56,7 @@ namespace Model
             {
                 if (string.IsNullOrWhiteSpace(value)) cover = "no_cover.png";
                 else cover = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private string cover = default!;
@@ -73,8 +69,7 @@ namespace Model
             {
                 if (value == null || value.Count > 3) tags = new ObservableCollection<string>();
                 else tags = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private ObservableCollection<string> tags;
@@ -82,12 +77,7 @@ namespace Model
         [DataMember]
         public List<Review> Reviews { get; private init; }
 
-        public double Average => AverageCalc();
-        private double AverageCalc()
-        {
-            if (Reviews.Count > 0) return Math.Round(Reviews.Select(review => review.Rate).Average(), 1); 
-            else return 0;
-        }
+        public double Average => Reviews.Any() ? Math.Round(Reviews.Select(review => review.Rate).Average(), 1) : 0;
 
         [DataMember]
         public string Lien { 
@@ -96,8 +86,7 @@ namespace Model
             {
                 if (string.IsNullOrWhiteSpace(value)) lien = "Pas de lien";
                 else lien = value;
-                    NotifyPropertyChanged();
-                }
+                NotifyPropertyChanged();
             }
         }
         private string lien = default!;
