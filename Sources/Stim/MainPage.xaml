@@ -20,6 +20,6 @@
                 <CollectionView ItemsSource="{Binding}" SelectionMode="Single" SelectionChanged="OnClickGameList" ItemsLayout="VerticalGrid, 5"  Grid.Column="1" Grid.Row="1" ItemTemplate="{StaticResource gameTemplate}"/>
             </Grid>
         </ScrollView>
-        <ImageButton Style="{StaticResource addButton}" Clicked="GoToAddGamePage"/>
+        <ImageButton Style="{StaticResource addButton}" Clicked="Addgame"/>
     </Grid>
 </ContentPage>
