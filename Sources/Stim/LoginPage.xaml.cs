@@ -22,7 +22,7 @@ public partial class LoginPage : ContentPage
                 {
                     ((App)App.Current).Manager.CurrentUser = user;
                     Application.Current.MainPage = new AppShell();
-                    await Shell.Current.GoToAsync("//MainPage");
+                    await Navigation.PushModalAsync(new MainPage());//Shell.Current.GoToAsync("//MainPage");
                 }
                 else Error.Children.Add(new Label { Text = "Mot de passe incorrect",
                     TextColor = Colors.Red,
