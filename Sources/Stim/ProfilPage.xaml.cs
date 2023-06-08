@@ -14,6 +14,7 @@ public partial class ProfilPage : ContentPage
     private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         ((App)App.Current).Manager.CurrentUser.RemoveAGame((sender as CollectionView).SelectedItem as Game);
+        ((App)App.Current).Manager.SaveUser();
     }
 
     private async void ChangeUsername(object sender, EventArgs e)

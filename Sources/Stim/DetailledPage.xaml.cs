@@ -53,6 +53,7 @@ public partial class DetailledPage : ContentPage
         {
             await this.ShowPopupAsync(new MessagePopup("Jeu ajouté dans les suivis !"));
             ((App)App.Current).Manager.CurrentUser.FollowAGame((App.Current as App).Manager.SelectedGame);
+            ((App)App.Current).Manager.SaveUser();
         }
         else
         {

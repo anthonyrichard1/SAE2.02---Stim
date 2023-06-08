@@ -81,15 +81,10 @@ namespace Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public ReadOnlyCollection<Game> Followed_Games => followed_Games.AsReadOnly();
 
         [DataMember]
-        public ObservableCollection<Game> Followed_Games 
-        {
-            get;
-            private init;
-        }
+        private readonly List<Game> followed_Games;
 
         public User(string userImage,string username, string biographie, string email, string password)
         {
@@ -103,8 +98,11 @@ namespace Model
             else Email = email;
             if (password == null) throw new ArgumentNullException(nameof(password));
             else Password = password;
-            Followed_Games = new ObservableCollection<Game>();
+            followed_Games = new List<Game>();
         }
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         public bool Equals(User? other)
         {
             if (string.IsNullOrWhiteSpace(Username)) return false;
@@ -143,12 +141,12 @@ namespace Model
         public void FollowAGame(Game game)
         {
             if (Followed_Games.Contains(game)) return;
-            Followed_Games.Add(game);
+            followed_Games.Add(game);
         }
         public void RemoveAGame(Game game)
         {
             if (!Followed_Games.Contains(game)) return;
-            Followed_Games.Remove(game);
+            followed_Games.Remove(game);
         }
 
         public override string ToString()
@@ -158,6 +156,5 @@ namespace Model
             foreach (Game game in Followed_Games) builder.Append($"{game.Name}\n");
             return builder.ToString();
         }
-
     }
 }
