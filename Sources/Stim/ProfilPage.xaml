@@ -12,11 +12,6 @@
             <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="0" Grid.Row="1"/>
             <VerticalStackLayout Style="{StaticResource pageBorder}" Grid.Column="2" Grid.Row="1"/>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
 
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="0"/>
             <VerticalStackLayout BackgroundColor="Black" Grid.Column="2"/>

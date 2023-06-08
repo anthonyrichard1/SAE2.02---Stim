@@ -38,7 +38,7 @@ namespace Model
         public string Biographie 
         {
             get => biographie; 
-            private set
+            set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
                 else biographie = value;
