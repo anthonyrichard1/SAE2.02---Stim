@@ -387,9 +387,30 @@
     
     <!-- Styles ajoutés-->
 
-    <Style TargetType="Button" x:Key="popupButton">
+    <Style TargetType="Label" x:Key="popupLabel">
+        <Setter Property="Text" Value=""/>
+        <Setter Property="FontSize" Value="30"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="followButton">
+        <Setter Property="Text" Value="Suivre"/>
+        <Setter Property="Background" Value="{StaticResource Transparent}"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="BorderWidth" Value="3"/>
+        <Setter Property="BorderColor" Value="{StaticResource Secondary}"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="popupButton">
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="BorderColor" Value="{StaticResource Secondary}"/>
+        <Setter Property="BorderWidth" Value="2"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="Background" Value="{StaticResource Transparent}"/>
     </Style>
 
@@ -403,8 +424,13 @@
         <Setter Property="Margin" Value="0, 0, 10, 10"/>
     </Style>
 
-    <Style TargetType="VerticalStackLayout" x:Key="pageBorder">
-        <Setter Property="Background" Value="{StaticResource Secondary}"/>
+    <Style TargetType="ImageButton" x:Key="removeButton">
+        <Setter Property="Source" Value="remove_red.png"/>
+        <Setter Property="Background" Value="{StaticResource Transparent}"/>
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
     <Style TargetType="Image" x:Key="star">
@@ -412,5 +438,11 @@
         <Setter Property="HeightRequest" Value="30"/>
         <Setter Property="WidthRequest" Value="30" />
     </Style>
+
+    <Style TargetType="VerticalStackLayout" x:Key="pageBorder">
+        <Setter Property="Background" Value="{StaticResource Secondary}"/>
+    </Style>
+
+
 
 </ResourceDictionary>
