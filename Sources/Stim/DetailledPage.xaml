@@ -13,6 +13,7 @@
                     <Grid ColumnDefinitions="auto, auto, auto, *">
                         <Label Text="{Binding AuthorName, FallbackValue='Default'}" FontSize="20"/>
                         <ImageButton Grid.Column="2" Source="pen.png" Background="{StaticResource Transparent}" HeightRequest="30" Clicked="EditReview"/>
+                        <ImageButton Grid.Column="3" Style="{StaticResource removeButton}" HorizontalOptions="Start" HeightRequest="30" Clicked="RemoveReview"/>
                         <local:StarsContainer Grid.Column="4" Rate="{Binding Rate, FallbackValue='0'}"/>
                     </Grid>
                     <Label Text="{Binding Text, FallbackValue='Default'}"/>
@@ -21,7 +22,7 @@
         </DataTemplate>
     </ContentPage.Resources>
 
-        <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>

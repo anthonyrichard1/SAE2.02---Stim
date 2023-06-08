@@ -20,14 +20,25 @@ public partial class DetailledPage : ContentPage
     private async void AddReview(object sender, EventArgs e)
     {
         var res = await this.ShowPopupAsync(new ReviewPopUp());
-        if (res != null && res is int i && i == 1) await this.ShowPopupAsync(new MessagePopup("Commentaire ajoutÃ© !"));
+        if (res != null && res is int i && i == 1) await this.ShowPopupAsync(new MessagePopup("Commentaire ajouté !"));
     }
 
     private async void EditReview(object sender, EventArgs e)
     {
         var res = await this.ShowPopupAsync(new ReviewPopUp((sender as ImageButton).BindingContext as Review));
-        if (res != null && res is int i && i == 2) await this.ShowPopupAsync(new MessagePopup("Commentaire modifiÃ© !"));
+        if (res != null && res is int i && i == 2) await this.ShowPopupAsync(new MessagePopup("Commentaire modifié !"));
     }
+        
+
+    private async void RemoveReview(object sender, EventArgs e)
+    {
+        var res = await this.ShowPopupAsync(new ConfirmationPopup("Voulez-vous vraiment supprimer votre commentaire ?"));
+        if (res != null && res is bool v && v)
+        {
+            (App.Current as App).Manager.SelectedGame.RemoveReview((sender as ImageButton).BindingContext as Review);
+            (App.Current as App).Manager.SaveGames();
+            await this.ShowPopupAsync(new MessagePopup("Commentaire supprimé !"));
+        }
     }
 
     private async void AddFollow(object sender, EventArgs e)
