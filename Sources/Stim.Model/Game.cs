@@ -15,10 +15,8 @@ namespace Model
             get => name;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) name="Default";
-                else
-                {
-                    name = value;
+                if (string.IsNullOrWhiteSpace(value)) name = "Default";
+                else name = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -31,10 +29,8 @@ namespace Model
             get => description;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) description="Defaut";
-                else
-                {
-                    description = value;
+                if (string.IsNullOrWhiteSpace(value)) description = "Defaut";
+                else description = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -47,10 +43,8 @@ namespace Model
             get => year;
             private set
             {
-                if (value < 1957 || value > 2023) year=2023;
-                else
-                {
-                    year = value;
+                if (value < 1957 || value > 2023) year = 2023;
+                else year = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -63,10 +57,8 @@ namespace Model
             get => cover;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value)) cover="no_cover.png";
-                else
-                {
-                    cover = value;
+                if (string.IsNullOrWhiteSpace(value)) cover = "no_cover.png";
+                else cover = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -80,9 +72,7 @@ namespace Model
             private set
             {
                 if (value == null || value.Count > 3) tags = new ObservableCollection<string>();
-                else
-                {
-                    tags = value;
+                else tags = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -105,9 +95,7 @@ namespace Model
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) lien = "Pas de lien";
-                else
-                {
-                    lien = value;
+                else lien = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -133,12 +121,7 @@ namespace Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         public override int GetHashCode()
         {

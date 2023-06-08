@@ -18,6 +18,7 @@ namespace Model
             {
                 if (!string.IsNullOrWhiteSpace(value)) userImage = value;
                 else userImage = "no_cover.png";
+                NotifyPropertyChanged();
             }
         }
         private string userImage = default!;
@@ -28,11 +29,8 @@ namespace Model
             set
             {
                 if (string.IsNullOrWhiteSpace(value)) username = "Default";
-                else
-                {
-                    username = value;
-                    NotifyPropertyChanged();
-                }
+                else username = value;
+                NotifyPropertyChanged();
             }
         }
         private string username=default!;
@@ -43,11 +41,8 @@ namespace Model
             private set
             {
                 if (string.IsNullOrWhiteSpace(value)) biographie = "Pas de biographie";
-                else
-                {
-                    biographie = value;
-                    NotifyPropertyChanged();
-                }
+                else biographie = value;
+                NotifyPropertyChanged();
             }
         }
         private string biographie = default!;
@@ -58,12 +53,9 @@ namespace Model
             private set
             {
                 Regex rg_email = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-                if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value))
-                {
-                    email = value;
-                    NotifyPropertyChanged();
-                }
+                if (!(string.IsNullOrWhiteSpace(value)) && rg_email.IsMatch(value)) email = value;
                 else email = "Default";
+                NotifyPropertyChanged();
             }
         }
         private string email = default!;
@@ -87,12 +79,7 @@ namespace Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         [DataMember]
         public ObservableCollection<Game> Followed_Games 
