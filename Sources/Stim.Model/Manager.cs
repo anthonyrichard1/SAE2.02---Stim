@@ -6,8 +6,8 @@ namespace Model
 {
     public class Manager
     {
-        private readonly IPersistance mgrpersistance;
-        public IReadOnlyList<Game> GameList => gameList.AsReadOnly();
+        public readonly IPersistance mgrpersistance;
+        public ReadOnlyCollection<Game> GameList { get; private set; }
         private readonly List<Game> gameList;
         public Game? SelectedGame { get; set; }
         public User? CurrentUser { get; set; }
@@ -17,13 +17,14 @@ namespace Model
         {
             mgrpersistance = persistance;
             gameList = persistance.LoadGame();
+            GameList = new ReadOnlyCollection<Game>(gameList);
             Users = persistance.LoadUser();
         }
 
         public IEnumerable<Game> FilterGames(string? filterName, string? filterTag1, string? filterTag2)
         {
             IEnumerable<Game> retList;
-            retList = GameList;
+            retList = gameList;
             if (filterName != null) retList = retList
                 .Where(game => game.Name.Contains(filterName, StringComparison.OrdinalIgnoreCase)
                 );
@@ -38,25 +39,22 @@ namespace Model
 
         public void AddGametoGamesList(Game game)
         {
-            gameList.Add(game);
+            if (!gameList.Contains(game)) gameList.Add(game);
             mgrpersistance.SaveGame(gameList);
         }
         public void AddUsertoUserList(User user)
         {
-            Users.Add(user);
+            if (!Users.Contains(user)) Users.Add(user);
             mgrpersistance.SaveUser(Users);
         }
 
         public void RemoveGameFromGamesList(Game game)
         {
+            SelectedGame = null;
             gameList.Remove(game);
             mgrpersistance.SaveGame(gameList);
         }
-        [ExcludeFromCodeCoverage]
-        public void SaveGames()
-        {
-            mgrpersistance.SaveGame(gameList);
-        }
+
         public User? SearchUser(string username)
         {
             foreach (User user in Users)
@@ -64,11 +62,6 @@ namespace Model
                 if (user.Username == username) return user;
             }
             return null;
-        }
-        [ExcludeFromCodeCoverage]
-        public void SaveUser()
-        {
-            mgrpersistance.SaveUser(Users);
         }
     }
 }
