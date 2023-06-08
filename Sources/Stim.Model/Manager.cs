@@ -7,7 +7,7 @@ namespace Model
     public class Manager
     {
         public readonly IPersistance mgrpersistance;
-        public ReadOnlyCollection<Game> GameList { get; private set; }
+        public ReadOnlyCollection<Game> GameList => gameList.AsReadOnly();
         private readonly List<Game> gameList;
         public Game? SelectedGame { get; set; }
         public User? CurrentUser { get; set; }
@@ -17,7 +17,6 @@ namespace Model
         {
             mgrpersistance = persistance;
             gameList = persistance.LoadGame();
-            GameList = new ReadOnlyCollection<Game>(gameList);
             Users = persistance.LoadUser();
         }
 

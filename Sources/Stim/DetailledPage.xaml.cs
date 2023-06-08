@@ -8,8 +8,8 @@ public partial class DetailledPage : ContentPage
 	public DetailledPage()
 	{
 		InitializeComponent();
-        BindingContext = (App.Current as App).Manager.SelectedGame;
         if ((App.Current as App).Manager.SelectedGame is null) Navigation.RemovePage(this);
+        BindingContext = (App.Current as App).Manager.SelectedGame;        
     }
 
     private async void GoToMainPage(object sender, EventArgs e)
@@ -19,7 +19,7 @@ public partial class DetailledPage : ContentPage
 
     private async void AddReview(object sender, EventArgs e)
     {
-        await this.ShowPopupAsync(new ReviewPopUp((App.Current as App).Manager.SelectedGame));
+        await this.ShowPopupAsync(new ReviewPopUp());
     }
 
     private async void AddFollow(object sender, EventArgs e)

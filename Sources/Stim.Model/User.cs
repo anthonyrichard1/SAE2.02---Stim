@@ -125,7 +125,7 @@ namespace Model
             return 0;
         }
 
-        public void AddReview(Game game, float rate, string text)
+        public void AddReview(Game game, double rate, string text)
         {
             game.AddReview(new Review(Username, rate, text));
         }

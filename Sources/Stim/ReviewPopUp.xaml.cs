@@ -6,11 +6,9 @@ namespace Stim;
 
 public partial class ReviewPopUp : Popup
 {
-    Game CurrGame { get; set; }
-	public ReviewPopUp(Game currGame)
+	public ReviewPopUp()
 	{
 		InitializeComponent();
-        CurrGame = currGame;
 	}
 
     public void CloseButton(object sender, EventArgs e)
@@ -20,14 +18,15 @@ public partial class ReviewPopUp : Popup
 
     private void Valider(object sender, EventArgs e)
     {
-        if (CurrGame == null)
+        if ((App.Current as App).Manager.SelectedGame == null)
         {
             throw new Exception();
         }
-        bool IsFloat = float.TryParse(Val.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out float rate);
-        if (!string.IsNullOrWhiteSpace(Entrytxt.Text) && IsFloat)
+        bool isDouble = double.TryParse(Val.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out double rate);
+        if (!string.IsNullOrWhiteSpace(Entrytxt.Text) && isDouble)
         {
-            ((App)App.Current).Manager.CurrentUser.AddReview(CurrGame, rate, Entrytxt.Text);
+            ((App)App.Current).Manager.CurrentUser.AddReview((App.Current as App).Manager.SelectedGame, rate, Entrytxt.Text);
+            ((App)App.Current).Manager.SaveGames();
             Close();
         }
         else Error.Children.Add(new Label { Text="Champ vide ou invalide", TextColor=Colors.Red });
