@@ -50,7 +50,7 @@ namespace Model
         }
         public void EditRate(float newval)
         {
-            Rate= newval;
+            if (newval >= 0 && newval <= 5) Rate= newval;
         }
     }
 }
