@@ -25,10 +25,10 @@
                 </Grid.ColumnDefinitions>
                 <VerticalStackLayout Grid.Column="0" Margin="10,0,0,0">
                     <Image Source="{Binding UserImage}" HeightRequest="200" WidthRequest="200" Margin="0,0,10,0"/>
-                    <local:UserInfo Name="{Binding Username}" Button="0" PopUp="PopUpUsername"/>
-                    <local:UserInfo Name="{Binding Biographie}" Button="1" PopUp="PopUpBio" LabelHeight="200"/>
-                    <local:UserInfo Name="{Binding Password}"  Button="2"  PopUp="PopUpPswd" IsPswd="False"/>
-                    <local:UserInfo Name="{Binding Email}" Button="3" PopUp="PopUpEmail"/>
+                    <local:UserInfo Name="{Binding Username}" PopUp="PopUpUsername"/>
+                    <local:UserInfo Name="{Binding Biographie}" PopUp="PopUpBio" LabelHeight="200"/>
+                    <local:UserInfo Name="{Binding Password}" PopUp="PopUpPswd" IsPswd="False"/>
+                    <local:UserInfo Name="{Binding Email}" PopUp="PopUpEmail"/>
                 </VerticalStackLayout>
                 
                 <VerticalStackLayout Grid.Column="1" Margin="100,0,0,0">

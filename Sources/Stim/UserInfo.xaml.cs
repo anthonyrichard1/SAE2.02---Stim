@@ -31,14 +31,6 @@ public partial class UserInfo : ContentView
     public static readonly BindableProperty NameProperty =
     BindableProperty.Create(nameof(Name), typeof(string), typeof(UserInfo), "Erreur");
 
-    public int Button
-    {
-        get => (int)GetValue(ButtonProperty);
-        set => SetValue(ButtonProperty, value);
-    }
-    public static readonly BindableProperty ButtonProperty =
-    BindableProperty.Create(nameof(Button), typeof(int), typeof(UserInfo), 4);
-
     public UserInfo()
     {
         InitializeComponent();
