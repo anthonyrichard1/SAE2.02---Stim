@@ -1,28 +1,43 @@
+using Microsoft.VisualBasic;
+using CommunityToolkit.Maui.Views;
+
 namespace Stim;
 public partial class UserInfo : ContentView
 {
-    public static readonly BindableProperty BindProperty =
-        BindableProperty.Create(nameof(Bind), typeof(string), typeof(UserInfo), string.Empty, propertyChanged: OnBindChanged);
-
-    public string Bind
+    public bool IsPswd
     {
-        get { return (string)GetValue(BindProperty); }
-        set { SetValue(BindProperty, value); }
+        get => (bool)GetValue(IsPswdProperty);
+        set => SetValue(IsPswdProperty, value);
     }
-
-    private static void OnBindChanged(BindableObject bindable, object oldValue, object newValue)
+    public static readonly BindableProperty IsPswdProperty =
+        BindableProperty.Create(nameof(Name), typeof(bool), typeof(UserInfo), false);
+    public int LabelHeight
     {
-        var contentView = (UserInfo)bindable;
+        get => (int)GetValue(LabelHeightProperty);
+        set => SetValue(LabelHeightProperty, value);
     }
+    public static readonly BindableProperty LabelHeightProperty =
+        BindableProperty.Create(nameof(Name), typeof(int), typeof(UserInfo), 32);
+    public event EventHandler PopUp;
+    public void popUp(object sender, EventArgs e)
+    {
+        PopUp?.Invoke(sender, e);
+    }
+    public string Name
+    {
+        get => (string)GetValue(NameProperty);
+        set => SetValue(NameProperty, value);
+    }
+    public static readonly BindableProperty NameProperty =
+    BindableProperty.Create(nameof(Name), typeof(string), typeof(UserInfo), "Erreur");
 
     public UserInfo()
     {
         InitializeComponent();
-        BindingContext = ((App)App.Current).Manager;
-    }
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-
+        if (IsPswd)
+        {
+            Label.IsVisible = false;
+        }
+        else Label.IsVisible = true;
     }
 }
