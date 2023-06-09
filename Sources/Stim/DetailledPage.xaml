@@ -51,7 +51,7 @@
 
                     <local:StarsContainer Rate="{Binding Average, FallbackValue='0'}" Grid.Column="4" Grid.Row="3"/>
                     <ScrollView Grid.ColumnSpan="4" Grid.Row="4">
-                        <VerticalStackLayout >
+                        <VerticalStackLayout>
                             <Label Text="Avis de la communauté :" FontSize="30"/>
                             <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
                         </VerticalStackLayout>
