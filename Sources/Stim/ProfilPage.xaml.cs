@@ -18,12 +18,7 @@ public partial class ProfilPage : ContentPage
         ((App)App.Current).Manager.SaveUser();
     }
 
-    private async void ChangeUsername(object sender, EventArgs e)
-    {
-        var newName = await this.ShowPopupAsync(new EntryPopup("Username"));
-        if (string.IsNullOrWhiteSpace(newName as string)) await this.ShowPopupAsync(new MessagePopup("Nom d'utilisateur invalide"));
-        else ((App)App.Current).Manager.CurrentUser.Username = (newName as string);
-    }
+
     public async void PopUpUsername(object sender, EventArgs e)
     {
         var newName = await this.ShowPopupAsync(new EntryPopup("Username"));
@@ -39,7 +34,7 @@ public partial class ProfilPage : ContentPage
     {
         Regex rg = new Regex("^(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z-0-9@$!%*#?&]{8,}$");
         var newPswd = await this.ShowPopupAsync(new EntryPopup("Password"));
-        if (string.IsNullOrWhiteSpace(newPswd as string) || rg.IsMatch(newPswd as string)) await this.ShowPopupAsync(new MessagePopup("Nom d'utilisateur invalide"));
+        if (string.IsNullOrWhiteSpace(newPswd as string) || rg.IsMatch(newPswd as string)) await this.ShowPopupAsync(new MessagePopup("Mot de passe invalide"));
         else ((App)App.Current).Manager.CurrentUser.Password = (newPswd as string);
     }
     public async void PopUpEmail(object sender, EventArgs e)
