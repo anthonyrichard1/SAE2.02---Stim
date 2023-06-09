@@ -32,13 +32,17 @@ public partial class DetailledPage : ContentPage
 
     private async void RemoveReview(object sender, EventArgs e)
     {
-        var res = await this.ShowPopupAsync(new ConfirmationPopup("Voulez-vous vraiment supprimer votre commentaire ?"));
-        if (res != null && res is bool v && v)
+        if (((sender as ImageButton).BindingContext as Review).AuthorName == ((App)App.Current).Manager.CurrentUser.Username)
         {
-            (App.Current as App).Manager.SelectedGame.RemoveReview((sender as ImageButton).BindingContext as Review);
-            (App.Current as App).Manager.SaveGames();
-            await this.ShowPopupAsync(new MessagePopup("Commentaire supprimé !"));
+            var res = await this.ShowPopupAsync(new ConfirmationPopup("Voulez-vous vraiment supprimer votre commentaire ?"));
+            if (res != null && res is bool v && v)
+            {
+                (App.Current as App).Manager.SelectedGame.RemoveReview((sender as ImageButton).BindingContext as Review);
+                (App.Current as App).Manager.SaveGames();
+                await this.ShowPopupAsync(new MessagePopup("Commentaire supprimé !"));
+            }
         }
+        else await this.ShowPopupAsync(new MessagePopup("Ce commentaire ne vous appartiens pas"));
     }
 
     private async void AddFollow(object sender, EventArgs e)
