@@ -25,8 +25,12 @@ public partial class DetailledPage : ContentPage
 
     private async void EditReview(object sender, EventArgs e)
     {
-        var res = await this.ShowPopupAsync(new ReviewPopUp((sender as ImageButton).BindingContext as Review));
-        if (res != null && res is int i && i == 2) await this.ShowPopupAsync(new MessagePopup("Commentaire modifié !"));
+        if (((sender as ImageButton).BindingContext as Review).AuthorName == ((App)App.Current).Manager.CurrentUser.Username)
+        {
+            var res = await this.ShowPopupAsync(new ReviewPopUp((sender as ImageButton).BindingContext as Review));
+            if (res != null && res is int i && i == 2) await this.ShowPopupAsync(new MessagePopup("Commentaire modifié !"));
+        }
+        else await this.ShowPopupAsync(new MessagePopup("Ce commentaire ne vous appartiens pas"));
     }
         
 

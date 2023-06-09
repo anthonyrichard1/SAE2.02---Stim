@@ -50,11 +50,12 @@
                     <Label Grid.Column="1" Grid.Row="3" Text="{Binding Lien, FallbackValue='Default'}"/>
 
                     <local:StarsContainer Rate="{Binding Average, FallbackValue='0'}" Grid.Column="4" Grid.Row="3"/>
-                    
-                    <VerticalStackLayout Grid.ColumnSpan="4" Grid.Row="4">
-                        <Label Text="Avis de la communauté :" FontSize="30"/>
-                        <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
-                    </VerticalStackLayout>
+                    <ScrollView Grid.ColumnSpan="4" Grid.Row="4">
+                        <VerticalStackLayout >
+                            <Label Text="Avis de la communauté :" FontSize="30"/>
+                            <CollectionView ItemsSource="{Binding Reviews}" ItemTemplate="{StaticResource reviewTemplate}"/>
+                        </VerticalStackLayout>
+                    </ScrollView>
                 </Grid>
             </Grid>
         </ScrollView>
