@@ -71,5 +71,19 @@ namespace Model
         {
             mgrpersistance.SaveUser(Users);
         }
+
+        [ExcludeFromCodeCoverage]
+        public void UpdateReferences()
+        {
+            if (CurrentUser != null && CurrentUser.Followed_Games.Count != 0)
+            {
+                foreach (var game in CurrentUser.Followed_Games.ToList())
+                {
+                    CurrentUser.RemoveAGame(game);
+                    if (GameList.Contains(game)) CurrentUser.FollowAGame(gameList.Where(g => g.Name == game.Name).First());
+                }
+            }
+            SaveUser();
+        }
     }
 }

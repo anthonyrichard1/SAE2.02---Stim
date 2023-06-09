@@ -1,10 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Xml;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.FileIO;
 using Model;
-using System.Runtime.InteropServices;
 using System.Diagnostics.CodeAnalysis;
 
 namespace StimPersistance
@@ -26,7 +23,7 @@ namespace StimPersistance
         public void SaveGame(List<Game> games)
         {
             XmlWriterSettings settings = new() { Indent = true };
-            DataContractSerializer serializer = new(typeof(List<Game>));
+            DataContractSerializer serializer = new(typeof(List<Game>), new DataContractSerializerSettings() { PreserveObjectReferences = true });
 
             using (TextWriter tw = File.CreateText(fullGamePath))
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, games);
@@ -35,7 +32,7 @@ namespace StimPersistance
         public void SaveUser(HashSet<User> users)
         {
             XmlWriterSettings settings = new() { Indent = true };
-            DataContractSerializer serializer = new(typeof(HashSet<User>));
+            DataContractSerializer serializer = new(typeof(HashSet<User>), new DataContractSerializerSettings() { PreserveObjectReferences = true});
 
             using (TextWriter tw = File.CreateText(fullUserPath))
             using (XmlWriter writer = XmlWriter.Create(tw, settings)) serializer.WriteObject(writer, users);
@@ -45,7 +42,7 @@ namespace StimPersistance
         {
             if (File.Exists(fullGamePath))
             {
-                DataContractSerializer serializer = new(typeof(List<Game>));
+                DataContractSerializer serializer = new(typeof(List<Game>), new DataContractSerializerSettings() { PreserveObjectReferences = true });
                 using (Stream stream = File.OpenRead(fullGamePath)) return serializer.ReadObject(stream) as List<Game> ?? new();
             }
             return new();
@@ -55,10 +52,10 @@ namespace StimPersistance
         {
             if (File.Exists(fullUserPath))
             {
-                DataContractSerializer serializer = new(typeof(HashSet<User>));
+                DataContractSerializer serializer = new(typeof(HashSet<User>), new DataContractSerializerSettings() { PreserveObjectReferences = true });
                 using (Stream stream = File.OpenRead(fullUserPath)) return serializer.ReadObject(stream) as HashSet<User> ?? new();
             }
             return new();
-        }        
+        }
     }
 }

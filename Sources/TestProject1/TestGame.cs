@@ -174,12 +174,14 @@ namespace Test
             Game game2 = new("name2", "description", 2020, new List<String> { "1" }, "cover2", "www.link.com");
             Game? game3 = null;
             string game4 = "";
+            Game game5 = new("name", "description2", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
 
             Assert.False(game.Equals(game2 as Game));
             Assert.False(game.Equals(game3 as object));
             Assert.True(game.Equals(game as object));
             Assert.False(game.Equals(game4 as object));
             Assert.False(game.Equals(game2 as object));
+            Assert.True(game.Equals(game5 as Game));
         }
 
         [Fact]

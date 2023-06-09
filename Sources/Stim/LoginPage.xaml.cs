@@ -21,8 +21,9 @@ public partial class LoginPage : ContentPage
                 if (user.Password == Pswd.Text)
                 {
                     ((App)App.Current).Manager.CurrentUser = user;
+                    ((App)App.Current).Manager.UpdateReferences();
                     Application.Current.MainPage = new AppShell();
-                    await Navigation.PushModalAsync(new MainPage());//Shell.Current.GoToAsync("//MainPage");
+                    await Navigation.PushModalAsync(new MainPage());
                 }
                 else Error.Children.Add(new Label { Text = "Mot de passe incorrect",
                     TextColor = Colors.Red,

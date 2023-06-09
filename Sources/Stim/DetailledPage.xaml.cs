@@ -74,9 +74,17 @@ public partial class DetailledPage : ContentPage
         var res = await this.ShowPopupAsync(new ConfirmationPopup("Voulez-vous vraiment supprimer " + (App.Current as App).Manager.SelectedGame.Name + " ?"));
         if (res != null && res is bool && (bool)res)
         {
+            (App.Current as App).Manager.CurrentUser.RemoveAGame((App.Current as App).Manager.SelectedGame);
             (App.Current as App).Manager.RemoveGameFromGamesList((App.Current as App).Manager.SelectedGame);
+            (App.Current as App).Manager.SaveUser();
             await Navigation.PopAsync();
             await this.ShowPopupAsync(new MessagePopup("Jeu supprimé !"));
         }
+    }
+
+    protected override void OnDisappearing()
+    {
+        Navigation.PopAsync();
+        base.OnDisappearing();
     }
 }

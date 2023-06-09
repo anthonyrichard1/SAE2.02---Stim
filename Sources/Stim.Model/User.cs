@@ -142,11 +142,13 @@ namespace Model
         {
             if (Followed_Games.Contains(game)) return;
             followed_Games.Add(game);
+            NotifyPropertyChanged(nameof(Followed_Games));
         }
         public void RemoveAGame(Game game)
         {
             if (!Followed_Games.Contains(game)) return;
             followed_Games.Remove(game);
+            NotifyPropertyChanged(nameof(Followed_Games));
         }
 
         public override string ToString()
