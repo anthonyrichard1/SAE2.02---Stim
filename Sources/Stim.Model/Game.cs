@@ -60,19 +60,19 @@ namespace Model
             }
         }
         private string cover = default!;
-
-        [DataMember]
-        public ObservableCollection<string> Tags
+        
+        public ReadOnlyCollection<string> Tags
         {
-            get => tags;
+            get => tags.AsReadOnly();
             private set
             {
-                if (value == null || value.Count > 3) tags = new ObservableCollection<string>();
-                else tags = value;
+                if (value == null || value.Count > 3) tags = new List<string>();
+                else tags = value.ToList();
                 NotifyPropertyChanged();
             }
         }
-        private ObservableCollection<string> tags;
+        [DataMember]
+        private List<string> tags;
 
         public ReadOnlyCollection<Review> Reviews => reviews.AsReadOnly();
 
@@ -100,8 +100,8 @@ namespace Model
             if (string.IsNullOrWhiteSpace(description)) Description = "Pas de description";
             else Description = description;
             Year = year;
-            if (c_tags is not null) tags = new ObservableCollection<string>(c_tags);
-            else tags = new ObservableCollection<string>();
+            if (c_tags is not null) tags = new List<string>(c_tags);
+            else tags = new List<string>();
             if (string.IsNullOrWhiteSpace(cover)) Cover = "no_cover.png";
             else Cover = cover;
             if (string.IsNullOrWhiteSpace(c_lien)) Lien = "Pas de lien";
@@ -168,7 +168,7 @@ namespace Model
         }
         public void TagChange(List<string> newtag)
         {
-            if (newtag != null && newtag.Count<=3) tags = new ObservableCollection<string>(newtag);
+            if (newtag != null && newtag.Count<=3) tags = new List<string>(newtag);
         }
         public void NameChange(string newname)
         {
