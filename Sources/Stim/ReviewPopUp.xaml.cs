@@ -36,21 +36,25 @@ public partial class ReviewPopUp : Popup
         bool isDouble = double.TryParse(Val.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out double rate);
         if (!string.IsNullOrWhiteSpace(Entrytxt.Text) && isDouble)
         {
-            if (editing == true)
-            {
-                if (prevRev.Text != Entrytxt.Text) prevRev.EditReview(Entrytxt.Text);
-                prevRev.EditRate(rate);
-                (App.Current as App).Manager.SelectedGame.UpdateReviews();
-                res = 2;
-            }
+            if (rate < 0 || rate > 5) Error.Text = "Note invalide";
             else
             {
-                ((App)App.Current).Manager.CurrentUser.AddReview((App.Current as App).Manager.SelectedGame, rate, Entrytxt.Text);
-                res = 1;
-            }
+                if (editing == true)
+                {
+                    if (prevRev.Text != Entrytxt.Text) prevRev.EditReview(Entrytxt.Text);
+                    prevRev.EditRate(rate);
+                    (App.Current as App).Manager.SelectedGame.UpdateReviews();
+                    res = 2;
+                }
+                else
+                {
+                    ((App)App.Current).Manager.CurrentUser.AddReview((App.Current as App).Manager.SelectedGame, rate, Entrytxt.Text);
+                    res = 1;
+                }
 
-            ((App)App.Current).Manager.SaveGames();
-            Close(res);
+                ((App)App.Current).Manager.SaveGames();
+                Close(res);
+            }
         }
         else Error.Text = "Champ vide ou invalide";
     }
