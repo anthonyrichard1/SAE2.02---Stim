@@ -23,7 +23,28 @@ public partial class ProfilPage : ContentPage
     {
         var newName = await this.ShowPopupAsync(new EntryPopup("Username"));
         if (string.IsNullOrWhiteSpace(newName as string)) await this.ShowPopupAsync(new MessagePopup("Nom d'utilisateur invalide"));
-        else ((App)App.Current).Manager.CurrentUser.Username = (newName as string);
+        else
+        {
+            if (((App)App.Current).Manager.SearchUser(newName as string) is User)
+            {
+                await this.ShowPopupAsync(new MessagePopup("Nom d'utilisateur déjà utilisé"));
+            }
+            else
+            {
+                string oldName = ((App)App.Current).Manager.CurrentUser.Username;
+                ((App)App.Current).Manager.CurrentUser.Username = (newName as string);
+                foreach (Game g in ((App)App.Current).Manager.GameList)
+                {
+                    foreach(Review r in g.Reviews)
+                    {
+                        if (r.AuthorName==oldName as string)
+                        {
+                            r.AuthorName= newName as string;
+                        }
+                    }
+                }
+            }
+        }
     }
     public async void PopUpBio(object sender, EventArgs e)
     {
