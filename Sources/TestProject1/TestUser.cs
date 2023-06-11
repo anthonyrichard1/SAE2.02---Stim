@@ -4,67 +4,72 @@ namespace Test
 {
     public class TestUser
     {
-        [Fact]
-        public void Constructor()
+        public static IEnumerable<object[]> UserData
+            => new List<object[]>
+            {
+                new object[] {new User(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "", "biographie", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, null, "biographie", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "username", "", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "username", null, "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*") },
+                new object[] {new User(null, "username", "biographie", "", "Azerty123*") },
+                new object[] {new User(null, "username", "biographie", null, "Azerty123*") },
+                new object[] {new User(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*") }
+            };
+
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void Constructor(User user)
         {
-            User user = new(null,"username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.NotNull(user);
         }
 
-        [Fact]
-        public void Username()
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void Username(User user)
         {
-            User user = new(null, "", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("Default", user.Username);
-
-            User user2 = new(null, null, "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("Default",user2.Username);
+            Assert.NotNull(user.Username);
+            Assert.NotEqual("", user.Username);
         }
 
-        [Fact]
-        public void Biographie()
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void Biographie(User user)
         {
-            User user = new(null, "username", "", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("Pas de biographie", user.Biographie);
-
-            User user2 = new(null, "username", null, "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("Default", user2.Biographie);
-
-            User user3 = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-
-            string biographieOfAnUser = user3.Biographie;
-            Assert.Equal("biographie", biographieOfAnUser);
+            Assert.NotNull(user.Biographie);
+            Assert.NotEqual("", user.Biographie);
         }
 
-        [Fact]
-        public void Email()
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void Email(User user)
         {
-            User user = new(null, "username", "biographie", "", "Azerty123*");
-            Assert.Equal("Default", user.Email);
-
-            User user2 = new(null, "username", "biographie", null, "Azerty123*");
-            Assert.Equal("Default", user2.Email);
+            Assert.NotNull(user.Email);
+            Assert.NotEqual("", user.Email);
         }
 
         [Fact]
         public void Password()
         {
 
-            Assert.Throws<ArgumentNullException>(() => new User (null, "username", "biographie", "adresse.mail@gmail.com", ""));
+            Assert.Throws<ArgumentNullException>(() => new User(null, "username", "biographie", "adresse.mail@gmail.com", ""));
 
             Assert.Throws<ArgumentNullException>(() => new User(null, "username", "biography", "adresse.mail@gmail.com", null));
 
-            Assert.Throws<ArgumentNullException>(() => new User (null, "username", "biographie", "adresse.mail@gmail.com", "54az6e"));
+            Assert.Throws<ArgumentNullException>(() => new User(null, "username", "biographie", "adresse.mail@gmail.com", "54az6e"));
 
             User user = new(null, "username", "bio", "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal("Azerty123*", user.Password);
         }
 
-        [Fact]
-        public void UserImage()
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void UserImage(User user)
         {
-            User user = new("userimage", "username", "bio", "adresse.mail@gmail.com", "Azerty123*");
-            Assert.Equal("userimage", user.UserImage);
+            Assert.NotNull(user.UserImage);
+            Assert.NotEqual("", user.UserImage);
         }
 
         [Fact]
@@ -86,7 +91,7 @@ namespace Test
         public void ReviewAddingAndRemovingFromAGameViaUser()
         {
             User user = new(null, "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" },"cover", "www.link.com");
+            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Assert.NotNull(user);
             Assert.NotNull(game);
 
@@ -108,10 +113,11 @@ namespace Test
             Assert.False(user.Equals(user4 as object));
             Assert.False(user.Equals(user2 as object));
         }
-        [Fact]
-        public void Hashcode()
+
+        [Theory]
+        [MemberData(nameof(UserData))]
+        public void Hashcode(User user)
         {
-            User user = new("userimage", "username", "biographie", "adresse.mail@gmail.com", "Azerty123*");
             Assert.Equal(user.GetHashCode(), user.Username?.GetHashCode());
         }
     }

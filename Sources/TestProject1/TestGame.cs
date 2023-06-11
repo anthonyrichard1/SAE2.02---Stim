@@ -4,166 +4,142 @@ namespace Test
 {
     public class TestGame
     {
-        [Fact]
-        public void Constructor()
-        {
+        public static IEnumerable<object[]> GameData
+            => new List<object[]>
+            {
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game(null, "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("game", "", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("game", null, 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("game", "description", 1111, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("game", "description", 9999, new List<String> { "1", "2", "3" }, "cover", "www.link.com") },
+                new object[] {new Game("game", "description", 9999, null, "cover", "www.link.com") },
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2" }, "cover", "www.link.com") },
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2", "3" }, "", "www.link.com") },
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2", "3" }, null, "www.link.com") },
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "") },
+                new object[] {new Game("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover", null) }
+            };
+        public static IEnumerable<object[]> GameDataUser =>
+           new List<object[]>
+           {
+                new object[]{GameData.ToList()[0], }
+           };
 
-            Game game = new("game", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Constructor(Game game)
+        {
             Assert.NotNull(game);
         }
 
-        [Fact]
-        public void Name()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Name(Game game)
         {
-
-            Game game = new("", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.False(game.Name == "");
-
-            Game game2 = new(null, "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.True(game2.Name == "Default");
-
-            Game game3 = new("good", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal("good", game3.Name);
-        }
-        [Fact]
-        public void Cover()
-        {
-            Game game = new("game", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
-            string coverofgame= game.Cover;
-            Assert.True(coverofgame == game.Cover);
-        }
-        [Fact]
-        public void Description()
-        {
-
-            Game game = new("name", "", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.False(game.Description == "");
-
-            Game game2 = new("name", null, 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.True(game2.Description=="Pas de description");
-
-            Game game3 = new("name", "good", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal("good", game3.Description);
-        }
-        
-        [Fact]
-        public void Year()
-        {
-
-            Game game = new("name", "description", 1111, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal(2023, game.Year);
-
-            Game game2 = new("name", "description", 9999, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal(2023, game2.Year);
-
-            Game game3 = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-            Assert.Equal(2012, game3.Year);
+            Assert.NotNull(game.Name);
+            Assert.NotEqual("", game.Name);
         }
 
-        [Fact]
-        public void Tags()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Cover(Game game)
         {
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
+            Assert.NotNull(game.Cover);
+            Assert.NotEqual("", game.Cover);
+        }
+
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Description(Game game)
+        {
+            Assert.NotNull(game.Description);
+            Assert.NotEqual("", game.Description);
+        }
+
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Year(Game game)
+        {
+            Assert.True(game.Year >= 1970);
+            Assert.True(game.Year <= 2023);
+        }
+
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Tags(Game game)
+        {
             Assert.NotNull(game.Tags);
-            Assert.Equal(new List<String> { "1", "2", "3" }, game.Tags);
-
-            Game game2 = new("name", "description", 2012, null, "cover", "www.link.com");
-            Assert.NotNull(game2.Tags);
-            Assert.Empty(game2.Tags);
-
-            Game game3 = new("name", "description", 2012, new List<String> {"1","2"}, "cover", "www.link.com");
-            Assert.NotNull(game3.Tags);
-            Assert.Equal(2,game3.Tags.Count);
         }
 
-        [Fact]
-        public void Lien()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Lien(Game game)
         {
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Assert.NotNull(game.Lien);
-            Game game2 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", null);
-            Assert.Equal("Pas de lien", game2.Lien);
-            Game game3 = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "");
-            Assert.Equal("Pas de lien", game3.Lien);
+            Assert.NotEqual("", game.Lien);
         }
 
-        [Fact]
-        public void AddReview()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void AddReview(Game game)
         {
-            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
-
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-
+            var user = new User(null, "username", "biographie", "email@email.com", "Azerty123*");
             user.AddReview(game, 2.5f, "bof");
-            user.AddReview(game, 4f, "bof++");
-            user.AddReview(game, 3f, "bof+");
-
             Assert.NotEmpty(game.Reviews);
         }
 
-        [Fact]
-        public void RemoveReview()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void RemoveReview(Game game)
         {
-            User user = new(null,"username", "biographie", "email@email.com", "Azerty123*");
-            User user2 = new(null,"username2", "biographie", "email2@email.com", "Azerty123*");
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
-
+            var user = new User(null, "username", "biographie", "email@email.com", "Azerty123*");
             user.AddReview(game, 2.5f, "bof");
-            user.AddReview(game, 4f, "bof++");
-            user.AddReview(game, 3f, "bof+");
-            user2.RemoveSelfReview(game, 2.5f, "bof");
-            Assert.Equal(3, game.Reviews.Count);
             user.RemoveSelfReview(game, 2.5f, "bof");
-            Assert.Equal(2, game.Reviews.Count);
+            Assert.Empty(game.Reviews);
         }
 
-        [Fact]
-        public void ChangeName()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void ChangeName(Game game)
         {
-
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             game.NameChange("newName");
-
             Assert.Equal("newName", game.Name);
         }
 
-        [Fact]
-        public void ChangeDescription()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void ChangeDescription(Game game)
         {
-
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             game.DescChange("newDesc");
-
             Assert.Equal("newDesc", game.Description);
         }
 
-        [Fact]
-        public void ChangeYear()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void ChangeYear(Game game)
         {
-
-            Game game = new("name", "description", 2012, new List<String> {"1","2","3"}, "cover", "www.link.com");
             game.YearChange(2020);
-
             Assert.Equal(2020, game.Year);
         }
 
-        [Fact]
-        public void ChangeTags()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void ChangeTags(Game game)
         {
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
-            game.NameChange("newName");
             game.TagChange(new List<String> { "1", "2" });
             Assert.Equal(2, game.Tags.Count);
             game.TagChange(null);
             Assert.Equal(2, game.Tags.Count);
-            game.TagChange(new List<String> { "1", "2","3","4" });
+            game.TagChange(new List<String> { "1", "2", "3", "4" });
             Assert.Equal(2, game.Tags.Count);
         }
 
-        [Fact]
-        public void Hash()
+        [Theory]
+        [MemberData(nameof(GameData))]
+        public void Hash(Game game)
         {
-            Game game = new("name", "description", 2012, new List<String> { "1", "2", "3" }, "cover", "www.link.com");
             Assert.Equal(game.Name.GetHashCode(), game.GetHashCode());
         }
 

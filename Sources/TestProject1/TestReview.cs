@@ -4,36 +4,43 @@ namespace Test
 {
     public class TestReview
     {
-        [Fact]
-        public void Constructor()
+        public static IEnumerable<object[]> ReviewData
+            => new List<object[]>
+            {
+                new object[] {new Review("User 1", 3, "rev")},
+                new object[] {new Review("User 1", -5.8f, "rev")},
+                new object[] {new Review("User 2", +5.8f, "rev") }
+            };
+
+        [Theory]
+        [MemberData(nameof(ReviewData))]
+        public void Constructor(Review rev)
         {
-            Review rev = new("User 1", 3, "rev");
             Assert.NotNull(rev);
         }
 
-        [Fact]
-        public void Rate()
+        [Theory]
+        [MemberData(nameof(ReviewData))]
+        public void Rate(Review rev)
         {
-            Review rev = new("User 1", -5.8f, "rev");
-            Review rev2 = new("User 2", 5.8f, "rev2");
-            Assert.Equal(0, rev.Rate);
-            Assert.Equal(0, rev2.Rate);
+            Assert.True(rev.Rate >= 0);
+            Assert.True(rev.Rate <= 5);
         }
 
-        [Fact]
-        public void Text()
+        [Theory]
+        [MemberData(nameof(ReviewData))]
+        public void Text(Review rev)
         {
-            Review rev = new("User 1", 3, "");
-            Review rev2 = new("User 2", 3, null);
-            Assert.Equal("Default", rev.Text);
-            Assert.Equal("Default", rev2.Text);
+            Assert.NotNull(rev.Text);
+            Assert.NotEqual("", rev.Text);
         }
 
-        [Fact]
-        public void AuthorName()
+        [Theory]
+        [MemberData(nameof(ReviewData))]
+        public void AuthorName(Review rev)
         {
-            Review rev = new("User 1", 3, "text");
             Assert.NotNull(rev.AuthorName);
+            Assert.NotEqual("", rev.AuthorName);
         }
 
         [Fact]

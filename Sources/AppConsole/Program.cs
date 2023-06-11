@@ -32,12 +32,18 @@ namespace AppConsole
             AfficherUsers();
 
             Console.WriteLine("-----AJOUTER UN COMMENTAIRE SUR UN JEU-----");
-            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 1.3");
+            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 4.3");
             Manager.GameList[3].AddReview(new("Moi", 1.3f, "Ce jeu est vraiment très bien !"));
             Console.WriteLine(Manager.GameList[3]);
 
+            Console.WriteLine("-----MODIFIER UN COMMENTAIRE-----");
+            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 4.3");
+            Console.WriteLine("message = Ce jeu est vraiment très bien !, note = 4.3 => message = Ce jeu est vraiment pas bien !, note = 1.7");
+            Manager.GameList[3].Reviews[3].EditReview("Ce jeu est vraiment pas bien !");
+            Manager.GameList[3].Reviews[3].EditRate(1.7f);
+
             Console.WriteLine("-----SUPPRIMER UN COMMENTAIRE SUR UN JEU-----");
-            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment très bien !, note = 1.3");
+            Console.WriteLine("jeu = GTA V, auteur = Moi, message = Ce jeu est vraiment pas bien ! (modifié), note = 1.7");
             user.RemoveSelfReview(Manager.GameList[3], 1.3f, "Ce jeu est vraiment très bien !");
             Console.WriteLine(Manager.GameList[3]);
 
@@ -50,7 +56,6 @@ namespace AppConsole
             Console.WriteLine("jeux = Elden ring");
             user.RemoveAGame(Manager.GameList[0]);
             Console.WriteLine(user);
-
         }
 
         private static void AfficherJeux()
