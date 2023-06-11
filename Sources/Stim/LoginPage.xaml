@@ -16,15 +16,13 @@
                             IsPassword="False"
                             x:Name="Username"
                             HeightRequest="50"
-                            ClearButtonVisibility="WhileEditing"
-                           Text="anthony"/>
+                            ClearButtonVisibility="WhileEditing"/>
                     <Entry Placeholder="Mot de passe"
                             PlaceholderColor="{StaticResource Primary}"
                             IsPassword="True" x:Name="Pswd"
                             HeightRequest="50"
                             Grid.Row="1"
-                            ClearButtonVisibility="WhileEditing"
-                           Text="anthony5"/>
+                            ClearButtonVisibility="WhileEditing"/>
 
                     <Grid Grid.Row="2"
                             Margin="10,0,0,10" ColumnDefinitions="3*, *">
